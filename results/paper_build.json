@@ -1,12 +1,19 @@
 {
-  "main_words_including_abstract_tables_captions_declarations": 2467,
-  "abstract_words": 280,
-  "reference_count": 18,
-  "lookup_attempts_total": 3600,
-  "page_attempts_total": 720,
+  "main_words_including_abstract_tables_captions_declarations": 2970,
+  "abstract_words": 275,
+  "reference_count": 20,
+  "public_lookup_attempts_total": 25440,
+  "repeatability_attempts": 8640,
+  "browser_live_dns_fixture_attempts": 720,
+  "browser_delay_injection_attempts": 80,
+  "loopback_attempts": 800,
   "dates": [
     "2026-11-15",
-    "2026-11-19"
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24"
   ],
   "pdf": "Secure_DNS_Research_Paper.pdf"
 }

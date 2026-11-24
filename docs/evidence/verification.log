@@ -1,5 +1,5 @@
 {
-  "started_utc": "2026-11-19T19:16:48.312687+00:00",
+  "started_utc": "2026-11-24T10:44:18.844648+00:00",
   "python": "3.12.14",
   "packages": {
     "numpy": "2.3.5",
@@ -7,7 +7,7 @@
     "matplotlib": "3.10.7"
   },
   "mode": "offline reproduction of recorded observations; no network measurements",
-  "command_paths": "Displayed relative to the repository working directory; child stdout and stderr are captured without edits"
+  "command_paths": "Paths under the working directory are displayed relative to the project in commands and captured output"
 }
 
 $ python.exe scripts\validate_package.py --raw-only
@@ -20,9 +20,10 @@ $ node.exe --version
 v24.22.3
 
 $ node.exe tests\test_dns.mjs
-PASS: wire query fixture, A answer/TTL, transaction/name/QR, truncation, RCODE, compression loop, RNG and invalid qname checks
+PASS: DNS wire checks, linked answer owners, alias loops and separate seeded window streams
 
 $ python.exe -m unittest discover -s tests -p test_*.py -v
+test_answer_owner_must_match_question_or_cname_target (test_analysis.AnalysisProperties.test_answer_owner_must_match_question_or_cname_target) ... ok
 test_bootstrap_is_reproducible_and_empty_input_is_null (test_analysis.AnalysisProperties.test_bootstrap_is_reproducible_and_empty_input_is_null) ... ok
 test_claimed_success_without_dns_gates_is_an_audit_error (test_analysis.AnalysisProperties.test_claimed_success_without_dns_gates_is_an_audit_error) ... ok
 test_duplicate_block_is_rejected (test_analysis.AnalysisProperties.test_duplicate_block_is_rejected) ... ok
@@ -38,12 +39,24 @@ test_zero_baseline_has_delta_but_no_percentage (test_analysis.AnalysisProperties
 test_default_inputs_work_from_an_unrelated_working_directory (test_analysis.CommandLineProperties.test_default_inputs_work_from_an_unrelated_working_directory) ... ok
 test_one_window_dataset_has_no_hardcoded_three_window_warning (test_analysis.CommandLineProperties.test_one_window_dataset_has_no_hardcoded_three_window_warning) ... ok
 test_broken_local_links_fail_without_network_access (test_package.PackageIntegrity.test_broken_local_links_fail_without_network_access) ... ok
+test_local_markdown_fragment_must_resolve_to_heading (test_package.PackageIntegrity.test_local_markdown_fragment_must_resolve_to_heading) ... ok
 test_manifest_detects_changed_or_new_public_files (test_package.PackageIntegrity.test_manifest_detects_changed_or_new_public_files) ... ok
 test_protected_inputs_cannot_be_silently_replaced (test_package.PackageIntegrity.test_protected_inputs_cannot_be_silently_replaced) ... ok
 test_public_manifest_excludes_private_guide_and_local_dependencies (test_package.PackageIntegrity.test_public_manifest_excludes_private_guide_and_local_dependencies) ... ok
+test_common_cells_have_equal_mass_with_unequal_observation_counts (test_repeatability_statistics.RepeatabilityStatistics.test_common_cells_have_equal_mass_with_unequal_observation_counts) ... ok
+test_cross_mode_orientation_and_failed_pairs (test_repeatability_statistics.RepeatabilityStatistics.test_cross_mode_orientation_and_failed_pairs) ... ok
+test_declared_inverse_cdf_tie (test_repeatability_statistics.RepeatabilityStatistics.test_declared_inverse_cdf_tie) ... ok
+test_equal_window_weight_despite_unequal_pair_counts (test_repeatability_statistics.RepeatabilityStatistics.test_equal_window_weight_despite_unequal_pair_counts) ... ok
+test_no_fallback_when_one_window_lacks_common_overlap (test_repeatability_statistics.RepeatabilityStatistics.test_no_fallback_when_one_window_lacks_common_overlap) ... ok
+test_running_run_does_not_read_raw_outcomes (test_repeatability_statistics.RepeatabilityStatistics.test_running_run_does_not_read_raw_outcomes) ... ok
+test_threshold_uses_strict_exceedance (test_repeatability_statistics.RepeatabilityStatistics.test_threshold_uses_strict_exceedance) ... ok
+test_magnitude_is_not_absolute_signed_median (test_session_analysis.SessionAnalysisChecks.test_magnitude_is_not_absolute_signed_median) ... ok
+test_missing_session_does_not_read_observations (test_session_analysis.SessionAnalysisChecks.test_missing_session_does_not_read_observations) ... ok
+test_negative_or_inconsistent_stages_surface_errors (test_session_analysis.SessionAnalysisChecks.test_negative_or_inconsistent_stages_surface_errors) ... ok
+test_running_session_does_not_read_observations (test_session_analysis.SessionAnalysisChecks.test_running_session_does_not_read_observations) ... ok
 
 ----------------------------------------------------------------------
-Ran 18 tests in 1.516s
+Ran 31 tests in 0.903s
 
 OK
 
@@ -92,23 +105,166 @@ $ python.exe scripts\analyze.py --dns data\replication-2026-11-19\dns_raw.jsonl 
 }
 
 $ python.exe scripts\robustness.py --root .
-{"dataset": "original", "date": "2026-11-15", "contrasts": 12, "output": "C:\\Users\\emirh\\Documents\\Codex\\2026-11-15\\i\\outputs\\Secure_DNS_Research\\results\\robustness.json"}
-{"dataset": "replication-2026-11-19", "date": "2026-11-19", "contrasts": 12, "output": "C:\\Users\\emirh\\Documents\\Codex\\2026-11-15\\i\\outputs\\Secure_DNS_Research\\results\\replication-2026-11-19\\robustness.json"}
+{"dataset": "original", "date": "2026-11-15", "contrasts": 12, "output": "results\\robustness.json"}
+{"dataset": "replication-2026-11-19", "date": "2026-11-19", "contrasts": 12, "output": "results\\replication-2026-11-19\\robustness.json"}
 
 $ python.exe scripts\plot_results.py --root .
-{"dataset": "original", "figures": 7, "directory": "C:\\Users\\emirh\\Documents\\Codex\\2026-11-15\\i\\outputs\\Secure_DNS_Research\\figures"}
-{"dataset": "replication-2026-11-19", "figures": 7, "directory": "C:\\Users\\emirh\\Documents\\Codex\\2026-11-15\\i\\outputs\\Secure_DNS_Research\\figures\\replication-2026-11-19"}
+{"dataset": "original", "figures": 7, "directory": "figures"}
+{"dataset": "replication-2026-11-19", "figures": 7, "directory": "figures\\replication-2026-11-19"}
+
+$ python.exe scripts\control_analysis.py --root .
+{"historical_contrasts": 4, "control_status": "complete", "output": "results/control_analysis.json"}
+
+$ python.exe scripts\plot_control_analysis.py --root .
+{"figures": 4, "control_status": "complete"}
+
+$ python.exe scripts\browser_phases.py --root .
+Decomposed 16 browser comparisons using saved navigation timing.
+
+$ python.exe scripts\analyze_loopback.py --root .
+{
+  "attempts": 800,
+  "complete_pairs": 400,
+  "failures_including_warmups": 0,
+  "fresh_ready_median_ms": 0.0458500000000015,
+  "whole_paired_median_ms": 0.07749999999998636,
+  "query_paired_median_ms": 0.019200000000012096,
+  "scope": "Single host and process, deterministic DNS responder on IPv4 loopback; no public resolver."
+}
+
+$ python.exe scripts\session_analysis.py --root .
+{"analysis_status": "complete", "session_statuses": [{"session_id": "session-01", "status": "complete"}, {"session_id": "session-02", "status": "complete"}, {"session_id": "session-03", "status": "complete"}], "effects": 30, "summary": "results/session_extension/summary.json"}
+
+$ python.exe scripts\plot_session_analysis.py --root .
+{"figures": 4, "analysis_status": "complete"}
+
+$ python.exe scripts\analyze_additional_date.py --root .
+Audited additional-date collection: 1800 attempts, 0 failed
+
+$ python.exe scripts\audit_order_reuse.py --root .
+Historical order audit: 6 distinct schedules in 12 windows
+
+$ python.exe scripts\repeatability_analysis.py --root .
+{"runs": [{"run_id": "A1", "status": "complete"}, {"run_id": "B1", "status": "complete"}, {"run_id": "A2", "status": "complete"}], "primary_classes": 36}
+
+$ python.exe scripts\plot_repeatability.py --root .
+{"completed_runs": ["A1", "B1", "A2"], "figures": 16}
+
+$ python.exe scripts\analyze_browser_layout.py --data data/browser-layout-2026-11-22 --out results/browser-layout-2026-11-22 --doc docs/BROWSER_LAYOUT.md
+{
+  "counts": {
+    "attempted": 80,
+    "valid": 80,
+    "invalid": 0
+  },
+  "effects": [
+    {
+      "layout": "parallel",
+      "complete_pairs": 20,
+      "median_paired_delta_ms": 26.199999999720603,
+      "ci95_low_ms": 21.40000000037253,
+      "ci95_high_ms": 30.399999999906868,
+      "idealized_delay_only_increment_ms": 25
+    },
+    {
+      "layout": "sequential",
+      "complete_pairs": 20,
+      "median_paired_delta_ms": 210.8999999994412,
+      "ci95_low_ms": 206.99999999953434,
+      "ci95_high_ms": 216.64999999990687,
+      "idealized_delay_only_increment_ms": 175
+    }
+  ],
+  "interaction": {
+    "definition": "Per-repetition (sequential treatment-minus-baseline) minus (parallel treatment-minus-baseline), aggregated by median",
+    "complete_blocks": 20,
+    "median_ms": 186.9499999997206,
+    "ci95_low_ms": 176.8000000002794,
+    "ci95_high_ms": 194.09999999962747
+  }
+}
+
+$ python.exe scripts\plot_browser_layout.py
+[
+  {
+    "layout": "parallel",
+    "extra_ms": 0,
+    "requested_gate_ms": 25,
+    "pages": 20,
+    "gates": 140,
+    "median_gate_wait_ms": 30.59104999999954,
+    "gate_wait_q1_ms": 28.41884999999911,
+    "gate_wait_q3_ms": 33.61152500000253,
+    "gate_wait_p95_ms": 37.98849499999978,
+    "min_gate_wait_ms": 24.71659999999997,
+    "max_gate_wait_ms": 38.51730000000043,
+    "median_overshoot_ms": 5.591049999999541,
+    "median_of_page_median_gate_wait_ms": 30.395800000000236
+  },
+  {
+    "layout": "parallel",
+    "extra_ms": 25,
+    "requested_gate_ms": 50,
+    "pages": 20,
+    "gates": 140,
+    "median_gate_wait_ms": 58.67905000000064,
+    "gate_wait_q1_ms": 53.96484999999939,
+    "gate_wait_q3_ms": 61.7636250000005,
+    "gate_wait_p95_ms": 62.99809,
+    "min_gate_wait_ms": 49.332399999999325,
+    "max_gate_wait_ms": 63.54100000000108,
+    "median_overshoot_ms": 8.679050000000643,
+    "median_of_page_median_gate_wait_ms": 58.61739999999918
+  },
+  {
+    "layout": "sequential",
+    "extra_ms": 0,
+    "requested_gate_ms": 25,
+    "pages": 20,
+    "gates": 140,
+    "median_gate_wait_ms": 28.206850000000486,
+    "gate_wait_q1_ms": 27.702749999999327,
+    "gate_wait_q3_ms": 28.784224999999594,
+    "gate_wait_p95_ms": 33.932890000000945,
+    "min_gate_wait_ms": 24.39389999999912,
+    "max_gate_wait_ms": 39.815700000000106,
+    "median_overshoot_ms": 3.206850000000486,
+    "median_of_page_median_gate_wait_ms": 28.225800000000163
+  },
+  {
+    "layout": "sequential",
+    "extra_ms": 25,
+    "requested_gate_ms": 50,
+    "pages": 20,
+    "gates": 140,
+    "median_gate_wait_ms": 59.21430000000032,
+    "gate_wait_q1_ms": 58.330699999998615,
+    "gate_wait_q3_ms": 59.746574999999666,
+    "gate_wait_p95_ms": 61.70024000000066,
+    "min_gate_wait_ms": 49.7654999999977,
+    "max_gate_wait_ms": 64.13300000000027,
+    "median_overshoot_ms": 9.214300000000321,
+    "median_of_page_median_gate_wait_ms": 59.17595000000074
+  }
+]
 
 $ python.exe scripts\build_paper.py --root .
 {
-  "main_words_including_abstract_tables_captions_declarations": 2467,
-  "abstract_words": 280,
-  "reference_count": 18,
-  "lookup_attempts_total": 3600,
-  "page_attempts_total": 720,
+  "main_words_including_abstract_tables_captions_declarations": 2970,
+  "abstract_words": 275,
+  "reference_count": 20,
+  "public_lookup_attempts_total": 25440,
+  "repeatability_attempts": 8640,
+  "browser_live_dns_fixture_attempts": 720,
+  "browser_delay_injection_attempts": 80,
+  "loopback_attempts": 800,
   "dates": [
     "2026-11-15",
-    "2026-11-19"
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24"
   ],
   "pdf": "Secure_DNS_Research_Paper.pdf"
 }
@@ -134,8 +290,33 @@ $ python.exe scripts\validate_package.py --root . --ignore-manifest
       "page_dns_rows": 1788
     }
   ],
-  "figure_stems": 15,
-  "local_links_checked": 95,
+  "followup": {
+    "windows": 10,
+    "measured": 6000,
+    "priming": 600,
+    "measured_failures": 0
+  },
+  "session_extension": {
+    "completed_sessions": 3,
+    "measured_attempts": 5400,
+    "loopback_files": 2,
+    "loopback_pairs": 400,
+    "browser_delay_injection_attempts": 80,
+    "browser_raw_files": 11,
+    "additional_date_attempts": 1800
+  },
+  "repeatability": {
+    "completed_runs": [
+      "A1",
+      "B1",
+      "A2"
+    ],
+    "measured_attempts": 8640,
+    "failed_measured_attempts": 1,
+    "distinct_schedules": 9
+  },
+  "figure_stems": 29,
+  "local_links_checked": 191,
   "manifest_files": null,
   "network_access": "none"
 }

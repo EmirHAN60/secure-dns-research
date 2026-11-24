@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "study": "Prospective UDP socket lifecycle and established DoH controls",
+  "windows": 10,
+  "reps": 10,
+  "interval_seconds": 90,
+  "seed": 20261120,
+  "domains": [
+    "example.com",
+    "wikipedia.org",
+    "mozilla.org",
+    "github.com",
+    "cloudflare.com",
+    "google.com",
+    "microsoft.com",
+    "apple.com",
+    "bbc.com",
+    "amazon.com"
+  ],
+  "providers": {
+    "cloudflare": {
+      "ip": "1.1.1.1",
+      "host": "cloudflare-dns.com",
+      "path": "/dns-query"
+    },
+    "google": {
+      "ip": "8.8.8.8",
+      "host": "dns.google",
+      "path": "/dns-query"
+    }
+  },
+  "modes": [
+    "udp_fresh",
+    "udp_bound",
+    "doh_warm"
+  ],
+  "qtype": "A",
+  "ip_version": 4,
+  "timeout_ms": 3000,
+  "expected_measured_attempts": 6000,
+  "priming": "Each name queried through all three treatments before each window; resolver cache-hit status remains unknown",
+  "fresh_udp": "New unconnected udp4 socket, explicit await bind(0) inside whole-call timing, then send and validation. Historical collector used implicit bind, so this is an explicit implementation change.",
+  "bound_udp": "One unconnected udp4 socket per provider/window; bind occurs outside measured calls and the source port is retained.",
+  "doh": "One established HTTP/2 TLS connection per provider/window, primed before measured calls; no reconnect or TLS resumption permitted in a valid measured warm call.",
+  "timing": "Query construction excluded. elapsed_ms includes socket lifecycle where applicable, submission, response and validation. UDP transport_elapsed_ms is send() call to message callback after both modes have bound. H2 phase fields are event-loop/client timestamps, not packet-capture transmission times.",
+  "interpretation": "Fresh-versus-bound contrasts can also reflect source-port dependent routing, ECMP, NAT or resolver affinity. Neither phase decomposition nor matched provider establishes pure CPU or encryption cost.",
+  "failure_policy": "No retries or imputation. All attempts including setup/timeout failures are stored. Failed timings are excluded from successful latency estimates.",
+  "source_sha256": {
+    "measure_controls.mjs": "c928120b4d306a05eb18a12bbfaf02a962641ae53eb5c2a4dde03917394bded0",
+    "dns_client.mjs": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1"
+  },
+  "started_utc": "2026-11-20T12:16:25.677Z",
+  "status": "complete",
+  "platform": "win32",
+  "release": "10.0.26300",
+  "arch": "x64",
+  "cpu_model": "AMD Ryzen 7 7700 8-Core Processor              ",
+  "logical_cpus": 16,
+  "total_memory_gib": 30.88082504272461,
+  "node": "v24.22.3",
+  "openssl": "3.5.9",
+  "execution_timezone": "Europe/Warsaw",
+  "local_ip_addresses_recorded": false,
+  "window_events": [
+    {
+      "event": "window_start",
+      "window": 1,
+      "scheduled_utc": "2026-11-20T12:16:25.688Z",
+      "utc": "2026-11-20T12:16:25.688Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 1,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 49602,
+      "bind_ms": 1.105399999999996,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:16:25.691Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 1,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 55582,
+      "bind_ms": null,
+      "connect_ms": 58.593199999999996,
+      "utc": "2026-11-20T12:16:25.750Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 1,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 49613,
+      "bind_ms": 0.11740000000008877,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:16:27.183Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 1,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 55585,
+      "bind_ms": null,
+      "connect_ms": 63.74150000000009,
+      "utc": "2026-11-20T12:16:27.248Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 1,
+      "total_rows": 660,
+      "measured_rows": 600,
+      "valid_rows": 660,
+      "utc": "2026-11-20T12:16:57.776Z"
+    },
+    {
+      "event": "window_start",
+      "window": 2,
+      "scheduled_utc": "2026-11-20T12:17:55.688Z",
+      "utc": "2026-11-20T12:17:55.695Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 2,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 63636,
+      "bind_ms": 0.11449999999604188,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:17:55.697Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 2,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 56076,
+      "bind_ms": null,
+      "connect_ms": 49.30999999999767,
+      "utc": "2026-11-20T12:17:55.746Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 2,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 55890,
+      "bind_ms": 0.11560000000463333,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:17:56.900Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 2,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 56080,
+      "bind_ms": null,
+      "connect_ms": 63.23979999999574,
+      "utc": "2026-11-20T12:17:56.964Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 2,
+      "total_rows": 1320,
+      "measured_rows": 1200,
+      "valid_rows": 1320,
+      "utc": "2026-11-20T12:18:25.908Z"
+    },
+    {
+      "event": "window_start",
+      "window": 3,
+      "scheduled_utc": "2026-11-20T12:19:25.688Z",
+      "utc": "2026-11-20T12:19:25.698Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 3,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 57004,
+      "bind_ms": 0.13659999999799766,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:19:25.699Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 3,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 51142,
+      "bind_ms": null,
+      "connect_ms": 42.203000000008615,
+      "utc": "2026-11-20T12:19:25.742Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 3,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 57015,
+      "bind_ms": 0.1481000000203494,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:19:26.976Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 3,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 51144,
+      "bind_ms": null,
+      "connect_ms": 67.41779999999562,
+      "utc": "2026-11-20T12:19:27.044Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 3,
+      "total_rows": 1980,
+      "measured_rows": 1800,
+      "valid_rows": 1980,
+      "utc": "2026-11-20T12:19:56.202Z"
+    },
+    {
+      "event": "window_start",
+      "window": 4,
+      "scheduled_utc": "2026-11-20T12:20:55.688Z",
+      "utc": "2026-11-20T12:20:55.704Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 4,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 63751,
+      "bind_ms": 0.09839999995892867,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:20:55.705Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 4,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 51234,
+      "bind_ms": null,
+      "connect_ms": 52.179599999974016,
+      "utc": "2026-11-20T12:20:55.757Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 4,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 54996,
+      "bind_ms": 0.09909999999217689,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:20:56.967Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 4,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 51237,
+      "bind_ms": null,
+      "connect_ms": 92.17230000003474,
+      "utc": "2026-11-20T12:20:57.059Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 4,
+      "total_rows": 2640,
+      "measured_rows": 2400,
+      "valid_rows": 2640,
+      "utc": "2026-11-20T12:21:28.736Z"
+    },
+    {
+      "event": "window_start",
+      "window": 5,
+      "scheduled_utc": "2026-11-20T12:22:25.688Z",
+      "utc": "2026-11-20T12:22:25.700Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 5,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 59227,
+      "bind_ms": 0.13510000001406297,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:22:25.701Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 5,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 58399,
+      "bind_ms": null,
+      "connect_ms": 47.133000000030734,
+      "utc": "2026-11-20T12:22:25.749Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 5,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 54660,
+      "bind_ms": 0.10730000003241003,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:22:26.981Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 5,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 58400,
+      "bind_ms": null,
+      "connect_ms": 58.82550000003539,
+      "utc": "2026-11-20T12:22:27.041Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 5,
+      "total_rows": 3300,
+      "measured_rows": 3000,
+      "valid_rows": 3300,
+      "utc": "2026-11-20T12:22:58.933Z"
+    },
+    {
+      "event": "window_start",
+      "window": 6,
+      "scheduled_utc": "2026-11-20T12:23:55.688Z",
+      "utc": "2026-11-20T12:23:55.691Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 6,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 62051,
+      "bind_ms": 0.13059999997494742,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:23:55.692Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 6,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 64625,
+      "bind_ms": null,
+      "connect_ms": 46.30810000002384,
+      "utc": "2026-11-20T12:23:55.739Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 6,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 64136,
+      "bind_ms": 0.11149999999906868,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:23:56.932Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 6,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 64628,
+      "bind_ms": null,
+      "connect_ms": 85.09820000000764,
+      "utc": "2026-11-20T12:23:57.018Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 6,
+      "total_rows": 3960,
+      "measured_rows": 3600,
+      "valid_rows": 3960,
+      "utc": "2026-11-20T12:24:28.236Z"
+    },
+    {
+      "event": "window_start",
+      "window": 7,
+      "scheduled_utc": "2026-11-20T12:25:25.688Z",
+      "utc": "2026-11-20T12:25:25.694Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 7,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 64902,
+      "bind_ms": 0.14000000001396984,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:25:25.695Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 7,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 64545,
+      "bind_ms": null,
+      "connect_ms": 50.673600000096485,
+      "utc": "2026-11-20T12:25:25.747Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 7,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 58314,
+      "bind_ms": 0.1635000000242144,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:25:26.921Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 7,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 64546,
+      "bind_ms": null,
+      "connect_ms": 62.02029999997467,
+      "utc": "2026-11-20T12:25:26.984Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 7,
+      "total_rows": 4620,
+      "measured_rows": 4200,
+      "valid_rows": 4620,
+      "utc": "2026-11-20T12:25:57.617Z"
+    },
+    {
+      "event": "window_start",
+      "window": 8,
+      "scheduled_utc": "2026-11-20T12:26:55.688Z",
+      "utc": "2026-11-20T12:26:55.689Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 8,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 51949,
+      "bind_ms": 0.1321000000461936,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:26:55.690Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 8,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 54893,
+      "bind_ms": null,
+      "connect_ms": 56.7219000000041,
+      "utc": "2026-11-20T12:26:55.747Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 8,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 57767,
+      "bind_ms": 0.11569999996572733,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:26:56.903Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 8,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 54896,
+      "bind_ms": null,
+      "connect_ms": 91.13959999999497,
+      "utc": "2026-11-20T12:26:56.995Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 8,
+      "total_rows": 5280,
+      "measured_rows": 4800,
+      "valid_rows": 5280,
+      "utc": "2026-11-20T12:27:28.318Z"
+    },
+    {
+      "event": "window_start",
+      "window": 9,
+      "scheduled_utc": "2026-11-20T12:28:25.688Z",
+      "utc": "2026-11-20T12:28:25.694Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 9,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 56812,
+      "bind_ms": 0.12540000001899898,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:28:25.694Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 9,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 64969,
+      "bind_ms": null,
+      "connect_ms": 48.55879999999888,
+      "utc": "2026-11-20T12:28:25.744Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 9,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 56823,
+      "bind_ms": 0.12239999999292195,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:28:26.975Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 9,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 64970,
+      "bind_ms": null,
+      "connect_ms": 91.70419999992009,
+      "utc": "2026-11-20T12:28:27.068Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 9,
+      "total_rows": 5940,
+      "measured_rows": 5400,
+      "valid_rows": 5940,
+      "utc": "2026-11-20T12:28:57.336Z"
+    },
+    {
+      "event": "window_start",
+      "window": 10,
+      "scheduled_utc": "2026-11-20T12:29:55.688Z",
+      "utc": "2026-11-20T12:29:55.694Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 10,
+      "provider": "cloudflare",
+      "protocol": "udp_bound",
+      "local_port": 51534,
+      "bind_ms": 0.11440000007860363,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:29:55.695Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 10,
+      "provider": "cloudflare",
+      "protocol": "doh_warm",
+      "local_port": 59516,
+      "bind_ms": null,
+      "connect_ms": 53.477599999983795,
+      "utc": "2026-11-20T12:29:55.749Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 10,
+      "provider": "google",
+      "protocol": "udp_bound",
+      "local_port": 63679,
+      "bind_ms": 0.11580000002868474,
+      "connect_ms": null,
+      "utc": "2026-11-20T12:29:56.939Z"
+    },
+    {
+      "event": "connection_established",
+      "window": 10,
+      "provider": "google",
+      "protocol": "doh_warm",
+      "local_port": 59519,
+      "bind_ms": null,
+      "connect_ms": 58.68619999999646,
+      "utc": "2026-11-20T12:29:56.998Z"
+    },
+    {
+      "event": "window_complete",
+      "window": 10,
+      "total_rows": 6600,
+      "measured_rows": 6000,
+      "valid_rows": 6600,
+      "utc": "2026-11-20T12:30:26.753Z"
+    },
+    {
+      "event": "complete",
+      "total_rows": 6600,
+      "measured_rows": 6000,
+      "valid_rows": 6600,
+      "utc": "2026-11-20T12:30:26.754Z"
+    }
+  ],
+  "finished_utc": "2026-11-20T12:30:26.754Z",
+  "total_rows": 6600,
+  "measured_rows": 6000,
+  "valid_rows": 6600
+}

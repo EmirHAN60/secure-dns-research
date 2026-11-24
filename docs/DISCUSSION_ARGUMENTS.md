@@ -1,5 +1,7 @@
 # Arguments for a research discussion
 
+This note records the reasoning for the 19 November version. The [revision literature comparison](REVISION_LITERATURE.md), [socket control results](CONTROL_RESULTS.md) and [browser phase analysis](BROWSER_PHASES.md) provide the updated evidence for the revised paper.
+
 ## A conditional overhead
 
 A query that opens a TCP/TLS/HTTP2 connection differs from one sent over an established connection. Reporting one number without connection state combines workloads. Raw socket metadata and query sequence information make the treatments auditable. This follows existing literature; the contribution is its explicit application and verification in the present sample.

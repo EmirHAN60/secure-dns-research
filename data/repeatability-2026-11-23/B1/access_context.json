@@ -1,0 +1,12 @@
+{
+  "run_id": "B1",
+  "context_label": "B",
+  "confirmation_received_utc": "2026-11-24T10:20:40.5893886Z",
+  "confirmation_source": "Explicit user confirmation relayed by the parent agent",
+  "user_reported_relationship": "Connected to a second access network",
+  "user_reported_access_type": "Not specified",
+  "network_switch_performed_by": "User",
+  "system_settings_changed_by_collector": false,
+  "directory_date_is_study_identifier": true,
+  "actual_collection_date_source": "environment.started_utc"
+}

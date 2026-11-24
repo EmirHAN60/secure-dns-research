@@ -23,8 +23,10 @@ The screenshot's report can be recaptured with `node scripts/capture_evidence.mj
 
 This evidence-only run is excluded from all analyzed raw datasets. The image documents the fixed content's appearance; it does not establish native browser secure-DNS behavior or prove a numerical performance effect.
 
-## Original data protection and repeat-session source
+## Original data protection and collection sources
 
 `original-data-sha256.json` records hashes of the five retained original input files. The validator checks them before reproduction. This detects changes relative to the package's original inputs, not an externally certified collection timestamp.
 
 The [19 November collection snapshot](collection-source-2026-11-19/README.md) retains the exact scripts used for that session, collection metadata and source checksums. The [page collection log](replication-page-collection.log) contains the genuine page output rows. Maintained collectors under `scripts/` also include later path and screenshot options; the snapshot separates those maintenance changes from collection provenance.
+
+The [20 November collection snapshot](collection-source-2026-11-20/README.md) preserves the exact two executed scripts. The [follow-up events](../../data/control-2026-11-20/events.jsonl) record real start and finish times and socket readiness for each window. The [control analysis record](../control_analysis_plan.json) contains the frozen sign rule and hashes of its historical inputs.

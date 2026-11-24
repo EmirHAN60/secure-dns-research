@@ -1,0 +1,19 @@
+{
+  "all_flow_conditions_retained": [
+    "repeat_flow",
+    "distinct_flows"
+  ],
+  "note": "Illustration does not replace the full predeclared grid, change exclusions, or claim an externally preregistered reporting endpoint.",
+  "main_illustration": {
+    "threshold_ms": 2,
+    "flow_condition": "repeat_flow"
+  },
+  "recorded_utc": "2026-11-23T21:51:15.0088740Z",
+  "all_thresholds_retained": [
+    0.5,
+    1,
+    2,
+    5
+  ],
+  "purpose": "Display choice recorded before this analyst inspected any A1 latency outcomes; frozen primary grid remains unchanged"
+}

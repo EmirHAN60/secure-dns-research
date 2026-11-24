@@ -1,0 +1,5 @@
+50edd9341bcf63f2c3e5a3a44365bd182ba3f1310baf3695803c96decda0f355  docs/ADDITIONAL_DATE_PLAN.json
+74ad1d7ed995919eae52a3432baf012f00cdcd40675aeb59c060f17a51c0a080  data/verification-2026-11-23/design.json
+299567d3e0d5417717fe51c1f2fef712ecd0f1d8ca20b750e4abb276e32f20e6  data/verification-2026-11-23/environment.json
+d1981ebd11e64b164420e9fd4bca56f07114ae6a8b0def2570531f5dde6685ea  data/verification-2026-11-23/events.jsonl
+2a85390f63bc8e0c9000a75dc03c779a2f7ef3b41a7e58ce38a7bbbedf8af612  data/verification-2026-11-23/control_raw.jsonl

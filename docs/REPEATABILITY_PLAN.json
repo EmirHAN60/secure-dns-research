@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-23T21:48:19.752100+00:00",
+  "status": "Local analysis plan frozen before A1 outcomes and before any study query; not external preregistration",
+  "study": "Matched-position remote DNS same-mode repeatability and cross-mode separation",
+  "runs": [
+    {
+      "run_id": "A1",
+      "directory": "data/repeatability-2026-11-23/A1",
+      "collection_condition": "First confirmed network context",
+      "context_label": "A",
+      "optional": false
+    },
+    {
+      "run_id": "B1",
+      "directory": "data/repeatability-2026-11-23/B1",
+      "collection_condition": "Only after user confirms the network switch",
+      "context_label": "B",
+      "optional": true
+    },
+    {
+      "run_id": "A2",
+      "directory": "data/repeatability-2026-11-23/A2",
+      "collection_condition": "Optional return only if user confirms returning to A",
+      "context_label": "A-return",
+      "optional": true
+    }
+  ],
+  "network_scope": "A1/B1/A2 are user-confirmed condition labels, not independently measured physical paths. Never record names, credentials or raw private identifiers. Analyze every collected run separately. A-B-A is reported only if all three actually occur. Fixed network order and elapsed time confound a causal network effect; no across-run pooling.",
+  "design": {
+    "windows": 3,
+    "reps": 12,
+    "interval_seconds": 120,
+    "step_ms": 100,
+    "seed": 20261123,
+    "providers": [
+      "cloudflare",
+      "google"
+    ],
+    "domains": [
+      "example.com",
+      "wikipedia.org",
+      "mozilla.org",
+      "github.com",
+      "cloudflare.com",
+      "google.com",
+      "microsoft.com",
+      "apple.com",
+      "bbc.com",
+      "amazon.com"
+    ],
+    "protocols": [
+      "udp_bound",
+      "doh_warm"
+    ],
+    "flow_conditions": [
+      "repeat_flow",
+      "distinct_flows"
+    ],
+    "sequences": [
+      "UUDD",
+      "UDUD",
+      "UDDU",
+      "DUUD",
+      "DUDU",
+      "DDUU"
+    ],
+    "flows_per_protocol_provider_window": 2,
+    "expected_measured_attempts_per_run": 2880,
+    "expected_priming_attempts_per_run": 240,
+    "expected_blocks_per_run": 720,
+    "start_slot_offsets_ms": [
+      0,
+      100,
+      200,
+      300
+    ]
+  },
+  "flow_rule": "Within each provider/domain/window, every 2U/2D order occurs once in each flow condition. Separately balanced first-flow choices [0,0,0,1,1,1] for UDP and H2. repeat_flow uses the same prepared flow for both within-mode repeats. distinct_flows uses the other prepared flow for the second within-mode repeat. Separate objects/ports do not establish statistical independence or separate physical routes.",
+  "timing_rule": "All resources are ready before query timing. Four dispatches target fixed block offsets0/100/200/300ms but earlier responses are awaited. Use actual_start_monotonic_ms = internal measured query start, not planned offsets or UTC rounding, for pair start lags. Retain query elapsed_ms, actual starts/ends and start lateness, all failures and all late starts.",
+  "pair_rule": "Enumerate all six unordered position pairs per four-attempt block. UU/DD signed differences are later-minus-earlier; DU signed difference is DoH-minus-UDP regardless of chronological order. Magnitude comparisons use absolute differences. Pairs sharing a block/attempt are dependent and are never counted as independent experiments.",
+  "primary": {
+    "positions": [
+      "1-2",
+      "2-3",
+      "3-4"
+    ],
+    "lag_ms_inclusive": [
+      75.0,
+      125.0
+    ],
+    "successful_pair_requirement": "Both responses valid; never impute timeout as a successful timing.",
+    "common_cell": [
+      "provider",
+      "window",
+      "domain",
+      "flow_condition",
+      "exact_position_pair"
+    ],
+    "common_overlap": "Retain a cell for direct UU/DD/DU comparison only if every class has at least one successful in-band pair. Report planned/eligible/common cell counts and exclusions. Both protocol and flow-condition strata stay separate.",
+    "weighting": "For each run/provider/flow condition, give each planned observed window equal mass; within a window give each common cell equal mass; within a class/cell give each eligible pair equal mass. This balances DU having four times as many candidate pairs as UU or DD. If any planned window has no common overlap, report the pooled primary estimate unavailable, while retaining window results.",
+    "quantile": "Weighted empirical inverse-CDF: smallest observed value with normalized cumulative weight >= requested quantile (left-continuous search). State this separately from an ordinary interpolated median.",
+    "estimands": [
+      "Weighted empirical median absolute UU, DD and DU differences",
+      "Weighted fractions of absolute differences exceeding each threshold",
+      "Differences between these magnitude summaries, labeled differences of summaries rather than deconvolved/noise-corrected overhead",
+      "Observed per-window summaries and their range; no population confidence interval"
+    ]
+  },
+  "thresholds_ms": [
+    0.5,
+    1.0,
+    2.0,
+    5.0
+  ],
+  "threshold_scope": "All thresholds are illustrative absolute-query sensitivity levels, not equivalence or user-perception bounds. Report all four with pair/block/cell denominators.",
+  "sensitivity": [
+    {
+      "name": "all_adjacent_lags",
+      "positions": [
+        "1-2",
+        "2-3",
+        "3-4"
+      ],
+      "lag_ms_inclusive": null
+    },
+    {
+      "name": "tight_adjacent_lag",
+      "positions": [
+        "1-2",
+        "2-3",
+        "3-4"
+      ],
+      "lag_ms_inclusive": [
+        90.0,
+        110.0
+      ]
+    },
+    {
+      "name": "position_separation_2",
+      "position_separation": 2,
+      "relative_target_lag_inclusive": [
+        0.75,
+        1.25
+      ]
+    },
+    {
+      "name": "position_separation_3",
+      "position_separation": 3,
+      "relative_target_lag_inclusive": [
+        0.75,
+        1.25
+      ]
+    }
+  ],
+  "secondary": "Report exact-position and observed-lag strata; chronological DU direction (U-before-D versus D-before-U); per-window and flow-condition summaries. Report median/IQR/min/max observed lag and lateness. No threshold, lag window, run or sequence is chosen after outcomes. Small or empty lag strata remain explicit.",
+  "validation": "Verify frozen plan/source lock predate each actual collection; exact complete attempt/block/order grids and balanced first-flow assignments; unique within-run query IDs; provider destinations, whole-call stages and actual timing arithmetic; two persistent flows per protocol/provider/window and condition-consistent flow switching; independent DNS semantic wire validation; all attempts including failures; source and raw hashes. Running/missing runs contribute status only, no inspected outcome records.",
+  "interpretation": "This new study measures contemporaneous same-mode repeatability and cross-mode separation under matching position/lag strata. It cannot retrospectively explain old magnitude rates without stationarity assumptions, identify pure encryption/CPU cost, establish independent routes, deconvolve noise, or turn pair fractions into population probabilities. No p-values, population/equivalence CI, or causal network effect.",
+  "source_sha256": {
+    "measure_repeatability.mjs": "15d4115ea5ba81e00c42ee0e58abe0a1ccaeba3ac1df1b73be050b5f499abe1b",
+    "dns_client.mjs": "c2026c7d49654414b6c632b988c9dc9058ce899639bd8ffc98aa771c367dc35f"
+  },
+  "source_lock": "docs/REPEATABILITY_SOURCE_LOCK.json"
+}

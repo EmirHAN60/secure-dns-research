@@ -21,3 +21,17 @@ The original 15 November inputs remain unchanged. A second collection date repea
 The update adds domain-cluster resampling and sign fractions as secondary sensitivity checks. Primary paired point estimates and within-window bootstrap intervals for the original session remain unchanged. All valid values remain included. A different resampling unit is not claimed to solve unobserved time dependence or systematic cache/routing differences.
 
 Recorded software versions differ across sessions. The second date therefore extends conditional replication rather than isolating the effect of calendar time. Collection snapshots, command logs and image capture metadata support an audit; none is an external preregistration or independent timestamp authority.
+
+## Follow-up socket control on 20 November 2026
+
+The [follow-up design](../data/control-2026-11-20/design.json) specifies ten randomized windows with new UDP sockets, prebound UDP sockets and established DoH. The original UDP client triggered implicit binding on first send. The follow-up awaits explicit binding on each fresh socket, so the setup stage has a recorded readiness boundary. Both UDP modes use the same DNS query semantics and post-bind response validation. Fresh calls include initiating close. Reused sockets and HTTP/2 sessions are created before measuring the ready calls.
+
+The [analysis plan](CONTROL_ANALYSIS_PLAN.md) records the positive Google sign rule before collection begins. Each follow-up window is scored against the fixed sign using fresh UDP, with a separate comparison against prebound UDP. The 15 and 19 November attempts retain their original baselines. Six-window pooling serves the stated prediction check. Window medians, errors and sign counts provide a separate view of temporal variation.
+
+The [browser decomposition](BROWSER_PHASES.md) is a secondary analysis of saved 15 and 19 November navigation timing. It uses document response end to split the controlled fixture load. The follow-up collected direct lookups only.
+
+## Repeatability control
+
+The [frozen plan](REPEATABILITY_PLAN.md) defines the remote same-protocol control. A four-attempt block contains two UDP and two DoH queries. Each provider and name has all six orderings for both same-flow and distinct-flow repeat conditions. The primary analysis matches successful adjacent pairs by observed start gap and exact position. The [executed sources and capture ledgers](evidence/repeatability-source-2026-11-23/README.md) retain the actual run dates, file hashes and connection checks.
+
+The published analysis distinguishes the observed separations from the error of a previous day’s fixed forecast. It uses later measurements as contemporaneous comparisons with their own repeatability controls. Earlier datasets retain their original schedules, including the duplicate schedules found in the [historical audit](../results/historical_order_audit.json).

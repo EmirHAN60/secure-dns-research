@@ -53,6 +53,16 @@ class PackageIntegrity(unittest.TestCase):
             (root / "docs").mkdir(); (root / "docs/absent.md").write_text("now exists")
             self.assertEqual(V.check_links(root), 1)
 
+    def test_local_markdown_fragment_must_resolve_to_heading(self):
+        with tempfile.TemporaryDirectory(prefix="dns-links-test-") as folder:
+            root = Path(folder)
+            readme = root / "README.md"
+            readme.write_text("[Check](#method-and-data)\n\n## Method and data\n", encoding="utf-8")
+            self.assertEqual(V.check_links(root), 1)
+            readme.write_text("[Check](#method-and-data)\n\n## Methods\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Missing Markdown heading"):
+                V.check_links(root)
+
 
 if __name__ == "__main__":
     unittest.main()

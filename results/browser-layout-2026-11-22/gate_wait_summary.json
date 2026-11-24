@@ -1,0 +1,135 @@
+{
+  "definition": "All gate wait summaries are descriptive. Seven gates from each page share timing conditions. Plot points use each navigation's median gate wait. Overshoot includes timer and event-loop scheduling; its physical cause is not isolated.",
+  "conditions": [
+    {
+      "layout": "parallel",
+      "extra_ms": 0,
+      "requested_gate_ms": 25,
+      "pages": 20,
+      "gates": 140,
+      "median_gate_wait_ms": 30.59104999999954,
+      "gate_wait_q1_ms": 28.41884999999911,
+      "gate_wait_q3_ms": 33.61152500000253,
+      "gate_wait_p95_ms": 37.98849499999978,
+      "min_gate_wait_ms": 24.71659999999997,
+      "max_gate_wait_ms": 38.51730000000043,
+      "median_overshoot_ms": 5.591049999999541,
+      "median_of_page_median_gate_wait_ms": 30.395800000000236
+    },
+    {
+      "layout": "parallel",
+      "extra_ms": 25,
+      "requested_gate_ms": 50,
+      "pages": 20,
+      "gates": 140,
+      "median_gate_wait_ms": 58.67905000000064,
+      "gate_wait_q1_ms": 53.96484999999939,
+      "gate_wait_q3_ms": 61.7636250000005,
+      "gate_wait_p95_ms": 62.99809,
+      "min_gate_wait_ms": 49.332399999999325,
+      "max_gate_wait_ms": 63.54100000000108,
+      "median_overshoot_ms": 8.679050000000643,
+      "median_of_page_median_gate_wait_ms": 58.61739999999918
+    },
+    {
+      "layout": "sequential",
+      "extra_ms": 0,
+      "requested_gate_ms": 25,
+      "pages": 20,
+      "gates": 140,
+      "median_gate_wait_ms": 28.206850000000486,
+      "gate_wait_q1_ms": 27.702749999999327,
+      "gate_wait_q3_ms": 28.784224999999594,
+      "gate_wait_p95_ms": 33.932890000000945,
+      "min_gate_wait_ms": 24.39389999999912,
+      "max_gate_wait_ms": 39.815700000000106,
+      "median_overshoot_ms": 3.206850000000486,
+      "median_of_page_median_gate_wait_ms": 28.225800000000163
+    },
+    {
+      "layout": "sequential",
+      "extra_ms": 25,
+      "requested_gate_ms": 50,
+      "pages": 20,
+      "gates": 140,
+      "median_gate_wait_ms": 59.21430000000032,
+      "gate_wait_q1_ms": 58.330699999998615,
+      "gate_wait_q3_ms": 59.746574999999666,
+      "gate_wait_p95_ms": 61.70024000000066,
+      "min_gate_wait_ms": 49.7654999999977,
+      "max_gate_wait_ms": 64.13300000000027,
+      "median_overshoot_ms": 9.214300000000321,
+      "median_of_page_median_gate_wait_ms": 59.17595000000074
+    }
+  ],
+  "by_condition": {
+    "parallel": {
+      "baseline": {
+        "layout": "parallel",
+        "extra_ms": 0,
+        "requested_gate_ms": 25,
+        "pages": 20,
+        "gates": 140,
+        "median_gate_wait_ms": 30.59104999999954,
+        "gate_wait_q1_ms": 28.41884999999911,
+        "gate_wait_q3_ms": 33.61152500000253,
+        "gate_wait_p95_ms": 37.98849499999978,
+        "min_gate_wait_ms": 24.71659999999997,
+        "max_gate_wait_ms": 38.51730000000043,
+        "median_overshoot_ms": 5.591049999999541,
+        "median_of_page_median_gate_wait_ms": 30.395800000000236
+      },
+      "added": {
+        "layout": "parallel",
+        "extra_ms": 25,
+        "requested_gate_ms": 50,
+        "pages": 20,
+        "gates": 140,
+        "median_gate_wait_ms": 58.67905000000064,
+        "gate_wait_q1_ms": 53.96484999999939,
+        "gate_wait_q3_ms": 61.7636250000005,
+        "gate_wait_p95_ms": 62.99809,
+        "min_gate_wait_ms": 49.332399999999325,
+        "max_gate_wait_ms": 63.54100000000108,
+        "median_overshoot_ms": 8.679050000000643,
+        "median_of_page_median_gate_wait_ms": 58.61739999999918
+      }
+    },
+    "sequential": {
+      "baseline": {
+        "layout": "sequential",
+        "extra_ms": 0,
+        "requested_gate_ms": 25,
+        "pages": 20,
+        "gates": 140,
+        "median_gate_wait_ms": 28.206850000000486,
+        "gate_wait_q1_ms": 27.702749999999327,
+        "gate_wait_q3_ms": 28.784224999999594,
+        "gate_wait_p95_ms": 33.932890000000945,
+        "min_gate_wait_ms": 24.39389999999912,
+        "max_gate_wait_ms": 39.815700000000106,
+        "median_overshoot_ms": 3.206850000000486,
+        "median_of_page_median_gate_wait_ms": 28.225800000000163
+      },
+      "added": {
+        "layout": "sequential",
+        "extra_ms": 25,
+        "requested_gate_ms": 50,
+        "pages": 20,
+        "gates": 140,
+        "median_gate_wait_ms": 59.21430000000032,
+        "gate_wait_q1_ms": 58.330699999998615,
+        "gate_wait_q3_ms": 59.746574999999666,
+        "gate_wait_p95_ms": 61.70024000000066,
+        "min_gate_wait_ms": 49.7654999999977,
+        "max_gate_wait_ms": 64.13300000000027,
+        "median_overshoot_ms": 9.214300000000321,
+        "median_of_page_median_gate_wait_ms": 59.17595000000074
+      }
+    }
+  },
+  "median_paired_gate_union_delta_ms": {
+    "parallel": 27.524600000000646,
+    "sequential": 212.3746500000002
+  }
+}

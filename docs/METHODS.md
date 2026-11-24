@@ -1,5 +1,7 @@
 # Experimental controls and measurement scopes
 
+The original methods below apply to 15 and 19 November 2026. The 20 November [socket control](CONTROL_ANALYSIS_PLAN.md) adds fresh explicitly bound UDP and reused prebound UDP to compare with ready DoH. The [follow-up tables](CONTROL_RESULTS.md) retain whole-call and post-bind timings and evaluate transfer across time windows. The [navigation phase analysis](BROWSER_PHASES.md) uses the original browser records.
+
 ## Three questions, three outcomes
 
 1. **Lookup condition:** What is the observed within-provider difference between UDP and either fresh or established HTTP/2 DoH?

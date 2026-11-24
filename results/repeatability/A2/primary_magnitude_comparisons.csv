@@ -1,0 +1,5 @@
+run_id,provider,flow_condition,view,common_cells,planned_cells,common_cells_by_window,estimate_status,du_median_abs_delta_ms,uu_median_abs_delta_ms,dd_median_abs_delta_ms,difference_in_abs_medians_du_minus_uu_ms,difference_in_abs_medians_du_minus_dd_ms
+A2,cloudflare,repeat_flow,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,1.9989000000059605,1.6701999999986583,1.9998999999952503,0.32870000000730215,-0.0009999999892897904
+A2,cloudflare,distinct_flows,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,2.2972999999765307,1.6455999999889173,2.4848999999812804,0.6516999999876134,-0.18760000000474975
+A2,google,repeat_flow,primary_adjacent_75_125ms,89,90,"{""1"": 29, ""2"": 30, ""3"": 30}",available,8.71840000001248,2.3247999999439344,3.3755999999993946,6.393600000068545,5.342800000013085
+A2,google,distinct_flows,primary_adjacent_75_125ms,88,90,"{""1"": 29, ""2"": 30, ""3"": 29}",available,8.517599999991944,2.5310000000172295,12.03849999999511,5.986599999974715,-3.5209000000031665

@@ -1,0 +1,42 @@
+{
+  "session_id": "session-02",
+  "scheduled_start_utc": "2026-11-22T20:18:00Z",
+  "status": "complete",
+  "plan": "docs/SESSION_EXTENSION_PLAN.json",
+  "plan_sha256": "f07a2b0206770669e4675399b2386bdb87c4c0adc5cf02b9f99d6fa049efcd54",
+  "source_sha256": {
+    "measure_controls.mjs": "aebb6b94cd204397047502876ee963af464947f76fd2ccb979b287acde18fec8",
+    "dns_client.mjs": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1"
+  },
+  "seed": 20261123,
+  "windows": 3,
+  "repetitions": 10,
+  "interval_seconds": 90,
+  "command": [
+    "node",
+    "scripts/measure_controls.mjs",
+    "--windows",
+    "3",
+    "--reps",
+    "10",
+    "--interval-seconds",
+    "90",
+    "--seed",
+    "20261123",
+    "--out",
+    "data/external-2026-11-22/session-02"
+  ],
+  "network_observation_files": [
+    "network_observation_before.json",
+    "network_observation_after.json"
+  ],
+  "network_changes_requested_or_performed": false,
+  "collector_started_utc": "2026-11-22T20:18:00.557Z",
+  "collector_finished_utc": "2026-11-22T20:21:34.565Z",
+  "collector_status": "complete",
+  "node": "v24.22.3",
+  "openssl": "3.5.9",
+  "platform": "win32",
+  "os_release": "10.0.26300",
+  "first_observation_phase": "network_observation_before.json"
+}

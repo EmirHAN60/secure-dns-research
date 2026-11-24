@@ -1,0 +1,9 @@
+{
+  "attempts": 800,
+  "complete_pairs": 400,
+  "failures_including_warmups": 0,
+  "fresh_ready_median_ms": 0.0458500000000015,
+  "whole_paired_median_ms": 0.07749999999998636,
+  "query_paired_median_ms": 0.019200000000012096,
+  "scope": "Single host and process, deterministic DNS responder on IPv4 loopback; no public resolver."
+}

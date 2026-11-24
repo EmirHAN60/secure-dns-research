@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-11-22T20:11:18.310Z",
+  "node": "v24.22.3",
+  "platform": "win32",
+  "release": "10.0.26300",
+  "arch": "x64",
+  "cpu": "AMD Ryzen 7 7700 8-Core Processor              ",
+  "logical_processors": 16,
+  "browser": "157.0.8103.79",
+  "playwright": "1.62.1",
+  "headless": true,
+  "host_resolver_rules": "MAP * ~NOTFOUND",
+  "all_context_requests_intercepted": true,
+  "network_policy": "Only fixture.test and h1..h7.fixture.test routes are fulfilled. Other context requests are aborted. No public DNS or content target is queried."
+}

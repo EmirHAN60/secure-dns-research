@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-22T20:05:21.900300+00:00",
+  "status": "Locally frozen before new collection/outcomes; not externally preregistered",
+  "study": "Same-evening exact-maintained-protocol session replication with practical-threshold sensitivity",
+  "sessions": [
+    {
+      "session_id": "session-01",
+      "scheduled_start_utc": "2026-11-22T20:06:00+00:00",
+      "directory": "data/external-2026-11-22/session-01",
+      "windows": 3,
+      "reps": 10,
+      "interval_seconds": 90,
+      "seed": 20261122,
+      "expected_measured_attempts": 1800,
+      "expected_priming_records": 180
+    },
+    {
+      "session_id": "session-02",
+      "scheduled_start_utc": "2026-11-22T20:18:00+00:00",
+      "directory": "data/external-2026-11-22/session-02",
+      "windows": 3,
+      "reps": 10,
+      "interval_seconds": 90,
+      "seed": 20261123,
+      "expected_measured_attempts": 1800,
+      "expected_priming_records": 180
+    },
+    {
+      "session_id": "session-03",
+      "scheduled_start_utc": "2026-11-22T20:30:00+00:00",
+      "directory": "data/external-2026-11-22/session-03",
+      "windows": 3,
+      "reps": 10,
+      "interval_seconds": 90,
+      "seed": 20261124,
+      "expected_measured_attempts": 1800,
+      "expected_priming_records": 180
+    }
+  ],
+  "providers": [
+    "cloudflare",
+    "google"
+  ],
+  "domains": [
+    "example.com",
+    "wikipedia.org",
+    "mozilla.org",
+    "github.com",
+    "cloudflare.com",
+    "google.com",
+    "microsoft.com",
+    "apple.com",
+    "bbc.com",
+    "amazon.com"
+  ],
+  "modes": [
+    "udp_fresh",
+    "udp_bound",
+    "doh_warm"
+  ],
+  "thresholds_ms": [
+    0.5,
+    1.0,
+    2.0,
+    5.0
+  ],
+  "threshold_rationale": "Illustrative absolute per-lookup sensitivity levels spanning sub-millisecond to several-millisecond effects. Every threshold is reported. These are not validated user-perception, utility or population-equivalence bounds. No threshold is selected after seeing new outcomes.",
+  "category_rule": "above +tau if median paired delta > tau; below -tau if median < -tau; inside [-tau,+tau] otherwise, including exact boundaries. Inside band means only this observed statistic falls inside the chosen sensitivity band, not equivalence.",
+  "contrast_specs": [
+    {
+      "comparison": "doh_warm",
+      "baseline": "udp_fresh",
+      "metric": "elapsed_ms",
+      "priority": "primary"
+    },
+    {
+      "comparison": "doh_warm",
+      "baseline": "udp_bound",
+      "metric": "elapsed_ms",
+      "priority": "primary"
+    },
+    {
+      "comparison": "udp_fresh",
+      "baseline": "udp_bound",
+      "metric": "elapsed_ms",
+      "priority": "secondary"
+    },
+    {
+      "comparison": "udp_fresh",
+      "baseline": "udp_bound",
+      "metric": "post_bind_elapsed_ms",
+      "priority": "secondary"
+    },
+    {
+      "comparison": "udp_fresh",
+      "baseline": "udp_bound",
+      "metric": "transport_elapsed_ms",
+      "priority": "secondary"
+    }
+  ],
+  "calibration": {
+    "date": "2026-11-20",
+    "raw_sha256": "7577b02689afa15e5d2744b994dae2fbb11335db9b73f4acb5f270b09a7176e6",
+    "analysis_sha256": "6ecfaa2f2905dc49a56e578e3bec1f7e0aa05ad734a0970d898551e44723b837",
+    "source_sha256": {
+      "measure_controls.mjs": "c928120b4d306a05eb18a12bbfaf02a962641ae53eb5c2a4dde03917394bded0",
+      "dns_client.mjs": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1"
+    },
+    "forecasts_for_each_new_session": [
+      {
+        "provider": "cloudflare",
+        "comparison": "doh_warm",
+        "baseline": "udp_bound",
+        "metric": "elapsed_ms",
+        "calibration_point_ms": -1.2374500000441913,
+        "predicted_sign": -1,
+        "threshold_categories": [
+          {
+            "threshold_ms": 0.5,
+            "category": "below_negative_threshold"
+          },
+          {
+            "threshold_ms": 1.0,
+            "category": "below_negative_threshold"
+          },
+          {
+            "threshold_ms": 2.0,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 5.0,
+            "category": "inside_threshold_band"
+          }
+        ]
+      },
+      {
+        "provider": "cloudflare",
+        "comparison": "doh_warm",
+        "baseline": "udp_fresh",
+        "metric": "elapsed_ms",
+        "calibration_point_ms": -1.7109500000078697,
+        "predicted_sign": -1,
+        "threshold_categories": [
+          {
+            "threshold_ms": 0.5,
+            "category": "below_negative_threshold"
+          },
+          {
+            "threshold_ms": 1.0,
+            "category": "below_negative_threshold"
+          },
+          {
+            "threshold_ms": 2.0,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 5.0,
+            "category": "inside_threshold_band"
+          }
+        ]
+      },
+      {
+        "provider": "google",
+        "comparison": "doh_warm",
+        "baseline": "udp_bound",
+        "metric": "elapsed_ms",
+        "calibration_point_ms": -0.9357499999750871,
+        "predicted_sign": -1,
+        "threshold_categories": [
+          {
+            "threshold_ms": 0.5,
+            "category": "below_negative_threshold"
+          },
+          {
+            "threshold_ms": 1.0,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 2.0,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 5.0,
+            "category": "inside_threshold_band"
+          }
+        ]
+      },
+      {
+        "provider": "google",
+        "comparison": "doh_warm",
+        "baseline": "udp_fresh",
+        "metric": "elapsed_ms",
+        "calibration_point_ms": -0.34249999991152436,
+        "predicted_sign": -1,
+        "threshold_categories": [
+          {
+            "threshold_ms": 0.5,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 1.0,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 2.0,
+            "category": "inside_threshold_band"
+          },
+          {
+            "threshold_ms": 5.0,
+            "category": "inside_threshold_band"
+          }
+        ]
+      }
+    ],
+    "caveat": "Historical calibration is a separate reference and prediction source, not pooled with new observations. Any source/runtime/OS/network differences are recorded and limit transport interpretation."
+  },
+  "maintained_source_sha256": {
+    "measure_controls.mjs": "aebb6b94cd204397047502876ee963af464947f76fd2ccb979b287acde18fec8",
+    "dns_client.mjs": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1"
+  },
+  "analysis": {
+    "unit": "Within-session provider/domain/window/repetition matched complete successful blocks. Failed attempts retained separately; no imputation or trimming.",
+    "magnitude": "For every session and window report median paired difference, median absolute paired difference, absolute value of signed median, IQR and observed extrema. A small signed median does not imply small individual effects.",
+    "rates": "For every threshold report paired-observation fractions above +tau, inside band and below -tau separately from fractions of window/session medians in each category. Rates have explicit denominators and are descriptive selected-sample frequencies.",
+    "across_sessions": "Only sessions with identical recorded source/runtime/OS/provider/protocol fingerprint may share a descriptive group. Use equal-session median of session medians, all session points/range and leave-one-session sensitivity; do not pool thousands of queries as independent session replication. Different builds remain separate.",
+    "uncertainty": "No across-session population confidence or equivalence intervals with only three selected sessions. Show observed window/session ranges and IQRs, leave-session changes and sign/category stability. Dependence and unobserved cache/routing remain.",
+    "leave_session": "Retrospective leave-one-session-out: within each verified common-build group, forecast held session median by median of other session medians with one weight per training session; score sign, threshold category and absolute point error versus a zero-adjustment predictor. Clearly retrospective, not issued prospective forecasts. At least 3 completed same-build sessions needed for primary leave-session summary.",
+    "prospective": "Apply the four fixed Nov20 calibrated point/sign/category forecasts to each of the three held new sessions. Score without re-fitting on new data; this is a transport check, with build differences explicit. No p-values; all 4 thresholds and all planned sessions remain visible.",
+    "incomplete": "Do not inspect/analyze outcome records of running sessions. Missing/running/failed sessions remain listed with status; completed but structurally invalid sessions are excluded with audit reasons. A completed grid may contain failed queries; successful-pair estimates are conditional and counts remain explicit. Never silently replace sessions or claim planned equals observed."
+  },
+  "scope": "Three spaced sessions on the same evening only. No multi-day claim; no geographic/network population inference, CPU attribution, pure cryptographic cost or general web performance claim."
+}

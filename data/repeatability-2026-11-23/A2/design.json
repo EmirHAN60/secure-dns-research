@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "study": "Balanced fixed-position DNS repeatability and distinct-flow controls",
+  "session_id": "A2",
+  "windows": 3,
+  "reps": 12,
+  "interval_seconds": 120,
+  "seed": 20261123,
+  "step_ms": 100,
+  "domains": [
+    "example.com",
+    "wikipedia.org",
+    "mozilla.org",
+    "github.com",
+    "cloudflare.com",
+    "google.com",
+    "microsoft.com",
+    "apple.com",
+    "bbc.com",
+    "amazon.com"
+  ],
+  "providers": {
+    "cloudflare": {
+      "ip": "1.1.1.1",
+      "host": "cloudflare-dns.com",
+      "path": "/dns-query"
+    },
+    "google": {
+      "ip": "8.8.8.8",
+      "host": "dns.google",
+      "path": "/dns-query"
+    }
+  },
+  "modes": [
+    "udp_bound",
+    "doh_warm"
+  ],
+  "flow_conditions": [
+    "repeat_flow",
+    "distinct_flows"
+  ],
+  "flows_per_mode_provider_window": 2,
+  "sequences": [
+    "UUDD",
+    "UDUD",
+    "UDDU",
+    "DUUD",
+    "DUDU",
+    "DDUU"
+  ],
+  "timeout_ms": 3000,
+  "qtype": "A",
+  "ip_version": 4,
+  "expected_measured_attempts": 2880,
+  "expected_priming_attempts": 240,
+  "analysis_plan": "docs/REPEATABILITY_PLAN.json",
+  "analysis_plan_sha256": "e6e65ce182495677d9b4cd73a123f8c85bf86f75c4db915af17f81302c5bacde",
+  "randomization": "Construct the complete provider/domain/flow-condition/six-order pool before independently shuffling each window using SHA-256-derived windowRng streams whose namespace includes session ID. First-flow assignments are separately seeded and balanced 3/3 within each six-order cell.",
+  "flow_definition": "Two separately established UDP sockets and two H2 sessions per provider/window. repeat_flow uses the same mode-specific flow twice; distinct_flows switches to the other prepared mode-specific flow for the second occurrence. Distinct flows are not assumed statistically independent.",
+  "timing": "Each four-attempt block targets offsets 0, step, 2*step, 3*step ms. Previous response is awaited; late starts and failures remain. Query construction is outside elapsed_ms. Actual monotonic starts/ends allow exact position-pair and observed-lag comparisons. All UDP and H2 resources are ready before query timing.",
+  "estimands": "Same-mode repeated-query differences and absolute differences, separately by flow condition, mode, exact position pair and observed start lag; cross-mode DoH-minus-UDP contrasts in corresponding randomized position strata. A/A and cross-mode lag matching is across balanced orders, not inside every block. No subtraction of a jitter median is claimed to identify encryption cost.",
+  "failure_policy": "All attempts retained with no retries, replacements or imputation. Successful paired estimates condition on both replies. Failed/late observations are separately reported; the collector applies no analysis lag exclusions.",
+  "priming": "Each domain is queried once through every prepared flow before measurement; remote cache-hit state remains unobserved.",
+  "source_sha256": {
+    "measure_repeatability.mjs": "15d4115ea5ba81e00c42ee0e58abe0a1ccaeba3ac1df1b73be050b5f499abe1b",
+    "dns_client.mjs": "c2026c7d49654414b6c632b988c9dc9058ce899639bd8ffc98aa771c367dc35f"
+  },
+  "declared_utc": "2026-11-24T10:34:31.095Z"
+}

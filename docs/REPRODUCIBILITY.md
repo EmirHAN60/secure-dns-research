@@ -6,8 +6,14 @@
 |---|---|---|---:|
 | 15 November 2026 | `data/` | `results/` | 20261115 |
 | 19 November 2026 | `data/replication-2026-11-19/` | `results/replication-2026-11-19/` | 20261119 |
+| 20 November 2026 | `data/control-2026-11-20/` | `results/control_analysis.json` and companion tables | 20261120 |
+| 22 November 2026, prospective evening sessions | `data/external-2026-11-22/` | `results/session_extension/` | 20261122–20261124 |
+| 22 November 2026, UDP loopback | `data/loopback-2026-11-22/` | `results/loopback_summary.json` | 20261122 |
+| 22 November 2026, Chrome delay injection | `data/browser-layout-2026-11-22/` | `results/browser-layout-2026-11-22/` | 20261122 |
+| 23 November 2026, additional held-out date | `data/verification-2026-11-23/` | `results/additional_date.json` | 20261125 |
+| 23–24 November 2026, repeatability control | `data/repeatability-2026-11-23/` | `results/repeatability/` | 20261123 with run and window namespaces |
 
-Each complete session contains 1,800 measured lookup attempts, 120 lookup-priming records and 360 page attempts. Page DNS gates and primers are retained separately. The scripts retain errors rather than replacing them with successful timeout-duration observations. Dates are never silently pooled.
+Each of the first two sessions contains 1,800 measured lookup attempts, 120 lookup priming records and 360 page attempts. Page DNS gates and primers are retained separately. The follow-up targets 6,000 measured lookup attempts and 600 priming records across ten windows. The historical pooled sign is used only for the documented sensitivity and prediction checks. Errors remain in the attempt counts.
 
 The original five input files are protected by the SHA-256 ledger in `docs/evidence/original-data-sha256.json`. This ledger detects changes relative to the retained original inputs; it is not a third-party timestamp or independent proof of collection history.
 
@@ -52,15 +58,29 @@ python scripts/analyze.py --dns data/dns_raw.jsonl --pages data/pages.jsonl --pa
 python scripts/analyze.py --dns data/replication-2026-11-19/dns_raw.jsonl --pages data/replication-2026-11-19/pages.jsonl --page-dns data/replication-2026-11-19/page-dns.jsonl --out results/replication-2026-11-19 --strict
 python scripts/robustness.py
 python scripts/plot_results.py
+python scripts/control_analysis.py
+python scripts/plot_control_analysis.py
+python scripts/browser_phases.py
+python scripts/analyze_loopback.py
+python scripts/session_analysis.py
+python scripts/plot_session_analysis.py
+python scripts/analyze_additional_date.py
+python scripts/audit_order_reuse.py
+python scripts/repeatability_analysis.py --require-runs A1,B1,A2
+python scripts/plot_repeatability.py
+python scripts/analyze_browser_layout.py --doc docs/BROWSER_LAYOUT.md
+python scripts/plot_browser_layout.py
 python scripts/build_paper.py
 python scripts/validate_package.py --ignore-manifest
 ```
 
 The analysis uses a fixed bootstrap seed and 4,000 resamples. The primary interval resamples matched successful blocks within observed windows. Domain-cluster resampling is a secondary conditional sensitivity. Neither establishes population coverage across unobserved network conditions. No valid observations are trimmed or winsorized. Artificial arrays used by local tests are not research observations and are not exported into the datasets.
 
-`results/summary.json` is the primary numerical source. The corresponding file under the repeat-session results directory has the same role for that date. CSV files expose marginal, paired, window, domain and leave-one-window-out results. `robustness.json` adds sign fractions and whole-domain resampling. Figures are produced in PNG, PDF and SVG formats with provenance in `figures/figure_manifest.json` and `figures/all_figures.json`.
+`results/summary.json` and its counterpart under the historical replication directory contain the original-date estimates. CSV files expose marginal, paired, window, domain and leave-one-window-out results. `robustness.json` adds sign fractions and whole-domain resampling. The [repeatability summary](../results/repeatability/summary.json) records weighted estimates, matching coverage and the audit for each run. See the [figure manifest](../figures/repeatability_figure_manifest.json) for the new PNG, PDF and SVG exports.
 
 Generation timestamps, PDF metadata and the verification log can change between reproductions. Statistical values should reproduce for unchanged raw inputs, dependency versions and seeds. The manifest covers a particular completed build; after regenerating files, finish by generating a new manifest rather than expecting byte-identical timestamps.
+
+The PDF builder uses Times New Roman when the four Windows font faces are available. On other systems it uses the Unicode DejaVu Serif faces installed with the pinned Matplotlib dependency. Line breaks and pagination can change with the font. Tables and numerical results are unchanged by font selection.
 
 `.gitattributes` disables Git line-ending conversion for this artifact so that a Windows checkout does not change the bytes covered by the raw-data ledger and manifest. Keep that file with the repository when committing or cloning the release.
 
@@ -96,7 +116,17 @@ To analyze a new session without replacing published results:
 python scripts/analyze.py --dns replication/new-session/dns/dns_raw.jsonl --pages replication/new-session/pages/pages.jsonl --page-dns replication/new-session/pages/page-dns.jsonl --out replication/new-session/results --expected-windows 3 --expected-reps 10 --strict
 ```
 
-The paper builder targets the two distributed datasets. Adding a third dataset requires explicitly revising its source and interpretation; do not substitute selected cells in the old manuscript.
+The paper builder targets the recorded measurements in the distributed artifact. To collect a separate socket-control comparison, choose a fresh destination outside the package.
+
+```powershell
+node scripts/measure_controls.mjs --out ../socket-control-repeat --windows 10 --reps 10 --interval-seconds 90 --seed 20261120
+```
+
+Use at most 65,536 total planned messages per process, including primers. The collector assigns unique 16-bit transaction IDs for the run. It records the exact source hashes and the actual window start times. See [the analysis plan](CONTROL_ANALYSIS_PLAN.md) and [follow-up results](CONTROL_RESULTS.md) for the comparison and forecast definitions.
+
+See [the held-out session plan](SESSION_EXTENSION_PLAN.md) for the scheduled collection protocol and fixed calibration forecasts. An independent cross-day replication should freeze its local-time slots and code hashes first, hold the app and OS build fixed, retain actual rather than scheduled times, and run each session in a separate directory. Use an independently recorded network identifier when changing networks. Report missing or stopped sessions and preserve the actual measurements. The published plan and raw files document the three observed evening sessions.
+
+The [repeatability plan](REPEATABILITY_PLAN.md) defines all six four-attempt orders, two prepared flows per protocol, start slots and matching rules. The [executed source and commands](evidence/repeatability-source-2026-11-23/README.md) reproduce that instrument. Use a distinct run label, a fresh directory and a new local plan for new observations. Preserve actual dates even when a study directory was named at registration.
 
 ## Browser fixture and timing fields
 
@@ -106,6 +136,8 @@ The fixture performs live DNS, validates A answers and waits before fulfilling f
 - Page fresh DoH explicitly opens a shared connection inside the navigation gate. `gate_ms` includes that setup; the nested client's `elapsed_ms` begins after it.
 - Established page DoH primes the connection before navigation. The primer uses a hostname outside the fixture workload.
 - `plt_ms` is the observed navigation `loadEventEnd - startTime`. It does not measure visual completeness or later lazy content.
+- `responseEnd` splits the measured load event into two phases on the navigation clock. See [browser phase analysis](BROWSER_PHASES.md).
+- The [layout and delay injection experiment](BROWSER_LAYOUT.md) uses fixed local bytes and programmed delays. Its primary metric is script start to verified completion of the seven images. Its source is `scripts/browser_layout.mjs`.
 - Per-page query numbers, unchanged stored connection time, HTTP/2 and TLS-resumption flags check the intended treatment. No socket UUID was recorded, so these are implementation diagnostics rather than packet-capture proof.
 
 ## Execution images

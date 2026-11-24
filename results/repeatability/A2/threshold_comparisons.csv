@@ -1,0 +1,17 @@
+run_id,provider,flow_condition,view,common_cells,planned_cells,common_cells_by_window,estimate_status,threshold_ms,uu_fraction_abs_gt_threshold,uu_pair_count,dd_fraction_abs_gt_threshold,dd_pair_count,du_fraction_abs_gt_threshold,du_pair_count
+A2,cloudflare,repeat_flow,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,0.5,0.8222222222222222,90,0.8777777777777778,90,0.8916666666666667,360
+A2,cloudflare,repeat_flow,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,1.0,0.6666666666666666,90,0.7333333333333333,90,0.7638888888888888,360
+A2,cloudflare,repeat_flow,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,2.0,0.45555555555555555,90,0.5,90,0.5,360
+A2,cloudflare,repeat_flow,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,5.0,0.15555555555555556,90,0.08888888888888889,90,0.16944444444444445,360
+A2,cloudflare,distinct_flows,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,0.5,0.8777777777777778,90,0.9,90,0.8888888888888888,360
+A2,cloudflare,distinct_flows,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,1.0,0.8,90,0.7555555555555555,90,0.7888888888888889,360
+A2,cloudflare,distinct_flows,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,2.0,0.45555555555555555,90,0.5777777777777777,90,0.575,360
+A2,cloudflare,distinct_flows,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,5.0,0.13333333333333333,90,0.2,90,0.19166666666666668,360
+A2,google,repeat_flow,primary_adjacent_75_125ms,89,90,"{""1"": 29, ""2"": 30, ""3"": 30}",available,0.5,0.8980842911877395,89,0.9440613026819923,89,0.9878352490421456,355
+A2,google,repeat_flow,primary_adjacent_75_125ms,89,90,"{""1"": 29, ""2"": 30, ""3"": 30}",available,1.0,0.7639846743295019,89,0.8325670498084291,89,0.9765325670498084,355
+A2,google,repeat_flow,primary_adjacent_75_125ms,89,90,"{""1"": 29, ""2"": 30, ""3"": 30}",available,2.0,0.5839080459770115,89,0.7095785440613027,89,0.9456896551724138,355
+A2,google,repeat_flow,primary_adjacent_75_125ms,89,90,"{""1"": 29, ""2"": 30, ""3"": 30}",available,5.0,0.21379310344827587,89,0.37203065134099617,89,0.8259578544061302,355
+A2,google,distinct_flows,primary_adjacent_75_125ms,88,90,"{""1"": 29, ""2"": 30, ""3"": 29}",available,0.5,0.8747126436781609,88,0.8885057471264368,88,0.985632183908046,350
+A2,google,distinct_flows,primary_adjacent_75_125ms,88,90,"{""1"": 29, ""2"": 30, ""3"": 29}",available,1.0,0.7613026819923372,88,0.8436781609195402,88,0.9560344827586207,350
+A2,google,distinct_flows,primary_adjacent_75_125ms,88,90,"{""1"": 29, ""2"": 30, ""3"": 29}",available,2.0,0.603448275862069,88,0.7524904214559387,88,0.9234674329501916,350
+A2,google,distinct_flows,primary_adjacent_75_125ms,88,90,"{""1"": 29, ""2"": 30, ""3"": 29}",available,5.0,0.23908045977011494,88,0.6283524904214559,88,0.7779693486590038,350

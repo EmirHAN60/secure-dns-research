@@ -1,0 +1,13 @@
+{
+  "run_id": "A2",
+  "context_label": "A-return",
+  "confirmation_received_utc": "2026-11-24T10:34:30.6299068Z",
+  "confirmation_source": "Explicit user return confirmation relayed by the parent agent",
+  "user_reported_access_type": "Home Wi-Fi",
+  "user_reported_relationship": "Returned to original home access",
+  "network_switch_performed_by": "User",
+  "system_settings_changed_by_collector": false,
+  "directory_date_is_study_identifier": true,
+  "actual_collection_date_source": "environment.started_utc",
+  "public_network_names_recorded": false
+}

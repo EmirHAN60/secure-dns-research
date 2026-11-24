@@ -1,0 +1,54 @@
+{
+  "observed_utc": "2026-11-22T20:21:34.9690876Z",
+  "observation_phase": "after",
+  "method": "Local .NET network-interface observation and UDP route selection without application payload",
+  "identity_scope": "HMAC of local adapter identifier, selected local IPv4 address and configured gateways, using an undistributed local key. Equal tags describe equal observed local configuration; they do not prove an unchanged Internet path or public egress.",
+  "network_names_recorded": false,
+  "private_ip_addresses_recorded": false,
+  "mac_addresses_recorded": false,
+  "public_ip_lookup_performed": false,
+  "private_key_distributed": false,
+  "active_adapter_candidates": [
+    {
+      "adapter_tag": "550caccb2416c4e0ba79eb97efe7c625ef91ec80acad121f2b4c225ddebcc354",
+      "media_type": "Ethernet",
+      "reported_link_mbps": 10000.0,
+      "virtual_or_tunnel_hint": true,
+      "configured_gateway_count": 1
+    },
+    {
+      "adapter_tag": "730a99ec3cee248303b46a920be65bd39091f524ae09ad4d6a324e383ed9fe5f",
+      "media_type": "Ethernet",
+      "reported_link_mbps": 1000.0,
+      "virtual_or_tunnel_hint": true,
+      "configured_gateway_count": 0
+    },
+    {
+      "adapter_tag": "248a1bb3a7f1f61b1e8c9b3c1e0dd12cedb14c22879bdc51726e625225856a46",
+      "media_type": "Wireless80211",
+      "reported_link_mbps": 648.0,
+      "virtual_or_tunnel_hint": false,
+      "configured_gateway_count": 2
+    }
+  ],
+  "udp_route_observations": [
+    {
+      "target": "1.1.1.1",
+      "destination_port": 53,
+      "configuration_tag": "75eacbe5ad180af68fefa7cb3f4022b9487d769df0ccb9ac2fee6cc0d008484b",
+      "media_type": "Wireless80211",
+      "reported_link_mbps": 648.0,
+      "virtual_or_tunnel_hint": false,
+      "error": null
+    },
+    {
+      "target": "8.8.8.8",
+      "destination_port": 53,
+      "configuration_tag": "75eacbe5ad180af68fefa7cb3f4022b9487d769df0ccb9ac2fee6cc0d008484b",
+      "media_type": "Wireless80211",
+      "reported_link_mbps": 648.0,
+      "virtual_or_tunnel_hint": false,
+      "error": null
+    }
+  ]
+}

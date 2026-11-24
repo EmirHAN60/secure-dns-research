@@ -1,0 +1,54 @@
+{
+  "analysis_status": "complete",
+  "matplotlib_version": "3.10.7",
+  "figures": [
+    {
+      "stem": "session_effects",
+      "caption": "Diamonds show session medians of paired established-DoH minus UDP differences; smaller grey dots show every observed window median. The dashed line is the fixed Nov20 calibration forecast, kept separate from new observations. Shading marks illustrative \u00b11 and \u00b12 ms sensitivity bands, not equivalence or utility limits. Missing/running sessions are labeled and contribute no outcome points. Three scheduled sessions occur on one evening, not on independent days.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "session_effects.png",
+        "session_effects.pdf",
+        "session_effects.svg"
+      ],
+      "source": "results/session_extension/summary.json"
+    },
+    {
+      "stem": "session_threshold_decisions",
+      "caption": "Each cell categorizes the signed session paired median at a predeclared threshold of 0.5, 1, 2 or 5 ms. L means below \u2212\u03c4, I inside [\u2212\u03c4,+\u03c4], and H above +\u03c4; exact boundaries are inside. The first group is the frozen Nov20 forecast and the other groups are actual completed session statistics. Question marks indicate unavailable sessions. Inside-band medians do not establish equivalence, and these categories are not paired-observation exceedance rates.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "session_threshold_decisions.png",
+        "session_threshold_decisions.pdf",
+        "session_threshold_decisions.svg"
+      ],
+      "source": "results/session_extension/summary.json"
+    },
+    {
+      "stem": "session_pair_magnitudes",
+      "caption": "Bars are medians of absolute individual paired differences; black dots are absolute values of the signed paired medians. Percentages are the fraction of complete pairs with |\u0394| > 2 ms, with denominators reported in the numerical tables. These are different summaries: cancellation in a signed median does not mean individual pair differences are small. The dotted 2 ms reference is an illustrative sensitivity level.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "session_pair_magnitudes.png",
+        "session_pair_magnitudes.pdf",
+        "session_pair_magnitudes.svg"
+      ],
+      "source": "results/session_extension/summary.json"
+    },
+    {
+      "stem": "session_google_marginals",
+      "caption": "Top: each observed Google treatment marginal median by session/window. Lines only guide the eye; sampling gaps remain. Bottom: marginal window medians centered separately within each session and treatment. Point colors identify sessions. Correlation summaries are reported separately for verified build groups without p-values. Marginal co-movement cannot identify a cache, routing, resolver, CPU or packet-level mechanism; medians of paired differences remain distinct from differences of marginal medians.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "session_google_marginals.png",
+        "session_google_marginals.pdf",
+        "session_google_marginals.svg"
+      ],
+      "source": "results/session_extension/summary.json"
+    }
+  ]
+}

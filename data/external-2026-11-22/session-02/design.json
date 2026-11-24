@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "study": "Prospective UDP socket lifecycle and established DoH controls",
+  "windows": 3,
+  "reps": 10,
+  "interval_seconds": 90,
+  "seed": 20261123,
+  "domains": [
+    "example.com",
+    "wikipedia.org",
+    "mozilla.org",
+    "github.com",
+    "cloudflare.com",
+    "google.com",
+    "microsoft.com",
+    "apple.com",
+    "bbc.com",
+    "amazon.com"
+  ],
+  "providers": {
+    "cloudflare": {
+      "ip": "1.1.1.1",
+      "host": "cloudflare-dns.com",
+      "path": "/dns-query"
+    },
+    "google": {
+      "ip": "8.8.8.8",
+      "host": "dns.google",
+      "path": "/dns-query"
+    }
+  },
+  "modes": [
+    "udp_fresh",
+    "udp_bound",
+    "doh_warm"
+  ],
+  "qtype": "A",
+  "ip_version": 4,
+  "timeout_ms": 3000,
+  "expected_measured_attempts": 1800,
+  "priming": "Each name queried through all three treatments before each window; resolver cache-hit status remains unknown",
+  "fresh_udp": "New unconnected udp4 socket, explicit await bind(0) inside whole-call timing, then send and validation. Historical collector used implicit bind, so this is an explicit implementation change.",
+  "bound_udp": "One unconnected udp4 socket per provider/window; bind occurs outside measured calls and the source port is retained.",
+  "doh": "One established HTTP/2 TLS connection per provider/window, primed before measured calls; no reconnect or TLS resumption permitted in a valid measured warm call.",
+  "timing": "Query construction excluded. elapsed_ms includes socket lifecycle where applicable, submission, response and validation. UDP transport_elapsed_ms is send() call to message callback after both modes have bound. H2 phase fields are event-loop/client timestamps, not packet-capture transmission times.",
+  "interpretation": "Fresh-versus-bound contrasts can also reflect source-port dependent routing, ECMP, NAT or resolver affinity. Neither phase decomposition nor matched provider establishes pure CPU or encryption cost.",
+  "failure_policy": "No retries or imputation. All attempts including setup/timeout failures are stored. Failed timings are excluded from successful latency estimates.",
+  "source_sha256": {
+    "measure_controls.mjs": "aebb6b94cd204397047502876ee963af464947f76fd2ccb979b287acde18fec8",
+    "dns_client.mjs": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1"
+  },
+  "declared_utc": "2026-11-22T20:18:00.556Z"
+}

@@ -1,8 +1,16 @@
 # Secure DNS source audit
 
-This audit connects the eighteen references to the claims they support in the paper and literature review. Original primary-source checks took place on 15 November 2026; the source set and metadata checks were expanded on 19 November. Page numbers refer to the identified author PDF unless explicitly described as printed publication pages. Protocol specifications establish mechanisms; empirical papers establish findings within their own designs.
+This audit covers the twenty-reference main bibliography. The original eighteen were checked on 15 and 19 November; the 20 November revision added Izhikevich et al. (2022), with its source locator and claim limits in the [revision literature note](REVISION_LITERATURE.md). The 23 November revision adds Augustin et al. (2006). The [closest-benchmark comparison](RELATED_BENCHMARKS.md) also identifies one supplemental-only source. Page numbers refer to the identified author PDF unless explicitly described as printed publication pages. Protocol specifications establish mechanisms. Empirical papers establish findings within their own designs.
 
-The set contains ten empirical DNS or networking studies, five IETF RFCs, one W3C Working Draft, one statistical methods article and one expert methodological editorial. The editorial is explicitly not peer reviewed. None of these sources establishes the cause of this project’s observed differences between collection windows.
+The set contains twelve empirical DNS or networking studies, five IETF RFCs, one W3C Working Draft, one statistical methods article and one expert methodological editorial. The editorial is explicitly not peer reviewed. None of these sources establishes the cause of this project’s observed differences between collection windows.
+
+## Avoiding Traceroute Anomalies with Paris Traceroute
+
+**Reference key:** `augustin2006`. **Year:** 2006. **Type:** Peer-reviewed conference paper. **DOI:** [10.1145/1177080.1177100](https://doi.org/10.1145/1177080.1177100).
+
+**Evidence:** Section 2.1, conference PDF pp. 1–2, describes flow-sensitive routing. It motivates resource sensitivity checks, without identifying a cause of this experiment's timing changes. [Conference-hosted original](https://conferences.sigcomm.org/imc/2006/papers/p15-augustin.pdf).
+
+**Metadata:** The accessible original verifies title, author order and venue/year. The DOI landing page returned HTTP 403; indexed metadata agrees with DOI and proceedings pp. 153–158.
 
 ## The Dagstuhl Beginners Guide to Reproducibility for Experimental Networking Research
 

@@ -148,24 +148,41 @@ def decode_wire(row: dict, expected_name: str | None = None) -> dict:
         raise ValueError("Question mismatch")
     if expected_name and qname != expected_name.lower().rstrip("."):
         raise ValueError("Question differs from recorded hostname")
-    p, addresses, ttls = rp + 4, [], []
+    p = rp + 4
+    aliases, records = {}, []
     for sec, count in enumerate((an, ns, ar)):
         for _ in range(count):
-            _, p = read_name(response, p)
+            owner, p = read_name(response, p)
             if p + 10 > len(response):
                 raise ValueError("Truncated RR header")
             typ, cls, ttl, size = struct.unpack_from("!HHIH", response, p)
             p += 10
             if p + size > len(response):
                 raise ValueError("Truncated RR data")
-            if sec == 0 and cls == 1 and typ in (1, 28):
+            if sec == 0 and cls == 1 and typ == 5:
+                target, consumed = read_name(response, p)
+                if consumed != p + size or not target:
+                    raise ValueError("Invalid CNAME RDATA")
+                if owner in aliases and aliases[owner] != target:
+                    raise ValueError("Conflicting CNAME records")
+                aliases[owner] = target
+            elif sec == 0 and cls == 1 and typ in (1, 28):
                 if size != (4 if typ == 1 else 16):
                     raise ValueError("Bad address RDATA size")
-                addresses.append(str(ipaddress.ip_address(response[p:p+size])))
-                ttls.append(ttl)
+                records.append((owner, str(ipaddress.ip_address(response[p:p+size])), ttl))
             p += size
     if p != len(response):
         raise ValueError("Unparsed trailing response bytes")
+    reachable = set()
+    current = qname
+    while current is not None:
+        if current in reachable:
+            raise ValueError("CNAME chain loop")
+        reachable.add(current)
+        current = aliases.get(current)
+    matching = [(address, ttl) for owner, address, ttl in records if owner in reachable]
+    addresses = [address for address, _ in matching]
+    ttls = [ttl for _, ttl in matching]
     rcode, tc = flags & 15, bool(flags & 0x0200)
     wire_valid = rcode == 0 and not tc and any(ipaddress.ip_address(a).version == 4 for a in addresses)
     for key, expected in (("rcode", rcode), ("truncated", tc), ("answer_count", an), ("response_bytes", len(response))):

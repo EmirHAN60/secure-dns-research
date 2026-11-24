@@ -1,0 +1,5 @@
+run_id,provider,flow_condition,view,common_cells,planned_cells,common_cells_by_window,estimate_status,du_median_abs_delta_ms,uu_median_abs_delta_ms,dd_median_abs_delta_ms,difference_in_abs_medians_du_minus_uu_ms,difference_in_abs_medians_du_minus_dd_ms
+B1,cloudflare,repeat_flow,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,6.946700000000419,4.892699999996694,9.891499999997905,2.0540000000037253,-2.9447999999974854
+B1,cloudflare,distinct_flows,primary_adjacent_75_125ms,90,90,"{""1"": 30, ""2"": 30, ""3"": 30}",available,7.3860000000013315,6.059299999997165,6.392500000016298,1.3267000000041662,0.9934999999850334
+B1,google,repeat_flow,primary_adjacent_75_125ms,89,90,"{""1"": 30, ""2"": 29, ""3"": 30}",available,10.371099999989383,7.74920000002021,9.161500000045635,2.6218999999691732,1.2095999999437481
+B1,google,distinct_flows,primary_adjacent_75_125ms,88,90,"{""1"": 30, ""2"": 29, ""3"": 29}",available,10.302499999990687,8.307399999990594,5.897599999996601,1.9951000000000931,4.404899999994086

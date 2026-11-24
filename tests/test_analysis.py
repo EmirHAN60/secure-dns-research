@@ -113,6 +113,22 @@ class AnalysisProperties(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "mismatch"):
             A.decode_wire(row, "example.com")
 
+    def test_answer_owner_must_match_question_or_cname_target(self):
+        query = bytes.fromhex("123401000001000000000000076578616d706c6503636f6d0000010001")
+        question = bytes.fromhex("123481800001000100000000") + query[12:]
+        foreign = b"\x05alias\x07example\x00"
+        address = bytes.fromhex("000100010000012c00045db8d822")
+        wrong_owner = question + foreign + address
+        row = dict(query_base64=base64.b64encode(query), response_base64=base64.b64encode(wrong_owner))
+        self.assertFalse(A.decode_wire(row, "example.com")["wire_valid"])
+        with self.assertRaisesRegex(ValueError, "independent validity"):
+            A.decode_wire({**row, "valid": True}, "example.com")
+        header = question[:6] + b"\x00\x02" + question[8:]
+        cname = b"\xc0\x0c" + bytes.fromhex("000500010000012c") + len(foreign).to_bytes(2, "big") + foreign
+        linked = header + foreign + address + cname
+        row["response_base64"] = base64.b64encode(linked)
+        self.assertTrue(A.decode_wire(row, "example.com")["wire_valid"])
+
 
 class CommandLineProperties(unittest.TestCase):
     def test_default_inputs_work_from_an_unrelated_working_directory(self):

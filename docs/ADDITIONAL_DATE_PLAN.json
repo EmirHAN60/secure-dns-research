@@ -1,0 +1,18 @@
+{
+  "recorded_utc": "2026-11-23T18:25:13.387639+00:00",
+  "purpose": "Additional-date verification of unchanged Nov20 forecasts after the Nov22 extension. This is a separate holdout on the same host.",
+  "timing_boundary": "Whole validated call, established DoH minus fresh or prebound UDP; per-session paired median.",
+  "original_plan_sha256": "f07a2b0206770669e4675399b2386bdb87c4c0adc5cf02b9f99d6fa049efcd54",
+  "forecast_origin": "The frozen Nov20 point, sign and category values in the original plan. No refitting on Nov22 or new observations.",
+  "criteria": "Report absolute error versus zero, direction, every 0.5/1/2/5 ms category and pair magnitudes for both providers and both baselines. Single check day; descriptive. Retain failures.",
+  "session": {
+    "session_id": "verification-2026-11-23",
+    "directory": "data/verification-2026-11-23",
+    "windows": 3,
+    "reps": 10,
+    "interval_seconds": 90,
+    "seed": 20261125,
+    "expected_measured_attempts": 1800,
+    "expected_priming_records": 180
+  }
+}

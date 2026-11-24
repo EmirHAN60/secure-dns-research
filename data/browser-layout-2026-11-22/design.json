@@ -1,0 +1,46 @@
+{
+  "recorded_utc": "2026-11-22T20:11:18.080Z",
+  "study": "Controlled browser delay injection",
+  "live_dns": false,
+  "native_browser_dns": false,
+  "public_content_transfer": false,
+  "seed": 20261122,
+  "repetitions": 20,
+  "conditions": [
+    {
+      "layout": "parallel",
+      "extra": 0,
+      "requested_gate_ms": 25
+    },
+    {
+      "layout": "parallel",
+      "extra": 25,
+      "requested_gate_ms": 50
+    },
+    {
+      "layout": "sequential",
+      "extra": 0,
+      "requested_gate_ms": 25
+    },
+    {
+      "layout": "sequential",
+      "extra": 25,
+      "requested_gate_ms": 50
+    }
+  ],
+  "resource_count": 7,
+  "distinct_resource_hostnames": 7,
+  "primary_metric": "fixture.elapsed_ms from script start to seven verified image completions",
+  "secondary_metric": "fixture.completed_ms relative to navigation time origin",
+  "diagnostic_metric": "Navigation Timing loadEventEnd; may precede fixture completion",
+  "html_sha256": "37d778d71ffd1a60807ddb272e6d8a75ba1398d2f314a4f34f61fd0cf0b8154b",
+  "image_sha256": "27b66aa081e6bb31f7ec0584e71a447c5db422a93b48c4d14b35e135e308a548",
+  "html_bytes": 1732,
+  "image_bytes": 32931,
+  "collector_sha256": "b34fdbd88b76625ea97144326c335492d922b447a90b021dd47f8bf4798487e0",
+  "analyzer_sha256": "4dee04c5639221514668755d71feb2ede00823c18db007e57941b1ea0b6d06bd",
+  "delay_policy": "Each resource route waits requested_gate_ms with setTimeout before fulfilling identical SVG bytes. Actual gate intervals are logged. Main document has no artificial delay.",
+  "randomization": "Seeded shuffle of repetition blocks and four conditions within each block",
+  "inference": "Paired layout-specific treatment-minus-baseline differences; synthetic timing treatments on one controlled fixture, not true DNS observations",
+  "timeout_ms": 5000
+}

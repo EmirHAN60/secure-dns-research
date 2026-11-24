@@ -1,0 +1,6 @@
+{"utc": "2026-11-22T20:09:57.619244+00:00", "event": "session_complete", "session_id": "session-01", "collector_started_utc": "2026-11-22T20:06:20.451Z", "collector_finished_utc": "2026-11-22T20:09:52.444Z"}
+{"utc": "2026-11-22T20:18:00.505288+00:00", "event": "session_launch", "session_id": "session-02", "scheduled_utc": "2026-11-22T20:18:00Z"}
+{"utc": "2026-11-22T20:21:35.067787+00:00", "event": "session_complete", "session_id": "session-02", "collector_started_utc": "2026-11-22T20:18:00.557Z", "collector_finished_utc": "2026-11-22T20:21:34.565Z"}
+{"utc": "2026-11-22T20:30:00.499006+00:00", "event": "session_launch", "session_id": "session-03", "scheduled_utc": "2026-11-22T20:30:00Z"}
+{"utc": "2026-11-22T20:33:31.831598+00:00", "event": "session_complete", "session_id": "session-03", "collector_started_utc": "2026-11-22T20:30:00.549Z", "collector_finished_utc": "2026-11-22T20:33:31.312Z"}
+{"utc": "2026-11-22T20:33:31.831598+00:00", "event": "all_sessions_complete"}

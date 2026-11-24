@@ -20,7 +20,10 @@ def run(command, root, log):
     log.write(line); log.flush()
     environment = dict(os.environ, PYTHONIOENCODING="utf-8")
     process = subprocess.Popen([str(p) for p in command], cwd=root, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", env=environment)
+    workspace_prefixes = (str(root) + "\\", root.as_posix() + "/", json.dumps(str(root))[1:-1] + "\\\\")
     for line in process.stdout:
+        for prefix in workspace_prefixes:
+            line = line.replace(prefix, "")
         print(line, end="", flush=True)
         log.write(line); log.flush()
     code = process.wait()
@@ -42,7 +45,7 @@ def main():
     log_path = evidence / "verification.log"
     with log_path.open("w", encoding="utf-8") as log:
         versions = {name: importlib.metadata.version(name) for name in ("numpy", "reportlab", "matplotlib")}
-        header = json.dumps({"started_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "python": sys.version.split()[0], "packages": versions, "mode": "offline reproduction of recorded observations; no network measurements", "command_paths": "Displayed relative to the repository working directory; child stdout and stderr are captured without edits"}, indent=2) + "\n"
+        header = json.dumps({"started_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "python": sys.version.split()[0], "packages": versions, "mode": "offline reproduction of recorded observations; no network measurements", "command_paths": "Paths under the working directory are displayed relative to the project in commands and captured output"}, indent=2) + "\n"
         print(header, end=""); log.write(header)
         run([sys.executable, root / "scripts/validate_package.py", "--raw-only"], root, log)
         run([args.node, "--version"], root, log)
@@ -55,8 +58,21 @@ def main():
             if env.get("status") != "complete":
                 raise RuntimeError(f"Refusing to analyze an incomplete collection: {data.relative_to(root)}")
             run([sys.executable, root / "scripts/analyze.py", "--dns", data / "dns_raw.jsonl", "--pages", data / "pages.jsonl", "--page-dns", data / "page-dns.jsonl", "--out", result, "--expected-windows", str(env["windows"]), "--expected-reps", str(env["reps"]), "--strict"], root, log)
-        for script in ("robustness.py", "plot_results.py"):
+        for script in (
+            "robustness.py", "plot_results.py", "control_analysis.py", "plot_control_analysis.py",
+            "browser_phases.py", "analyze_loopback.py", "session_analysis.py", "plot_session_analysis.py",
+            "analyze_additional_date.py",
+            "audit_order_reuse.py",
+            "repeatability_analysis.py", "plot_repeatability.py",
+        ):
             run([sys.executable, root / "scripts" / script, "--root", root], root, log)
+        run([
+            sys.executable, root / "scripts/analyze_browser_layout.py",
+            "--data", "data/browser-layout-2026-11-22",
+            "--out", "results/browser-layout-2026-11-22",
+            "--doc", "docs/BROWSER_LAYOUT.md",
+        ], root, log)
+        run([sys.executable, root / "scripts/plot_browser_layout.py"], root, log)
         if not args.skip_paper:
             run([sys.executable, root / "scripts/build_paper.py", "--root", root], root, log)
         run([sys.executable, root / "scripts/validate_package.py", "--root", root, "--ignore-manifest"], root, log)

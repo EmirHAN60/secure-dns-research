@@ -3,7 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
-import { PROVIDERS, DOMAINS, DohClient, udpQuery, seededRng, shuffle } from './dns_client.mjs';
+import { PROVIDERS, DOMAINS, DohClient, udpQuery, windowRng, shuffle } from './dns_client.mjs';
 const here=path.dirname(fileURLToPath(import.meta.url));
 const root=path.dirname(here);
 const args=process.argv.slice(2);const get=(flag,def)=>{const i=args.indexOf(flag);return i<0?def:args[i+1]};
@@ -29,7 +29,7 @@ for(let w=1;w<=windows;w++){
       }
     }
   }
-  const rng=seededRng(seed+w);let block=0;
+  const rng=windowRng(seed,w,'direct-lookup');let block=0;
   for(let rep=1;rep<=reps;rep++){
     const tasks=shuffle(Object.keys(PROVIDERS).flatMap(provider=>DOMAINS.map(domain=>({provider,domain}))),rng);
     for(const {provider,domain} of tasks){

@@ -1,0 +1,11 @@
+--- Nov20-executed/measure_controls.mjs
++++ Nov22-executed/measure_controls.mjs
+@@ -15,6 +15,8 @@
+ const domains=get('--domains',DOMAINS.join(',')).split(',');
+ const modes=['udp_fresh','udp_bound','doh_warm'], timeoutMs=3000;
+ if(![windows,reps,interval].every(n=>Number.isInteger(n)&&n>0))throw new Error('Positive integer design parameters required');
++const plannedQueries=windows*(reps+1)*domains.length*Object.keys(PROVIDERS).length*modes.length;
++if(plannedQueries>65536)throw new Error('Design exceeds the 65,536 unique transaction-ID budget; use fewer windows/repetitions/domains');
+ fs.mkdirSync(out,{recursive:true});
+ const raw=path.join(out,'control_raw.jsonl');if(fs.existsSync(raw))throw new Error('Refusing to overwrite control_raw.jsonl');
+ const sleep=ms=>new Promise(r=>setTimeout(r,ms));

@@ -1,6 +1,6 @@
-# Performance Overhead of Secure DNS
+# DNS over HTTPS versus UDP
 
-## Evaluating Lookup Latency and Page Load Impact of DNS over HTTPS Versus Standard UDP DNS
+## Lookup Latency and Controlled Browser Loads
 
 Emirhan TEKBAŞ
 
@@ -14,118 +14,164 @@ Architecture of Computers (CII3SE003CI), 2026/2027
 
 ### Abstract
 
-DNS over HTTPS (DoH) protects communication with a recursive resolver, but its performance depends on connection state and the surrounding workload. This study asks whether a single overhead estimate remains informative when provider choice, connection reuse and measurement time are considered explicitly. A same-provider replication compares IPv4 A queries through UDP DNS, fresh HTTP/2 DoH and established HTTP/2 DoH using Cloudflare and Google. The original session on 15 November 2026 contains 1,800 measured lookups and 360 controlled browser navigations. An independent session on 19 November repeats the workload with a different randomization seed, producing 1,800 lookups and 360 navigations. Direct wire queries bypass the operating system cache; remote recursive cache state remains unknown despite prewarming. Socket metadata verifies HTTP/2, TLS version, connection state and absence of TLS resumption. Each browser request waits for live DNS before fixed local content is delivered, with one or eight hostnames and seven images. Returned addresses are deliberately not contacted. The original median paired fresh-DoH differences were 48.4 ms for Cloudflare and 84.6 ms for Google. Established-session differences were -1.8 ms and +7.1 ms, respectively. The repeat session yielded established lookup differences of -1.3 and +5.3 ms. Google's established contrast changed sign across windows on both dates. Domain-cluster resampling, individual windows and a second collection date test how dependent the interpretation is on aggregation choices. The browser fixture demonstrates DNS gating under a fixed dependency graph, while excluding native browser resolution and remote website transfer. Connection establishment is therefore a separate experimental treatment, and an isolated lookup difference is insufficient to predict general page performance. The contribution is an auditable replication with explicit validity boundaries, rather than a new transport or a universal provider ranking.
+DNS over HTTPS (DoH) incurs setup when opening a new session. Differences against UDP also depend on socket lifetime and measurement context. We compared fresh and established HTTP/2 DoH and UDP using matched IPv4 A queries to Cloudflare and Google. A socket control included fresh and prebound UDP, and a loopback experiment timed local socket readiness. Across 6,000 follow-up attempts, median fresh UDP setup was about 0.13 ms. Prebound UDP reversed the Cloudflare comparison in 2 of 10 windows. A 20 November calibration forecast was then held fixed for 5,400 attempts across three 22 November evening sessions. Against prebound UDP, the forecast matched 0 of 3 Google session signs. A separate 23 November session measured a Google median of -3.91 ms against the ready UDP baseline. Across 8,640 repeatability attempts, we compared same-mode and cross-mode differences at matched start intervals. In the initial Cloudflare run the weighted shares beyond 2 ms were 38% for UDP repeats, 56% for DoH repeats and 54% across modes. A separate browser fixture released fixed content after validated live DNS. For both providers and layouts on both historical browser dates, the median fresh DoH change was larger through document response end than afterward. Raising each requested wait by 25 ms yielded median paired completion increases of 26 ms with parallel and 211 ms with sequential requests. The latter experiment manipulated synthetic waits in a fixed resource graph. Together the experiments show how timer boundaries, ordinary sequential query variation and session changes affect a benchmark. Same-protocol repeats provide a reference for the observed size of cross-protocol differences. Held-out session forecasts quantify how often a fixed comparison transfers under the observed conditions.
 
-Keywords: DNS over HTTPS; connection reuse; lookup latency; page load time; reproducibility
+Keywords: DNS over HTTPS, UDP socket reuse, lookup latency, temporal variation, browser fixture
 
 ## Introduction and related work
 
-DNS resolution can sit on the critical path before an application contacts a server. Conventional DNS messages commonly use UDP port 53 (Mockapetris, 1987). DoH instead maps a DNS exchange onto HTTPS, adding connection management and transport protection (Hoffman & McManus, 2018). The resulting delay includes network waits and software handling. An elapsed-time comparison cannot identify processor cycles spent on encryption. Le Louët et al. (2024), who measured resolver CPU and memory as well as response time, illustrate why those are separate outcomes.
+DNS resolution can delay an application before it opens an origin connection. Conventional DNS commonly uses UDP (Mockapetris, 1987). DNS over HTTPS maps DNS messages onto HTTPS (Hoffman & McManus, 2018). An elapsed lookup includes network, resolver and client work. Le Louët et al. (2024) also measured resolver CPU and memory, outcomes that require instrumentation beyond a client timer.
 
-The approved question is narrowed into three comparisons: how connection state changes same-provider lookup latency; whether the sign of an established-session contrast persists across windows and collection dates; and how DNS waiting propagates through a controlled browser resource graph. The practical decision is whether a workload can amortize HTTPS setup, rather than whether every encrypted lookup carries one fixed penalty.
+Chhabra et al. (2021) compared DoH with default client resolution across countries and used names under their control to induce recursive cache misses. Their results assess deployment across a broad population. Here, each protocol uses the same operator and destination IP. Fixed names and repeated windows allow a closer look at the client baseline and temporal variation on one host. Recursive cache hits remain unverified. Böttger et al. (2019) and Hounsel et al. (2021) already distinguish connection setup from later lookups. Izhikevich et al. (2022) use long-lived UDP sockets to improve bulk DNS measurement throughput. That design motivates testing UDP socket lifetime for individual query latency under the same workload.
 
-Chhabra et al. (2021) studied worldwide performance using default resolvers as the conventional-DNS baseline. Changing operators can affect that comparison. Their authoritative-zone cache-miss method also differs from clearing a local cache. Böttger et al. (2019) and Hounsel et al. (2020) separated query latency from browser loading, while Hounsel et al. (2021) separated setup from established-session queries. This study re-tests those distinctions with pinned provider endpoints, paired observations and retained raw messages. It does not claim that connection reuse or same-provider controls are new discoveries.
-
-Recent research makes protocol version and handshake policy central to interpreting secure DNS performance. Kosek et al. (2022) distinguished handshake from resolution time when comparing DoQ with HTTP/2 DoH and explicitly recorded session resumption. Sengupta et al. (2024) examined how DNS and content delivery interact when QUIC connections are coalesced, showing why application performance depends on the surrounding connection structure. Bielefeld et al. (2026) extended the comparison to resolver feature support and browser loading with DoQ and DoH over HTTP/3. These studies investigate different implementations and workloads, so their findings provide context rather than a numerical correction for this experiment. The standards also distinguish dedicated DNS over QUIC from HTTP over QUIC (Huitema et al., 2022; Bishop, 2022). Here, negotiated h2 and recorded absence of TLS resumption define a narrower treatment. HTTP/3, DoQ and cross-layer coalescing remain unmeasured. The replication therefore tests established methodological distinctions locally rather than introducing a new secure DNS mechanism.
-
-The distinguishing evidence is the combination of verified transport treatments, observed changes of sign, two separately analyzed dates, and a browser fixture whose exclusions are explicit. A larger bibliography alone would not establish that contribution. Table and figure values are generated from saved attempts, with an offline reproduction command and a source-to-claim audit trail.
+We ask how the UDP socket lifecycle changes a ready-session comparison, how well a fixed forecast transfers, and how cross-protocol differences compare with same-mode repeats across prepared flows. Transport ports can influence flow assignment (Augustin et al., 2006). Hounsel et al. (2020) measured real sites. Our browser fixtures hold content fixed to examine resource dependencies. Related work addresses DoQ, HTTP/3 and cross-layer reuse (Bielefeld et al., 2026; Kosek et al., 2022; Sengupta et al., 2024). The transport specifications distinguish those protocols from HTTP/2 DoH (Bishop, 2022; Huitema et al., 2022).
 
 ## Methodology
 
-### Apparatus and resolver controls
+### Host, resolvers and historical sessions
 
-Both sessions ran on a Windows 10.0.26200 x64 host reporting AMD Ryzen 7 7700 8-Core Processor, 16 logical processors and 30.9 GiB RAM. Node.js versions were v24.22.1 and v24.22.3; Chrome versions were 157.0.8103.51 and 157.0.8103.79, with Playwright 1.62.1. Full session metadata is retained. Access medium, ISP, paths and background traffic were not characterized. No CPU counters or energy measurements were taken.
+The historical host ran Windows 10.0.26200 x64 on an AMD Ryzen 7 7700 8-Core Processor, with 16 logical processors and 30.9 GiB RAM. Node.js versions were v24.22.1 and v24.22.3. Chrome versions were 157.0.8103.51 and 157.0.8103.79, with Playwright 1.62.1.
 
-Cloudflare used 1.1.1.1 with cloudflare-dns.com/dns-query; Google used 8.8.8.8 with dns.google/dns-query. DoH connected to the pinned provider address while preserving TLS hostname and certificate verification. Endpoint bootstrap was excluded. Equivalent queries requested A records over IPv4 with recursion desired, without EDNS or a DNSSEC request bit. Binary POST used application/dns-message, and HTTP/2 negotiation was required (Hoffman & McManus, 2018; Thomson & Benfield, 2022).
+Cloudflare used 1.1.1.1 and cloudflare-dns.com. Google used 8.8.8.8 and dns.google. DoH binary POST requests used /dns-query, with the provider IP pinned and the hostname retained for TLS certificate validation and HTTP authority. Clients required negotiated HTTP/2 (Thomson & Benfield, 2022). IPv4 A queries requested recursion and omitted EDNS. The ten names were example.com, wikipedia.org, mozilla.org, github.com, cloudflare.com, google.com, microsoft.com, apple.com, bbc.com and amazon.com. Direct DNS messages bypassed the OS stub. Priming encouraged reuse, with recursive cache state unobserved. TTL policy and distributed caching affect response time (Moura et al., 2019), while routing determines which physical anycast site a service address reaches (de Oliveira Schmidt et al., 2017).
 
-Provider identity and destination IP reduce operator differences but cannot prove identical anycast routes, internal front ends or recursive caches. TTL policy and distributed caching affect response time (Moura et al., 2019), while routing determines which physical anycast site a service address reaches (de Oliveira Schmidt et al., 2017). Direct messages bypass local stub-cache APIs. Before each lookup window, the ten names were primed through UDP and the persistent DoH client. This encourages reuse without proving cache hits. TTLs were saved as diagnostics. A local cache flush would not clear a public resolver's cache, and no verified recursive-cache-miss treatment is claimed.
+On 15 and 19 November, each session randomized UDP, fresh DoH and established DoH within provider, name, window and repetition. Three windows and ten repetitions yielded 1,800 measured lookups per date. UDP included implicit binding. Fresh DoH included new TCP, TLS and HTTP/2 setup. Established DoH reused a primed session. Timers started after DNS query construction and stopped after validation.
 
-### Lookup and browser procedures
+### Follow-up socket control
 
-The lookup names were example.com, wikipedia.org, mozilla.org, github.com, cloudflare.com, google.com, microsoft.com, apple.com, bbc.com and amazon.com. Each provider-name-repetition block randomized UDP, fresh DoH and established DoH. Ten repetitions in three windows yielded 300 attempts per provider-treatment condition per date. DNS windows began five minutes apart. Dates were analyzed separately. Seeds were 20261115 and 20261119; neither session was externally preregistered.
+The follow-up retained the two providers and ten names. It randomized fresh UDP, prebound reused UDP and established DoH within each matched block. Fresh UDP applied an explicit bind inside its timer to expose setup. The full call also included initiating close. Reused UDP kept one unconnected, prebound socket per provider and window. DoH used one primed HTTP/2 session per provider and window. The ready-state contrast uses the elapsed calls for prebound UDP and established DoH through response validation. We also compare UDP send to validated receipt after binding in both modes. UDP has no remote connection handshake in either mode. Port reuse can affect network treatment, so local ports were recorded. On 20 November, 10 windows targeted 90 seconds between starts. Each included 10 repetitions and priming across all treatments. The host used Windows 10.0.26300 and Node.js v24.22.3.
 
-UDP timing began before socket creation. DoH timing began after message encoding and included lazy connection setup when required. Both ended after complete-response validation. Fresh lookup trials created a new TCP/TLS/HTTP/2 client per query; established trials reused a primed session for the provider and window. TLS resumption and connection state were recorded. There were no retries; connection and query stages each had a three-second timeout. These are client-and-service timings, not pure cryptographic costs.
+The loopback calibration randomized fresh and prebound UDP lookups against a fixed responder in the same process. It reused the DNS message and validation helpers in a separate socket harness. Whole-call and ready-to-validation timers isolate the local packet path from remote routes and caches.
 
-Each page had one HTML document and seven fixed SVG images. One layout used one hostname; the other used eight. An in-flight promise memoized each hostname's live DNS request. Playwright fulfilled requests with fixed bytes after valid DNS, without contacting the returned addresses. New browser contexts blocked service workers. Fresh page DoH paid setup once per navigation and shared that connection across names; established page DoH opened and primed the connection before navigation using a name outside the fixture workload. Page hostname sets received equal UDP prewarming before each window. The exact layout and payload generator are included in the repository.
+### Same-protocol repeatability
 
-Ten randomized navigation triplets per provider and layout in three windows yielded thirty attempts per condition per date. The primary metric was loadEventEnd minus startTime, read after the load event completed (Weiss & Rosenthal, 2026). Success required seven loaded images, the expected hostname count, valid DNS and consistent connection metadata. This measures a DNS-gated fixture, not the browser's native resolver, real-site TLS or Internet content transfer.
+Each run interleaved two UDP and two DoH queries per block. All six protocol orders were used for same-flow repeats and repeats on distinct prepared flows. Each provider had two sockets and two HTTP/2 sessions per window. Three windows yielded 2,880 measured attempts per run. The primary analysis matches adjacent positions with 75–125 ms between actual starts across randomized orders. We weight windows and common cells equally. On one host, A1 used home Wi-Fi, B1 used a phone hotspot by user report, and A2 returned to home Wi-Fi with matching recorded local route properties. Local starts were A1 23 Nov 22:49, B1 24 Nov 11:20, A2 24 Nov 11:34.
 
-### Validation and uncertainty
+### Session replication and effect magnitude
 
-Checks covered response identity, question, response flag, opcode, truncation, response code and A answers; DoH also required HTTP 200 and the DNS media type. A second decoder audited saved query/response bytes. Per-page query numbering and unchanged connection metadata checked reuse. Failures stayed in attempt counts and were excluded only from successful-latency summaries. No timeout was imputed as a successful observation.
+The 20 November calibration started at 13:16 Warsaw time. On 22 November, three held-out sessions started around 21:06, 21:18 and 21:30 Warsaw time, covering 27 minutes from first start to last finish. Each ran three windows with the socket-control design. The operating-system release and runtime versions matched the calibration. The only collector code change was an up-front transaction ID budget check. The planned and actual times are retained.
 
-Medians, interquartile ranges and nearest-rank p95 describe successful attempts. The primary contrast is the median paired DoH-minus-UDP difference. Descriptive percentile intervals use 4,000 paired bootstrap samples within observed windows. Sensitivity analyses retain individual windows, omit one window at a time, and resample whole domain clusters. Resampling must respect clustered dependence, and bootstrap validity depends on the sampling model (Field & Welsh, 2007). The latter preserves within-domain dependence but has only ten clusters. No interval corrects unmeasured routing or cache bias, and dates are not pooled into a universal effect.
+A separate 23 November verification used the same design and frozen forecasts, with a new seed. Its plan was recorded after the first evening extension and before this run. It adds one held-out date.
+
+A locally frozen plan applied 20 November paired medians as fixed forecasts. We score session-level error, sign and categories at ±0.5, ±1, ±2 and ±5 ms per lookup. The descriptive bands probe sensitivity to scale without utility calibration. Median absolute differences and exceedance rates describe variation even when the signed median is near zero.
+
+### Controlled browser experiment
+
+The two historical sessions used fresh UDP for the browser baseline. Playwright fulfilled one HTML document and seven SVG images after live DNS returned a valid answer. The one-name layout shared a single hostname lookup, while the eight-name layout could overlap the seven image lookups after the document. Address records were recorded. The fixture served local bytes and excluded origin connections, site TLS, CDN transfer and Chrome’s native DNS behavior. Fresh DoH opened one shared session during the document gate. Established DoH primed a session before navigation. A new browser context blocked service workers. Each date contained 360 randomized fixture navigations, with thirty per provider, layout and treatment.
+
+Navigation Timing records document response end and load-event end (Weiss & Rosenthal, 2026). For each successful matched pair, the load difference equals the difference through document response plus the difference from response end to load. The phases include browser work and scheduling. Separate medians of these paired changes need not sum to the median total.
+
+A separate randomized Chrome experiment used the same seven image payloads under two request dependencies and gate waits of 25 and 50 ms. Sequential code waited for each image load before requesting the next. Parallel code issued all requests before awaiting completion. The primary outcome was script start to verified image completion. Request and gate timestamps checked the intended dependencies. Injected delays model waiting at the gate, and this experiment uses local bytes.
+
+### Validation and inference
+
+Independent decoding checks transaction identity, the question and whether the answer is reachable through its CNAME chain. Audits verify UDP source, socket reuse and HTTP/2 metadata. Counts retain failures. Latency contrasts use complete successful pairs. Positive DoH-minus-UDP values indicate slower DoH.
+
+Historical percentiles use 4,000 paired resamples within observed windows. Domain-level sensitivity preserves observations attached to each name (Field & Welsh, 2007). A retrospective check fits the pooled sign on five windows and scores the sixth. The 20 November prediction used the pooled historical Google sign against fresh UDP. An order audit found six distinct schedules in twelve 22–23 November windows because the old collector added session seed and window index. The repeatability collector derives streams from labeled tuples.
 
 ## Results
 
-### Completeness and lookup distributions
+### Historical lookup contrasts
 
-Each date contains 1,800 lookup attempts and 360 navigation attempts, plus separate priming records. The original and repeat sessions recorded 0 and 0 failed measured attempts, respectively. Together they contain 3,600 measured lookups and 720 navigations. Packet and connection-treatment audits passed for the retained results. Preparatory and screenshot-only runs are excluded.
+The original and second sessions recorded 0 and 0 failed measured attempts, respectively. The 3,600 lookups and 720 navigations passed the saved-packet and transport audits.
 
-Table 1. Original-session lookup latency and paired differences in milliseconds.
+Median paired fresh-DoH differences on 15 and 19 November were +48.4 and +50.1 ms for Cloudflare, and +84.6 and +91.2 ms for Google.
 
-| Provider | Transport | Success / attempts | Median | p95 | Paired difference [95% interval] |
-|---|---|---:|---:|---:|---|
-| Cloudflare | UDP | 300/300 | 19.5 | 24.2 | Baseline |
-| Cloudflare | DoH fresh | 300/300 | 68.1 | 79.3 | +48.4 [+47.7, +48.9] |
-| Cloudflare | DoH established | 300/300 | 17.8 | 22.5 | -1.8 [-2.0, -1.4] |
-| Google | UDP | 300/300 | 36.5 | 46.2 | Baseline |
-| Google | DoH fresh | 300/300 | 134.9 | 152.9 | +84.6 [+70.3, +98.8] |
-| Google | DoH established | 300/300 | 43.8 | 52.8 | +7.1 [+6.6, +7.8] |
+### UDP socket control
 
-Note. Positive differences indicate slower DoH. Brackets give descriptive within-window paired-bootstrap intervals; they are not population guarantees.
+The follow-up recorded 6,000 measured attempts and 0 measured failures. The median interval from fresh UDP call start through binding was 0.13 ms for Cloudflare and 0.13 ms for Google. Table 1 contrasts whole-call and post-bind UDP differences and gives each DoH comparison against its own UDP baseline.
 
-![Figure 1. Original-session successful lookup latency distributions.](figures/lookup_ecdf.png)
+Table 1. Socket-control median paired differences in milliseconds.
 
-Figure 1. Empirical distributions from 15 November. Fresh DoH includes connection setup. All successful observations are retained; the figure uses the recorded sample, not results from prior publications.
+| Provider | Fresh − bound UDP, whole call | Fresh − bound UDP, after bind | DoH − fresh UDP | DoH − bound UDP |
+|---|---:|---:|---:|---:|
+| Cloudflare | +0.58 | +0.41 | -1.71 | -1.24 |
+| Google | -0.59 | -0.75 | -0.34 | -0.94 |
 
-Fresh-DoH median paired differences were +48.4 [+47.7, +48.9] ms for Cloudflare and +84.6 [+70.3, +98.8] ms for Google. Established differences were -1.8 [-2.0, -1.4] and +7.1 [+6.6, +7.8] ms. Fresh setup and established querying therefore give substantially different contrasts.
+In 400 complete loopback pairs, the fresh socket reached readiness in 0.046 ms at the median. Fresh minus prebound UDP was +0.0775 ms over the whole call and +0.019 ms over the ready query stage. This calibration uses a local process and cannot quantify the change in a public UDP route.
 
-### Window and collection-date sensitivity
+### Same-protocol and cross-protocol differences
 
-Google's original established-session window differences were +9.6, -5.1, +8.7 ms. Cloudflare's were -1.3, -1.8, -1.9 ms. The Google contrast changed sign even though its pooled interval was positive. This is observed heterogeneity, not evidence identifying a cache or routing transition.
+Table 2. Weighted median absolute difference (ms) and weighted share above 2 ms.
 
-![Figure 2. Fresh and established lookup contrasts by window.](figures/window_effects.png)
+| Run | Provider | UDP–UDP | DoH–DoH | DoH–UDP |
+|---|---|---:|---:|---:|
+| A1 | Cloudflare | 1.44 / 38% | 2.50 / 56% | 2.16 / 54% |
+| A1 | Google | 3.98 / 72% | 2.21 / 56% | 8.19 / 90% |
+| B1 | Cloudflare | 4.89 / 79% | 9.89 / 92% | 6.95 / 84% |
+| B1 | Google | 7.75 / 82% | 9.16 / 87% | 10.37 / 90% |
+| A2 | Cloudflare | 1.67 / 46% | 2.00 / 50% | 2.00 / 50% |
+| A2 | Google | 2.32 / 58% | 3.38 / 71% | 8.72 / 95% |
 
-Figure 2. Original-session median paired differences by window. Positive values indicate slower DoH. Individual-window estimates expose variation concealed by a pooled median.
+Note. Same-protocol pairs in this table used the same prepared flow within each mode. Weights are shared across observed position and domain cells. The companion files retain counts, other thresholds, distinct-flow results and start-interval sensitivity.
 
-On 19 November, fresh-session differences were +50.1 [+49.3, +51.1] ms for Cloudflare and +91.2 [+72.9, +99.0] ms for Google. Established-session contrasts were -1.3 [-1.9, -0.8] and +5.3 [+4.6, +6.4] ms. Google's repeat-session window effects were +8.5, +10.0, -5.9 ms, again changing sign. Figure 3 retains the dates separately instead of averaging their network contexts.
+![Observed DoH repeat and cross-mode magnitudes by flow condition.](figures/repeatability_fixed_flow_comparison.png)
 
-![Figure 3. Separate-date paired lookup comparisons.](figures/cross_date_comparison.png)
+Figure 1. Weighted median absolute differences for repeated DoH (DD) and cross-mode pairs (DU). Flow conditions refer to how blocks assign the two requests per protocol. Each estimate uses its condition's common cells.
 
-Figure 3. Separately analyzed collection dates. These are date-conditioned client-and-service contrasts, not causal effects of the calendar date. The accompanying tables retain sample counts and failure information.
+The runs recorded 8,640 measured attempts, including 1 unsuccessful attempt.
 
-For the original Google established contrast, whole-domain resampling gave [+6.7, +7.5] ms. This alternative interval remains narrow despite window medians ranging from -5.1 to +9.6 ms. Changing the resampling unit therefore does not remove the temporal sensitivity. All valid values remain included.
+Google's weighted signed DoH-minus-UDP medians in repeat-flow blocks were A1 +6.1 ms, B1 -8.9 ms, A2 +7.8 ms.
 
-### Controlled browser loads
+With distinct prepared flows in A1, Google's median absolute DoH repeat difference was 13.03 ms and the comparable cross-mode difference was 7.41 ms. Using distinct flows leaves substantial same-protocol variation in this run.
 
-Original fresh-session page differences for one/eight hostnames were 48.1/49.4 ms for Cloudflare and 103.3/107.0 ms for Google. Established-session effects were +1.6/+1.9 and +10.4/+0.7 ms, respectively.
+### Direction and uncertainty across windows
 
-![Figure 4. Controlled browser page-load contrasts.](figures/page_effects.png)
+Google's six historical windows gave a pooled median of +6.44 ms and a fixed-window 95% interval of [+5.68, +6.97] ms. Window medians ranged from -5.92 to +9.95 ms. Held-window prediction matched 4/6 Google signs and 6/6 Cloudflare signs.
 
-Figure 4. Original-session paired load-event differences for one and eight hostnames. Intervals condition on the observed windows and successful page pairs. One fresh connection is shared within a page.
+![Historical window effects and conditional intervals.](figures/historical_window_sensitivity.png)
 
-On the repeat date, established-session page differences for one/eight hostnames were +0.3/+0.7 ms for Cloudflare and +4.5/+9.5 ms for Google. Each effect uses matched complete page pairs; all-attempt counts remain visible in the extended results.
+Figure 2. Historical lookup contrasts for each sampled window. Pooled intervals describe conditional uncertainty within those windows.
 
-Full marginal, paired, domain and date-specific tables, additional graphs and the fixture screenshot are provided in the repository's extended results. Screenshots document execution and appearance; they do not replace raw measurements.
+On 20 November, the historical positive Google sign matched 4/10 windows. Google window medians ranged from -7.25 to +8.52 ms against fresh UDP and -7.96 to +10.05 ms against prebound UDP. Changing baselines reversed 2 Cloudflare signs and 0 Google signs. The historical comparison crosses a Windows build change and the switch to explicit binding.
+
+### Forecast transfer between sessions
+
+Cloudflare's fixed ready-state forecast of -1.24 ms matched 3/3 session signs and 2/3 categories at ±2 ms. Mean absolute error was 0.51 ms against 1.65 ms for predicting zero. Google's fixed ready-state forecast of -0.94 ms matched 0/3 session signs and 0/3 categories at ±2 ms. Mean absolute error was 9.90 ms against 8.97 ms for predicting zero. One Google prebound UDP timeout in the second session left 299 complete pairs.
+
+Table 3. Established DoH minus prebound UDP in the 22 November holdout.
+
+| Warsaw start | Provider | Pairs | Signed median ms | Median of absolute differences (ms) | Pairs beyond ±2 ms |
+|---|---|---:|---:|---:|---:|
+| 21:06 | Cloudflare | 300 | -1.82 | 2.28 | 58% |
+| 21:06 | Google | 300 | +8.30 | 8.68 | 96% |
+| 21:18 | Cloudflare | 300 | -1.09 | 2.16 | 53% |
+| 21:18 | Google | 299 | +9.99 | 10.23 | 95% |
+| 21:30 | Cloudflare | 300 | -2.03 | 2.58 | 62% |
+| 21:30 | Google | 300 | +8.62 | 8.82 | 89% |
+
+Note. The 2 ms band is one of four fixed sensitivity bands. The last two columns describe individual complete pairs, and the signed median summarizes direction. The companion tables report all four bands.
+
+![Window and session medians for the held-out controls.](figures/session_effects.png)
+
+Figure 3. Held-out window and session medians against the two UDP baselines. The bands show illustrative effect sizes for lookup latency.
+
+The 23 November check recorded 1,800 attempts and 0 failures. Against prebound UDP, the paired median was -1.18 ms for Cloudflare and -3.91 ms for Google. The unchanged Google forecast matched the sign and missed the ±2 ms category. Its absolute error was 2.98 ms, compared with 3.91 ms for predicting zero. These scores describe the additional date separately.
+
+### Controlled browser timings
+
+Across dates, providers and layouts, fresh DoH added 46.7 to 102.1 ms through document response end at the paired median. The median change after response end stayed within 0.7 ms of zero for one hostname and ranged from +1.2 to +7.5 ms for eight. Established DoH load differences ranged from +0.3 to +10.4 ms.
+
+![Fixture navigation phases for both dates and providers.](figures/browser_phases.png)
+
+Figure 4. Median paired differences by navigation phase for both dates. Fresh and ready designate the DoH session state and 1 and 8 identify the hostname counts. Each point uses thirty complete pairs. The total is calculated per pair before taking its median.
+
+Raising each requested gate wait from 25 to 50 ms yielded a median paired change of +26.2 ms in the parallel layout and +210.9 ms in the sequential layout. Across 20 complete randomized blocks, the median paired interaction was +186.9 ms. Counting overlapping waits once, the median paired increase in time with a gate active was +27.5 ms and +212.4 ms, respectively. The sequential median gate waits were 28.2 and 59.2 ms for the two requested waits.
 
 ## Discussion
 
-The fresh-versus-established distinction changes the answer substantially. A request that creates an HTTPS connection differs from a service that reuses one. A small or negative established-session contrast cannot establish that encryption accelerates DNS: routing, front ends, caching and client handling remain alternative explanations. The observed Google sign change is therefore evidence against reporting a context-free overhead, rather than evidence of a universally faster protocol.
+Changing the UDP baseline shifted the 20 November established DoH median contrast by +0.47 ms for Cloudflare and -0.59 ms for Google. Post-bind differences can reflect source-port-dependent network handling as well as client scheduling and service behavior. Google's reversals persist with both resources prepared in advance.
 
-A second collection date strengthens the audit by repeating the workload, but does not create a representative longitudinal sample. Browser and runtime metadata are retained for each session. Unmeasured access-link and routing changes can accompany the date. Agreement supports only repeatability under the sampled conditions; disagreement is reported rather than averaged away.
+Matched same-mode repeats put small cross-mode differences in context, and using distinct prepared flows checks sensitivity to flow assignment. Pairs share attempts and windows. Estimates condition on successful comparable starts. Client flows can share routes. Run differences can combine access, time and resolver effects. We apply no jitter correction.
 
-The browser fixture separates a mechanism from a deployment claim. Its main-document lookup precedes parsing; subsequent distinct-name lookups may overlap. Seven images therefore do not imply seven serial DNS waits. Native browsers also introduce caching, prefetching, address racing, connection coalescing and fallback, while content servers add TLS and transfer variability. The fixture removes those effects, so its observed load time cannot rank real websites or replace the native-browser measurements in Hounsel et al. (2020).
+Chhabra et al. (2021) sampled variation across client networks. Here the unit of evidence for forecast transfer is an observed window or session on one host. A narrow conditional interval describes the composition of fixed windows. Front ends, routing, caches and traffic could contribute to changes between them. The calibration and holdouts differ in date and time of day. Their differences cannot isolate either. Repeated morning and evening sessions on independently identified networks remain necessary for stronger temporal and network coverage.
 
-The contribution relative to a simple benchmark is inspectability: semantic query equivalence, explicit connection treatments, raw-wire validation, paired windows, a separate-date replication and alternative resampling units. It remains an introductory replication. No new protocol, global provider ordering, controlled recursive-cache treatment or processor-overhead estimate is claimed.
+Google's contrast crossed zero between verification dates with matched software and timing boundaries. Direction can change across evenings even when medians agree within an evening. Effect bands test transfer at specific lookup scales.
 
-Relative to Chhabra et al. (2021), the narrower provider-matched baseline reduces an operator change but sacrifices global coverage and controlled cache misses. Relative to native-browser studies, fixed bytes improve control of content while limiting deployment validity. The repeated sign reversal makes these tradeoffs visible: precision within a sampled workload should not be confused with stability across network contexts. A defensible implementation recommendation is to measure the application's actual connection lifetime and dependency graph before transferring a benchmark number into a user-experience claim.
-
-The next experiment should sample additional networks and full time-of-day cycles, verify native-browser DNS with network traces, and include HTTP/3 or DoQ as separately defined treatments. Server resource measurement would answer the architecture question raised by Le Louët et al. (2024); application latency alone cannot answer it.
+The historical live-DNS fixture places the larger fresh-session difference before document response end. Its records lack per-resource gate timestamps. The new synthetic-delay experiment records them and includes browser scheduling in completion time. Real sites also add native resolver behavior, caching, origin connections and content transfer.
 
 ## Conclusion
 
-Fresh HTTP/2 DoH was slower than UDP at the pooled paired median for both providers on both dates. Established-session results were smaller and dependent on the sampled context. Connection state, measurement context and the resource dependency graph must accompany any reported DoH penalty. The package makes those qualifications checkable through raw evidence and one-command offline reproduction.
+Fresh HTTPS setup was associated with longer historical lookup times. The loopback calibration timed the local socket-readiness stage. The public-resolver experiment quantified sensitivity to the UDP baseline and measured error when applying a frozen forecast to another day. Small established-session contrasts require an explicit UDP timing boundary and a report of variation between sessions. Controlled browser timing depends on where the DNS wait falls in the resource graph.
 
 ## Declaration of Generative AI and AI-Assisted Technologies
 
@@ -133,9 +179,11 @@ OpenAI Codex assisted with design, source discovery, code, measurement execution
 
 ## Data and code availability
 
-Code, raw measurements, environment metadata, figures and execution evidence: https://github.com/EmirHAN60/secure-dns-research. Original and replication data remain separate. Metadata, raw data and executable analysis follow established networking reproducibility guidance (Bajpai et al., 2019).
+The accompanying version 1.2.0 evidence ZIP contains code, raw measurements, metadata and figures. The project repository is https://github.com/EmirHAN60/secure-dns-research. The file-level SHA-256 manifest identifies the distributed artifact. Metadata, raw data and executable analysis follow established networking reproducibility guidance (Bajpai et al., 2019).
 
 ## References
+
+Augustin, B., Cuvellier, X., Orgogozo, B., Viger, F., Friedman, T., Latapy, M., Magnien, C., & Teixeira, R. (2006). Avoiding traceroute anomalies with Paris traceroute. In *Proceedings of the 6th ACM SIGCOMM Conference on Internet Measurement* (pp. 153–158). Association for Computing Machinery. https://doi.org/10.1145/1177080.1177100
 
 Bajpai, V., Brunstrom, A., Feldmann, A., Kellerer, W., Pras, A., Schulzrinne, H., Smaragdakis, G., Wählisch, M., & Wehrle, K. (2019). The Dagstuhl beginners guide to reproducibility for experimental networking research. *ACM SIGCOMM Computer Communication Review, 49*(1), 24–30. https://doi.org/10.1145/3314212.3314217
 
@@ -158,6 +206,8 @@ Hounsel, A., Borgolte, K., Schmitt, P., Holland, J., & Feamster, N. (2020). Comp
 Hounsel, A., Schmitt, P., Borgolte, K., & Feamster, N. (2021). Can encrypted DNS be fast? In O. Hohlfeld, A. Lutu, & D. Levin (Eds.), *Passive and active measurement* (pp. 444–459). Springer. https://doi.org/10.1007/978-3-030-72582-2_26
 
 Huitema, C., Dickinson, S., & Mankin, A. (2022). *DNS over dedicated QUIC connections* (RFC 9250). RFC Editor. https://doi.org/10.17487/RFC9250
+
+Izhikevich, L., Akiwate, G., Berger, B., Drakontaidis, S., Ascheman, A., Pearce, P., Adrian, D., & Durumeric, Z. (2022). ZDNS: A fast DNS toolkit for internet measurement. In *Proceedings of the 22nd ACM Internet Measurement Conference* (pp. 33–43). Association for Computing Machinery. https://doi.org/10.1145/3517745.3561434
 
 Kosek, M., Schumann, L., Marx, R., Doan, T. V., & Bajpai, V. (2022). DNS privacy with speed? Evaluating DNS over QUIC and its impact on web performance. In *Proceedings of the 22nd ACM Internet Measurement Conference* (pp. 44–50). Association for Computing Machinery. https://doi.org/10.1145/3517745.3561445
 

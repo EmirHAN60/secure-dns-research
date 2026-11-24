@@ -1,0 +1,53 @@
+{
+  "matplotlib_version": "3.10.7",
+  "figures": [
+    {
+      "stem": "historical_window_sensitivity",
+      "caption": "Dots show six separate observed window medians, each based on 100 successful matched pairs. The orange diamond is the 600-pair pooled median with a conditional resampling interval that holds the selected windows and their sizes fixed. The dotted line is the equally weighted median of the six window medians, a different statistic. Panels have different vertical scales. The interval is not a population confidence guarantee; historical implicit-bind UDP is distinct from the follow-up control estimator.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "historical_window_sensitivity.png",
+        "historical_window_sensitivity.pdf",
+        "historical_window_sensitivity.svg"
+      ],
+      "source": "results/control_analysis.json; recorded raw observations only"
+    },
+    {
+      "stem": "control_window_effects",
+      "caption": "Each point is a median of matched within-window differences. Left panels compare fresh minus pre-bound UDP using three separately defined timers: whole call, post-bind send through validated response, and send through receipt. Right panels compare established DoH with fresh or bound UDP using whole measured calls. Setup is outside the bound UDP and established DoH timers. Lines connect observed medians only. Persistent source ports, network/cache affinity and client implementation prevent assigning the differences purely to CPU lifecycle cost.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "control_window_effects.png",
+        "control_window_effects.pdf",
+        "control_window_effects.svg"
+      ],
+      "source": "results/control_analysis.json; recorded raw observations only"
+    },
+    {
+      "stem": "control_udp_stages",
+      "caption": "Fresh-minus-bound UDP contrasts using three timer definitions. Grey lines span observed window-median minima and maxima; they are not confidence intervals. Blue circles give the pooled median paired difference and orange diamonds give the median of window medians. The post-bind timers exclude socket creation/binding, with validation included only in the middle row. No timer is interpreted as pure local CPU cost.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "control_udp_stages.png",
+        "control_udp_stages.pdf",
+        "control_udp_stages.svg"
+      ],
+      "source": "results/control_analysis.json; recorded raw observations only"
+    },
+    {
+      "stem": "google_sign_validation",
+      "caption": "Historical and follow-up window medians use fresh UDP including setup. The positive-sign forecast for each follow-up window was frozen before collection and is evaluated without selecting windows after observing outcomes. Fresh UDP changed from implicit to explicit bind, and the operating-system release also changed, so this is a prospective sign transport check under changed conditions, not validation of an identical estimator or a causal calendar effect. All completed planned windows and their pair counts remain in the results.",
+      "width_inches": 6.5,
+      "png_dpi": 220,
+      "files": [
+        "google_sign_validation.png",
+        "google_sign_validation.pdf",
+        "google_sign_validation.svg"
+      ],
+      "source": "results/control_analysis.json; recorded raw observations only"
+    }
+  ]
+}

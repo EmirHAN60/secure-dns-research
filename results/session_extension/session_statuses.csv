@@ -1,0 +1,4 @@
+session_id,directory,scheduled_start_utc,actual_start_utc,actual_finish_utc,status,build_group
+session-01,data/external-2026-11-22/session-01,2026-11-22T20:06:00+00:00,2026-11-22T20:06:20.451Z,2026-11-22T20:09:52.444Z,complete,e7b2f7476d39b015
+session-02,data/external-2026-11-22/session-02,2026-11-22T20:18:00+00:00,2026-11-22T20:18:00.557Z,2026-11-22T20:21:34.565Z,complete,e7b2f7476d39b015
+session-03,data/external-2026-11-22/session-03,2026-11-22T20:30:00+00:00,2026-11-22T20:30:00.549Z,2026-11-22T20:33:31.312Z,complete,e7b2f7476d39b015

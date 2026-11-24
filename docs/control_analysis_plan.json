@@ -1,0 +1,24 @@
+{
+  "recorded_utc": "2026-11-20T12:14:25.117482+00:00",
+  "status": "frozen before this analyst inspected follow-up control outcomes; not external preregistration",
+  "historical_dates": [
+    "2026-11-15",
+    "2026-11-19"
+  ],
+  "historical_pairs": 600,
+  "historical_google_established_minus_original_fresh_udp_pooled_median_ms": 6.444900000002235,
+  "forecast_sign": 1,
+  "forecast_target": "For EACH follow-up matched measurement window, median of paired established DoH elapsed_ms minus fresh UDP elapsed_ms INCLUDING explicit socket creation and bind setup will be greater than zero. Exact labels: doh_warm minus udp_fresh.",
+  "implementation_caveat": "The follow-up fresh UDP explicitly binds inside elapsed_ms; the historical client uses implicit bind. This is a prospective sign transport check under an implementation change, not exact validation of an identical estimator or a pure network/cryptography estimate.",
+  "evaluation": "Use every completed planned window and complete successful matched pairs; retain failures, missingness, zero medians and opposite signs. No adaptive window selection, retuning or p-value. Positive median matches; zero/negative does not.",
+  "secondary_contrasts": [
+    "udp_fresh minus udp_bound: whole elapsed_ms includes lifecycle setup only for fresh",
+    "udp_fresh minus udp_bound: common transport_elapsed_ms from send-call to response receipt, after bind; validation excluded",
+    "doh_warm minus udp_bound: elapsed_ms client-and-service composite; setup excluded by pre-established clients"
+  ],
+  "inference_boundaries": "No population confidence guarantee; selected windows may share serial conditions. Persistent source ports may alter network or cache affinity. Do not assign every UDP difference to local CPU/socket overhead. Do not pool dates/control estimator as a universal penalty.",
+  "input_sha256": {
+    "data/dns_raw.jsonl": "e55d8daa164d725a1e992e640be71c9d1542a5c71c875721b04d0c19f4437228",
+    "data/replication-2026-11-19/dns_raw.jsonl": "b6afb32f6868eb5a0d4d5a08827c53bffa6f8941bb3174f2fa45b6029a0d2031"
+  }
+}

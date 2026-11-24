@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "ledger_written_utc": "2026-11-24T10:40:17.424917+00:00",
+  "study_identifier": "repeatability-2026-11-23",
+  "note": "Study directory labels do not override actual timestamps. Runs remain separate; optional runs are never presumed collected.",
+  "plan_sha256": "e6e65ce182495677d9b4cd73a123f8c85bf86f75c4db915af17f81302c5bacde",
+  "source_lock_sha256": "7840f0a7481c1524a962594b27315597ea0aa54fd729db62e9266d525ebc2224",
+  "script_sha256": {
+    "measure_repeatability.mjs": "15d4115ea5ba81e00c42ee0e58abe0a1ccaeba3ac1df1b73be050b5f499abe1b",
+    "dns_client.mjs": "c2026c7d49654414b6c632b988c9dc9058ce899639bd8ffc98aa771c367dc35f"
+  },
+  "runs": {
+    "A1": {
+      "path": "docs/evidence/repeatability-source-2026-11-23/A1-capture.json",
+      "sha256": "7e8c38e4d51712282c492b87bc9abd790315b388777d40d643ac6435c768798d",
+      "status": "complete",
+      "actual_collection_started_utc": "2026-11-23T21:49:41.438Z",
+      "actual_collection_finished_utc": "2026-11-23T21:55:06.212Z"
+    },
+    "B1": {
+      "path": "docs/evidence/repeatability-source-2026-11-23/B1-capture.json",
+      "sha256": "5cd69c3f836cc95030c54337c6add670339f7e0f8ae49d8604d89cb632162641",
+      "status": "complete",
+      "actual_collection_started_utc": "2026-11-24T10:20:41.146Z",
+      "actual_collection_finished_utc": "2026-11-24T10:26:09.123Z"
+    },
+    "A2": {
+      "path": "docs/evidence/repeatability-source-2026-11-23/A2-capture.json",
+      "sha256": "d919f49586f6f777aec3613e259703b54a1bdb83dee3321b18e548d8484e1bd8",
+      "status": "complete",
+      "actual_collection_started_utc": "2026-11-24T10:34:31.097Z",
+      "actual_collection_finished_utc": "2026-11-24T10:39:55.891Z"
+    }
+  },
+  "data_files_sha256": {
+    "data/repeatability-2026-11-23/A1/design.json": "29b76f7a795a03fdd65bccd1cde53d09e449036c000eaff17582d9f8cb0c8f52",
+    "data/repeatability-2026-11-23/A1/environment.json": "2d2f485855bf2dd6dc892ed88166aa28312ae4c2c9363ab094471bbb61396031",
+    "data/repeatability-2026-11-23/A1/events.jsonl": "18ea9246ef935a51c5145e81356fc18a719aaedfa23c77f26f0c0d8be739b2d9",
+    "data/repeatability-2026-11-23/A1/network_observation_before.json": "c29196bae715c3be29dd8ab84775026ef56eff8d97168d127fde441f826b857e",
+    "data/repeatability-2026-11-23/A1/repeatability_raw.jsonl": "4184a62c66805c5b63b6495226ef905697fd4b508e0ae763e06a4eafe0dd499d",
+    "data/repeatability-2026-11-23/A1/schedule-window-1.json": "e582557d09ad4854a835e868cd9d73351d7dce73630b3414d34b153efa254445",
+    "data/repeatability-2026-11-23/A1/schedule-window-2.json": "22ee01445621dc488f6ffe229bc3ca96467f1fa209a8588268b69a89829c1bc4",
+    "data/repeatability-2026-11-23/A1/schedule-window-3.json": "0474a10177d5110ce5a1509da1ebc0c760b3fddfbf1f46d4c3c2eaa6773c86f2",
+    "data/repeatability-2026-11-23/B1/access_context.json": "2417ff81aa95c6630c1bc29f3aa133a77e1733c02c008798553578895814c9d1",
+    "data/repeatability-2026-11-23/B1/design.json": "1528f98f3898d3ad3f3eb6097b2d1e8074a428fe74a37bb938a39943678c696b",
+    "data/repeatability-2026-11-23/B1/environment.json": "77aece27204eb033d5be216e717911f3b5dc700b7e47090abe423aeb597f0671",
+    "data/repeatability-2026-11-23/B1/events.jsonl": "52e8f3658fe80894fd94454a722900b07f69596787673be8707a7777909f27fb",
+    "data/repeatability-2026-11-23/B1/network_observation_after.json": "9625f97c8e6d4ad7975668b8aba8a3b615e7e7b2d1564c003352650759b5a23b",
+    "data/repeatability-2026-11-23/B1/network_observation_before.json": "56309f349f75dddaaa395d0542e5618f1f0dcd6854cc45c7d1ec80a5eace34e1",
+    "data/repeatability-2026-11-23/B1/repeatability_raw.jsonl": "69a6569f9a30987f3e0a0826362120c30a147092003feda435f2c8c1f3fac6a8",
+    "data/repeatability-2026-11-23/B1/schedule-window-1.json": "3cf3255d7b27dfde7399d1580242a5f6a8000997a1ccd604b7e44cc049b076d6",
+    "data/repeatability-2026-11-23/B1/schedule-window-2.json": "4feec20fcb8b13db499c797f5e6497330b985813d6c0a05ab8ba9cd34e5e42f5",
+    "data/repeatability-2026-11-23/B1/schedule-window-3.json": "9af8533123801cfc8a7f1bafdc3ee60d86923bf83bbe1b9a3ceb56ab0a170ee9",
+    "data/repeatability-2026-11-23/A2/access_context.json": "252506b8c025354e9d77c24c14da56e60a45ab2bd2a2e6eb2ad6b909bbfd8657",
+    "data/repeatability-2026-11-23/A2/design.json": "750392c861b590022df5f8910a1dc1ca0f7baa3a1db932776096b9e3a9816069",
+    "data/repeatability-2026-11-23/A2/environment.json": "724d2c25e89a0da220891a1dbac6ab9859218089d550ef77e23e7e31515dcd1a",
+    "data/repeatability-2026-11-23/A2/events.jsonl": "960de166f1dde4471cd2333c199319b869ee49ae0a5adcd8ec73b7a3f55c1ed0",
+    "data/repeatability-2026-11-23/A2/network_observation_after.json": "a664894437a8797dd932cd7de12597e1444a2015ec7974232bcec70b2e24fee5",
+    "data/repeatability-2026-11-23/A2/network_observation_before.json": "05f5c75fcb3953e94a5d3d6fe0d1e317c0400417a6646fc05de2a1cb25884c15",
+    "data/repeatability-2026-11-23/A2/repeatability_raw.jsonl": "699bbfd3be2ca7d97607c7388c3a5c3a3bd0b218de00482aa8d0a89892ba58b3",
+    "data/repeatability-2026-11-23/A2/schedule-window-1.json": "7151cd861251c958bc457c40d8c27a1a08b12c0d10edf3526633ee801b720a3b",
+    "data/repeatability-2026-11-23/A2/schedule-window-2.json": "cd245569bd0e29fccfebae33e8d26a3dff294e5680f0b5e5b03b50f5d9c12c77",
+    "data/repeatability-2026-11-23/A2/schedule-window-3.json": "3933db4169a6607b5865e232e62af659ccae83fb542f3a7030343284a1ba5781"
+  },
+  "context_clarifications": [
+    {
+      "path": "docs/evidence/repeatability-source-2026-11-23/context-clarification-2026-11-24.json",
+      "sha256": "d203712f189c31b2013dbd55d31db459aab18956de4c46a8d906f86add571658"
+    }
+  ]
+}

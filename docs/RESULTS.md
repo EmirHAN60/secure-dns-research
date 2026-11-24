@@ -1,6 +1,8 @@
-# Extended results and figure guide
+# Historical results and figure guide
 
-All values below are generated from the saved, audited measurements. Dates are analyzed separately. Positive paired differences indicate slower DoH. A paired median is not the difference of marginal medians. Failures remain in attempt counts; successful-latency estimates condition on success.
+These tables describe the 15 and 19 November collections. Positive paired differences indicate slower DoH. Failures remain in attempt counts and successful-latency estimates condition on success.
+
+See [the follow-up socket control and prediction results](CONTROL_RESULTS.md) and [the browser phase analysis](BROWSER_PHASES.md) for the revised paper.
 
 | Date | Measured lookup attempts | Page attempts | Lookup priming records | Failed measured attempts |
 |---|---:|---:|---:|---:|
@@ -240,6 +242,6 @@ Independent date-specific median paired lookup differences and their original co
 
 ## Reading the evidence
 
-The primary within-window intervals, per-domain intervals and window effects answer different questions. Neither a narrow pooled interval nor agreement between bootstrap choices establishes stability outside the observed network contexts. The strongest qualitative observation is the repeated change in sign of the Google established-session contrast across windows on both dates. It does not identify the cause.
+The within-window and per-domain intervals condition on the observed time periods. Google established DoH changes sign within both historical dates. The [held-window analysis](CONTROL_RESULTS.md) measures how often the pooled sign transfers.
 
-The browser fixture uses real DNS waiting and fixed local content. Its page metric is not native-browser or arbitrary-website performance. Runtime versions differ across dates; see [methods](METHODS.md) and [reproduction details](REPRODUCIBILITY.md).
+The browser fixture uses live DNS waiting and fixed local content. Runtime versions differ across dates. See [methods](METHODS.md) and [reproduction details](REPRODUCIBILITY.md).

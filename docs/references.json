@@ -1,6 +1,6 @@
 {
-  "checked_date": "2026-11-19",
-  "scope": "Eighteen sources with distinct roles; cite only where their claims are used. Technical claims are based on primary papers or standards. This project is an introductory replication and controlled demonstration, not a novel protocol or first global measurement.",
+  "checked_date": "2026-11-23",
+  "scope": "Twenty main-paper sources with distinct roles. Technical claims use primary papers or standards. The original eighteen were checked on 15 and 19 November; ZDNS was added on 20 November and Paris traceroute on 23 November 2026. Lu et al. (2019) remains supplemental-only in RELATED_BENCHMARKS.md. This project is a replication and measurement audit, not a new protocol or first global measurement.",
   "references": [
     {
       "id": "bottger2019",
@@ -450,6 +450,66 @@
         }
       ],
       "key": "bajpai2019"
+    },
+    {
+      "id": "izhikevich2022",
+      "key": "izhikevich2022",
+      "title": "ZDNS: A Fast DNS Toolkit for Internet Measurement",
+      "authors": [
+        "Izhikevich, L.",
+        "Akiwate, G.",
+        "Berger, B.",
+        "Drakontaidis, S.",
+        "Ascheman, A.",
+        "Pearce, P.",
+        "Adrian, D.",
+        "Durumeric, Z."
+      ],
+      "year": 2022,
+      "doi": "10.1145/3517745.3561434",
+      "url": "https://doi.org/10.1145/3517745.3561434",
+      "full_text_url": "https://faculty.cc.gatech.edu/~pearce/papers/zdns_imc_2022.pdf",
+      "source_type": "Peer-reviewed conference paper",
+      "apa": "Izhikevich, L., Akiwate, G., Berger, B., Drakontaidis, S., Ascheman, A., Pearce, P., Adrian, D., & Durumeric, Z. (2022). ZDNS: A fast DNS toolkit for internet measurement. In Proceedings of the 22nd ACM Internet Measurement Conference (pp. 33–43). Association for Computing Machinery. https://doi.org/10.1145/3517745.3561434",
+      "claims": [
+        {
+          "claim": "ZDNS uses long-lived UDP sockets to avoid per-lookup socket creation and teardown work.",
+          "locator": "Section 3.4 Performance Optimizations, UDP Socket Reuse, author PDF p. 3",
+          "relation": "Motivates a reusable UDP sensitivity treatment and explicit resource-readiness timing boundaries in this benchmark.",
+          "boundary": "The paper evaluates a high-throughput Internet measurement toolkit; it does not supply a per-query latency correction for this client, operating system or workload."
+        }
+      ],
+      "metadata_note": "Title, author order, year and DOI verified in the original author-hosted paper on 20 November 2026. The IMC publication is 2022; the later arXiv upload is 2023. Proceedings pages 33–43; author PDF has separate pagination."
+    },
+    {
+      "id": "augustin2006",
+      "key": "augustin2006",
+      "title": "Avoiding traceroute anomalies with Paris traceroute",
+      "authors": [
+        "Augustin, B.",
+        "Cuvellier, X.",
+        "Orgogozo, B.",
+        "Viger, F.",
+        "Friedman, T.",
+        "Latapy, M.",
+        "Magnien, C.",
+        "Teixeira, R."
+      ],
+      "year": 2006,
+      "doi": "10.1145/1177080.1177100",
+      "url": "https://doi.org/10.1145/1177080.1177100",
+      "full_text_url": "https://conferences.sigcomm.org/imc/2006/papers/p15-augustin.pdf",
+      "source_type": "Peer-reviewed conference paper",
+      "apa": "Augustin, B., Cuvellier, X., Orgogozo, B., Viger, F., Friedman, T., Latapy, M., Magnien, C., & Teixeira, R. (2006). Avoiding traceroute anomalies with Paris traceroute. In Proceedings of the 6th ACM SIGCOMM Conference on Internet Measurement (pp. 153–158). Association for Computing Machinery. https://doi.org/10.1145/1177080.1177100",
+      "claims": [
+        {
+          "claim": "Per-flow load balancing can depend on transport ports, so separate flows can follow different paths.",
+          "locator": "Section 2.1, conference PDF pp. 1–2; implementation discussion in Section 2.2, p. 3",
+          "relation": "Motivates checking sensitivity across persistent UDP sockets and HTTP/2 connections.",
+          "boundary": "Traceroute study; it does not identify routing, resolver affinity or any cause of this project's timing changes."
+        }
+      ],
+      "metadata_note": "Conference-hosted original verifies title, eight-author order and 2006 venue/date; proceedings pp. 153–158 and DOI also agree with the indexed bibliographic record. DOI landing page denied automated retrieval (HTTP 403); the original conference PDF was accessible and read. Verified 23 November 2026."
     }
   ]
 }

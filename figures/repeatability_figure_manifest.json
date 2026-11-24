@@ -1,0 +1,218 @@
+{
+  "matplotlib_version": "3.10.7",
+  "completed_runs": [
+    "A1",
+    "B1",
+    "A2"
+  ],
+  "figures": [
+    {
+      "stem": "repeatability_magnitudes",
+      "directory": "figures",
+      "caption": "Repeat-flow primary results: circles show weighted empirical median absolute pair differences and bars the weighted interquartile range, not a confidence interval. Grey dots show each observed window median. Only successful adjacent-position pairs with actual start lag75\u2013125ms in common cells are represented. Windows/cells/classes use the frozen conditional weights. UU and DD are same-mode repeatability controls; DU is cross-mode separation. Runs remain separate and no jitter subtraction identifies causal encryption cost.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 8.0,
+      "files": [
+        "repeatability_magnitudes.png",
+        "repeatability_magnitudes.pdf",
+        "repeatability_magnitudes.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_thresholds",
+      "directory": "figures",
+      "caption": "All four predeclared sensitivity thresholds for repeat-flow primary pairs. Rates use the same common-cell/window weights as the median comparison and need not equal a pooled integer count divided by pair count. They describe dependent observed pairs under the selected lag condition, not population probabilities, equivalence or user-perception limits. No cross-run pooling occurs.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 8.0,
+      "files": [
+        "repeatability_thresholds.png",
+        "repeatability_thresholds.pdf",
+        "repeatability_thresholds.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_lag_sensitivity",
+      "directory": "figures",
+      "caption": "Repeat-flow weighted median magnitudes under primary adjacent75\u2013125ms lags, all adjacent lags, tight adjacent90\u2013110ms lags, and position separations2/3 within75\u2013125%of their target lag. Each view recomputes common overlap and therefore can condition on a different set of cells; sample counts are retained. Lines only connect descriptive summaries. Missing overlap produces gaps, never an imputed estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 8.0,
+      "files": [
+        "repeatability_lag_sensitivity.png",
+        "repeatability_lag_sensitivity.pdf",
+        "repeatability_lag_sensitivity.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_fixed_flow_comparison",
+      "directory": "figures",
+      "caption": "Separate-run weighted primary median absolute differences for same-mode DoH repeats (DD) and DoH-versus-UDP pairs (DU), under the same versus distinct prepared-flow rules. Both provider panels share the x scale. Matching and weighting are identical to the full results: adjacent successful pairs, actual start lag75\u2013125ms, common position/domain/window cells and equal window mass. Points are descriptive estimates without confidence intervals; distinct flows do not establish independent routes. No cross-run pooling or jitter subtraction.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.3,
+      "files": [
+        "repeatability_fixed_flow_comparison.png",
+        "repeatability_fixed_flow_comparison.pdf",
+        "repeatability_fixed_flow_comparison.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_magnitudes",
+      "directory": "figures/repeatability/A1",
+      "caption": "Repeat-flow primary results: circles show weighted empirical median absolute pair differences and bars the weighted interquartile range, not a confidence interval. Grey dots show each observed window median. Only successful adjacent-position pairs with actual start lag75\u2013125ms in common cells are represented. Windows/cells/classes use the frozen conditional weights. UU and DD are same-mode repeatability controls; DU is cross-mode separation. Runs remain separate and no jitter subtraction identifies causal encryption cost.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_magnitudes.png",
+        "repeatability_magnitudes.pdf",
+        "repeatability_magnitudes.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_thresholds",
+      "directory": "figures/repeatability/A1",
+      "caption": "All four predeclared sensitivity thresholds for repeat-flow primary pairs. Rates use the same common-cell/window weights as the median comparison and need not equal a pooled integer count divided by pair count. They describe dependent observed pairs under the selected lag condition, not population probabilities, equivalence or user-perception limits. No cross-run pooling occurs.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_thresholds.png",
+        "repeatability_thresholds.pdf",
+        "repeatability_thresholds.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_lag_sensitivity",
+      "directory": "figures/repeatability/A1",
+      "caption": "Repeat-flow weighted median magnitudes under primary adjacent75\u2013125ms lags, all adjacent lags, tight adjacent90\u2013110ms lags, and position separations2/3 within75\u2013125%of their target lag. Each view recomputes common overlap and therefore can condition on a different set of cells; sample counts are retained. Lines only connect descriptive summaries. Missing overlap produces gaps, never an imputed estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_lag_sensitivity.png",
+        "repeatability_lag_sensitivity.pdf",
+        "repeatability_lag_sensitivity.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_flow_comparison",
+      "directory": "figures/repeatability/A1",
+      "caption": "Weighted median absolute pair differences and interquartile ranges under repeated or distinct prepared flows, in the same primary position/lag stratum. Distinct UDP/H2 objects and source ports are not assumed statistically independent or separate physical paths. Between-flow level differences and temporal variation can both contribute. Bars are IQRs, not uncertainty intervals for a population estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.7,
+      "files": [
+        "repeatability_flow_comparison.png",
+        "repeatability_flow_comparison.pdf",
+        "repeatability_flow_comparison.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_magnitudes",
+      "directory": "figures/repeatability/B1",
+      "caption": "Repeat-flow primary results: circles show weighted empirical median absolute pair differences and bars the weighted interquartile range, not a confidence interval. Grey dots show each observed window median. Only successful adjacent-position pairs with actual start lag75\u2013125ms in common cells are represented. Windows/cells/classes use the frozen conditional weights. UU and DD are same-mode repeatability controls; DU is cross-mode separation. Runs remain separate and no jitter subtraction identifies causal encryption cost.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_magnitudes.png",
+        "repeatability_magnitudes.pdf",
+        "repeatability_magnitudes.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_thresholds",
+      "directory": "figures/repeatability/B1",
+      "caption": "All four predeclared sensitivity thresholds for repeat-flow primary pairs. Rates use the same common-cell/window weights as the median comparison and need not equal a pooled integer count divided by pair count. They describe dependent observed pairs under the selected lag condition, not population probabilities, equivalence or user-perception limits. No cross-run pooling occurs.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_thresholds.png",
+        "repeatability_thresholds.pdf",
+        "repeatability_thresholds.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_lag_sensitivity",
+      "directory": "figures/repeatability/B1",
+      "caption": "Repeat-flow weighted median magnitudes under primary adjacent75\u2013125ms lags, all adjacent lags, tight adjacent90\u2013110ms lags, and position separations2/3 within75\u2013125%of their target lag. Each view recomputes common overlap and therefore can condition on a different set of cells; sample counts are retained. Lines only connect descriptive summaries. Missing overlap produces gaps, never an imputed estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_lag_sensitivity.png",
+        "repeatability_lag_sensitivity.pdf",
+        "repeatability_lag_sensitivity.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_flow_comparison",
+      "directory": "figures/repeatability/B1",
+      "caption": "Weighted median absolute pair differences and interquartile ranges under repeated or distinct prepared flows, in the same primary position/lag stratum. Distinct UDP/H2 objects and source ports are not assumed statistically independent or separate physical paths. Between-flow level differences and temporal variation can both contribute. Bars are IQRs, not uncertainty intervals for a population estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.7,
+      "files": [
+        "repeatability_flow_comparison.png",
+        "repeatability_flow_comparison.pdf",
+        "repeatability_flow_comparison.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_magnitudes",
+      "directory": "figures/repeatability/A2",
+      "caption": "Repeat-flow primary results: circles show weighted empirical median absolute pair differences and bars the weighted interquartile range, not a confidence interval. Grey dots show each observed window median. Only successful adjacent-position pairs with actual start lag75\u2013125ms in common cells are represented. Windows/cells/classes use the frozen conditional weights. UU and DD are same-mode repeatability controls; DU is cross-mode separation. Runs remain separate and no jitter subtraction identifies causal encryption cost.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_magnitudes.png",
+        "repeatability_magnitudes.pdf",
+        "repeatability_magnitudes.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_thresholds",
+      "directory": "figures/repeatability/A2",
+      "caption": "All four predeclared sensitivity thresholds for repeat-flow primary pairs. Rates use the same common-cell/window weights as the median comparison and need not equal a pooled integer count divided by pair count. They describe dependent observed pairs under the selected lag condition, not population probabilities, equivalence or user-perception limits. No cross-run pooling occurs.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_thresholds.png",
+        "repeatability_thresholds.pdf",
+        "repeatability_thresholds.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_lag_sensitivity",
+      "directory": "figures/repeatability/A2",
+      "caption": "Repeat-flow weighted median magnitudes under primary adjacent75\u2013125ms lags, all adjacent lags, tight adjacent90\u2013110ms lags, and position separations2/3 within75\u2013125%of their target lag. Each view recomputes common overlap and therefore can condition on a different set of cells; sample counts are retained. Lines only connect descriptive summaries. Missing overlap produces gaps, never an imputed estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.8,
+      "files": [
+        "repeatability_lag_sensitivity.png",
+        "repeatability_lag_sensitivity.pdf",
+        "repeatability_lag_sensitivity.svg"
+      ]
+    },
+    {
+      "stem": "repeatability_flow_comparison",
+      "directory": "figures/repeatability/A2",
+      "caption": "Weighted median absolute pair differences and interquartile ranges under repeated or distinct prepared flows, in the same primary position/lag stratum. Distinct UDP/H2 objects and source ports are not assumed statistically independent or separate physical paths. Between-flow level differences and temporal variation can both contribute. Bars are IQRs, not uncertainty intervals for a population estimate.",
+      "png_dpi": 220,
+      "width_inches": 6.5,
+      "height_inches": 3.7,
+      "files": [
+        "repeatability_flow_comparison.png",
+        "repeatability_flow_comparison.pdf",
+        "repeatability_flow_comparison.svg"
+      ]
+    }
+  ]
+}

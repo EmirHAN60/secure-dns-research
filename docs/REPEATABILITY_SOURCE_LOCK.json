@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-11-23T21:48:19.753100+00:00",
+  "plan_path": "docs/REPEATABILITY_PLAN.json",
+  "plan_sha256": "e6e65ce182495677d9b4cd73a123f8c85bf86f75c4db915af17f81302c5bacde",
+  "source_sha256": {
+    "measure_repeatability.mjs": "15d4115ea5ba81e00c42ee0e58abe0a1ccaeba3ac1df1b73be050b5f499abe1b",
+    "dns_client.mjs": "c2026c7d49654414b6c632b988c9dc9058ce899639bd8ffc98aa771c367dc35f"
+  },
+  "note": "Immutable local source lock recorded before the first live repeatability-study query."
+}

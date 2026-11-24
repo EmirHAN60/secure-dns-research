@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "run_id": "A1",
+  "status": "complete",
+  "ledger_written_utc": "2026-11-24T10:22:14.028577+00:00",
+  "directory": "data/repeatability-2026-11-23/A1",
+  "directory_date_is_study_identifier": true,
+  "actual_collection_started_utc": "2026-11-23T21:49:41.438Z",
+  "actual_collection_finished_utc": "2026-11-23T21:55:06.212Z",
+  "actual_collection_dates_utc": [
+    "2026-11-23"
+  ],
+  "collector_duration_seconds": 324.774,
+  "context_label": "A",
+  "context_confirmation_file": null,
+  "post_run_network_observation": "Not captured contemporaneously; no retrospective observation substituted",
+  "plan_sha256": "e6e65ce182495677d9b4cd73a123f8c85bf86f75c4db915af17f81302c5bacde",
+  "source_lock_sha256": "7840f0a7481c1524a962594b27315597ea0aa54fd729db62e9266d525ebc2224",
+  "script_sha256": {
+    "measure_repeatability.mjs": "15d4115ea5ba81e00c42ee0e58abe0a1ccaeba3ac1df1b73be050b5f499abe1b",
+    "dns_client.mjs": "c2026c7d49654414b6c632b988c9dc9058ce899639bd8ffc98aa771c367dc35f"
+  },
+  "node": "v24.22.3",
+  "openssl": "3.5.9",
+  "platform": "win32",
+  "os_release": "10.0.26300",
+  "data_files_sha256": {
+    "data/repeatability-2026-11-23/A1/design.json": "29b76f7a795a03fdd65bccd1cde53d09e449036c000eaff17582d9f8cb0c8f52",
+    "data/repeatability-2026-11-23/A1/environment.json": "2d2f485855bf2dd6dc892ed88166aa28312ae4c2c9363ab094471bbb61396031",
+    "data/repeatability-2026-11-23/A1/events.jsonl": "18ea9246ef935a51c5145e81356fc18a719aaedfa23c77f26f0c0d8be739b2d9",
+    "data/repeatability-2026-11-23/A1/network_observation_before.json": "c29196bae715c3be29dd8ab84775026ef56eff8d97168d127fde441f826b857e",
+    "data/repeatability-2026-11-23/A1/repeatability_raw.jsonl": "4184a62c66805c5b63b6495226ef905697fd4b508e0ae763e06a4eafe0dd499d",
+    "data/repeatability-2026-11-23/A1/schedule-window-1.json": "e582557d09ad4854a835e868cd9d73351d7dce73630b3414d34b153efa254445",
+    "data/repeatability-2026-11-23/A1/schedule-window-2.json": "22ee01445621dc488f6ffe229bc3ca96467f1fa209a8588268b69a89829c1bc4",
+    "data/repeatability-2026-11-23/A1/schedule-window-3.json": "0474a10177d5110ce5a1509da1ebc0c760b3fddfbf1f46d4c3c2eaa6773c86f2"
+  },
+  "independent_audit": {
+    "errors": [],
+    "raw_records": 3120,
+    "measured_attempts": 2880,
+    "priming_attempts": 240,
+    "successful_measured_attempts": 2880,
+    "failed_measured_attempts": 0,
+    "measured_blocks": 720,
+    "fully_successful_blocks": 720,
+    "independent_wire_checks": 3120,
+    "failures": [],
+    "raw_sha256": "4184a62c66805c5b63b6495226ef905697fd4b508e0ae763e06a4eafe0dd499d",
+    "source_sha256": {
+      "measure_repeatability.mjs": "15d4115ea5ba81e00c42ee0e58abe0a1ccaeba3ac1df1b73be050b5f499abe1b",
+      "dns_client.mjs": "c2026c7d49654414b6c632b988c9dc9058ce899639bd8ffc98aa771c367dc35f"
+    },
+    "plan_and_lock_precede_start": true,
+    "schedule_hashes": {
+      "1": "e582557d09ad4854a835e868cd9d73351d7dce73630b3414d34b153efa254445",
+      "2": "22ee01445621dc488f6ffe229bc3ca96467f1fa209a8588268b69a89829c1bc4",
+      "3": "0474a10177d5110ce5a1509da1ebc0c760b3fddfbf1f46d4c3c2eaa6773c86f2"
+    },
+    "unique_schedule_hash_count": 3,
+    "flow_groups": [
+      {
+        "window": 1,
+        "provider": "cloudflare",
+        "protocol": "udp_bound",
+        "flow_index": 0,
+        "flow_id": "A1/w1/cloudflare/udp_bound/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "cloudflare",
+        "protocol": "udp_bound",
+        "flow_index": 1,
+        "flow_id": "A1/w1/cloudflare/udp_bound/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "cloudflare",
+        "protocol": "doh_warm",
+        "flow_index": 0,
+        "flow_id": "A1/w1/cloudflare/doh_warm/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "cloudflare",
+        "protocol": "doh_warm",
+        "flow_index": 1,
+        "flow_id": "A1/w1/cloudflare/doh_warm/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "google",
+        "protocol": "udp_bound",
+        "flow_index": 0,
+        "flow_id": "A1/w1/google/udp_bound/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "google",
+        "protocol": "udp_bound",
+        "flow_index": 1,
+        "flow_id": "A1/w1/google/udp_bound/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "google",
+        "protocol": "doh_warm",
+        "flow_index": 0,
+        "flow_id": "A1/w1/google/doh_warm/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 1,
+        "provider": "google",
+        "protocol": "doh_warm",
+        "flow_index": 1,
+        "flow_id": "A1/w1/google/doh_warm/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "cloudflare",
+        "protocol": "udp_bound",
+        "flow_index": 0,
+        "flow_id": "A1/w2/cloudflare/udp_bound/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "cloudflare",
+        "protocol": "udp_bound",
+        "flow_index": 1,
+        "flow_id": "A1/w2/cloudflare/udp_bound/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "cloudflare",
+        "protocol": "doh_warm",
+        "flow_index": 0,
+        "flow_id": "A1/w2/cloudflare/doh_warm/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "cloudflare",
+        "protocol": "doh_warm",
+        "flow_index": 1,
+        "flow_id": "A1/w2/cloudflare/doh_warm/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "google",
+        "protocol": "udp_bound",
+        "flow_index": 0,
+        "flow_id": "A1/w2/google/udp_bound/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "google",
+        "protocol": "udp_bound",
+        "flow_index": 1,
+        "flow_id": "A1/w2/google/udp_bound/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "google",
+        "protocol": "doh_warm",
+        "flow_index": 0,
+        "flow_id": "A1/w2/google/doh_warm/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 2,
+        "provider": "google",
+        "protocol": "doh_warm",
+        "flow_index": 1,
+        "flow_id": "A1/w2/google/doh_warm/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "cloudflare",
+        "protocol": "udp_bound",
+        "flow_index": 0,
+        "flow_id": "A1/w3/cloudflare/udp_bound/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "cloudflare",
+        "protocol": "udp_bound",
+        "flow_index": 1,
+        "flow_id": "A1/w3/cloudflare/udp_bound/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "cloudflare",
+        "protocol": "doh_warm",
+        "flow_index": 0,
+        "flow_id": "A1/w3/cloudflare/doh_warm/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "cloudflare",
+        "protocol": "doh_warm",
+        "flow_index": 1,
+        "flow_id": "A1/w3/cloudflare/doh_warm/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "google",
+        "protocol": "udp_bound",
+        "flow_index": 0,
+        "flow_id": "A1/w3/google/udp_bound/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "google",
+        "protocol": "udp_bound",
+        "flow_index": 1,
+        "flow_id": "A1/w3/google/udp_bound/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "google",
+        "protocol": "doh_warm",
+        "flow_index": 0,
+        "flow_id": "A1/w3/google/doh_warm/f0",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      },
+      {
+        "window": 3,
+        "provider": "google",
+        "protocol": "doh_warm",
+        "flow_index": 1,
+        "flow_id": "A1/w3/google/doh_warm/f1",
+        "successful_records": 130,
+        "measured_attempts": 120,
+        "distinct_local_port_count": 1
+      }
+    ]
+  },
+  "raw_bytes_preserved_during_finalization": true
+}

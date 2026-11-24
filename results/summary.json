@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-19T19:16:51.432323+00:00",
+  "generated_utc": "2026-11-24T10:44:20.704993+00:00",
   "inputs": {
     "dns": "data/dns_raw.jsonl",
     "pages": "data/pages.jsonl",

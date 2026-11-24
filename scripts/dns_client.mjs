@@ -1,7 +1,7 @@
 /** Direct IPv4 UDP and RFC 8484 HTTP/2 clients. No external dependencies. */
 import dgram from 'node:dgram';
 import http2 from 'node:http2';
-import { randomInt } from 'node:crypto';
+import { createHash, randomInt } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
 
 export const PROVIDERS = {
@@ -43,20 +43,34 @@ export function parseResponse(b, query) {
   const q=readName(b,12), expected=readName(query,12);
   if(q.name!==expected.name||q.end+4>b.length||b.readUInt16BE(q.end)!==1||b.readUInt16BE(q.end+2)!==1)throw new Error('Question mismatch');
   let p=q.end+4; const counts=[b.readUInt16BE(6),b.readUInt16BE(8),b.readUInt16BE(10)]; const answers=[];
+  const aliases = new Map();
   for(let sec=0;sec<3;sec++)for(let i=0;i<counts[sec];i++){
     const n=readName(b,p);p=n.end;
     if(p+10>b.length)throw new Error('Truncated RR header');
     const type=b.readUInt16BE(p),cls=b.readUInt16BE(p+2),ttl=b.readUInt32BE(p+4),len=b.readUInt16BE(p+8);p+=10;
     if(p+len>b.length)throw new Error('Truncated RR data');
-    if(sec===0&&cls===1&&(type===1||type===28)) {
+    if (sec === 0 && cls === 1 && type === 5) {
+      const target = readName(b, p);
+      if (target.end !== p + len || !target.name) throw new Error('Invalid CNAME RDATA');
+      const previous = aliases.get(n.name);
+      if (previous && previous !== target.name) throw new Error('Conflicting CNAME records');
+      aliases.set(n.name, target.name);
+    } else if(sec===0&&cls===1&&(type===1||type===28)) {
       if((type===1&&len!==4)||(type===28&&len!==16))throw new Error('Invalid address length');
       const address=type===1?[...b.subarray(p,p+len)].join('.'):Array.from({length:8},(_,j)=>b.readUInt16BE(p+j*2).toString(16)).join(':');
       answers.push({name:n.name,type,ttl,address});
     }
     p+=len;
   }
+  if (p !== b.length) throw new Error('Unparsed trailing response bytes');
+  const reachable = new Set();
+  for (let name = q.name; name !== undefined; name = aliases.get(name)) {
+    if (reachable.has(name)) throw new Error('CNAME chain loop');
+    reachable.add(name);
+  }
+  const matching = answers.filter(answer => reachable.has(answer.name));
   const rcode=flags&15,truncated=!!(flags&0x0200);
-  return {rcode,truncated,answer_count:counts[0],addresses:answers.map(a=>a.address),ttls:answers.map(a=>a.ttl),valid:rcode===0&&!truncated&&answers.some(a=>a.type===1)};
+  return {rcode,truncated,answer_count:counts[0],addresses:matching.map(a=>a.address),ttls:matching.map(a=>a.ttl),valid:rcode===0&&!truncated&&matching.some(a=>a.type===1)};
 }
 
 function responseFields(body,q) {
@@ -128,4 +142,9 @@ export class DohClient {
 }
 
 export function seededRng(seed) { let a=seed>>>0; return ()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}; }
+export function windowRng(seed, window, namespace = 'control') {
+  // Hash tuples such as (seed, 2) and (seed + 1, 1) instead of adding them.
+  const key = JSON.stringify([namespace, seed, window]);
+  return seededRng(createHash('sha256').update(key).digest().readUInt32BE());
+}
 export function shuffle(arr,rng){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}

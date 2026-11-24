@@ -1,0 +1,42 @@
+{
+  "purpose": "Byte-exact executed source for the November 20 prospective UDP socket-lifecycle control study",
+  "dataset": "data/control-2026-11-20",
+  "started_utc": "2026-11-20T12:16:25.677Z",
+  "finished_utc": "2026-11-20T12:30:26.754Z",
+  "windows": 10,
+  "repetitions": 10,
+  "interval_seconds": 90,
+  "seed": 20261120,
+  "measured_attempts": 6000,
+  "priming_attempts": 600,
+  "failed_attempts": 0,
+  "node": "v24.22.3",
+  "openssl": "3.5.9",
+  "platform": "win32",
+  "release": "10.0.26300",
+  "command": [
+    "node",
+    "scripts/measure_controls.mjs",
+    "--windows",
+    "10",
+    "--reps",
+    "10",
+    "--interval-seconds",
+    "90",
+    "--seed",
+    "20261120",
+    "--out",
+    "data/control-2026-11-20"
+  ],
+  "script_sha256": {
+    "measure_controls.mjs": "c928120b4d306a05eb18a12bbfaf02a962641ae53eb5c2a4dde03917394bded0",
+    "dns_client.mjs": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1"
+  },
+  "data_files_sha256": {
+    "control_raw.jsonl": "7577b02689afa15e5d2744b994dae2fbb11335db9b73f4acb5f270b09a7176e6",
+    "design.json": "ddef8924144ecfd45ec41a02808026e9ad47bf197810fa7e6ac6958ad1f35d49",
+    "environment.json": "e9c65d03c3ed706c6d02ef9ace13493dd279b42bbcc8cba983b2850c11484532",
+    "events.jsonl": "4d2c478bd9e856cec8f8cd40e59f3e9d535f693bc50213ed0bcef3c8ac57b78e"
+  },
+  "maintained_change_after_collection": "Early rejection of configurations requiring more than 65,536 unique transaction IDs; archived executed collector unchanged"
+}

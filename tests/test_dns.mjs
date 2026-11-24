@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { makeQuery,parseResponse,seededRng,shuffle } from '../scripts/dns_client.mjs';
+import { makeQuery,parseResponse,seededRng,shuffle,windowRng } from '../scripts/dns_client.mjs';
 const q=makeQuery('example.com',0x1234);
 assert.equal(q.toString('hex'),'123401000001000000000000076578616d706c6503636f6d0000010001');
 const a=Buffer.concat([Buffer.from('123481800001000100000000','hex'),q.subarray(12),Buffer.from('c00c000100010000012c00045db8d822','hex')]);
@@ -13,5 +13,28 @@ const qr=Buffer.from(a);qr[2]&=0x7f;assert.throws(()=>parseResponse(qr,q),/QR/);
 const loop=Buffer.concat([Buffer.from('123481800001000000000000','hex'),Buffer.from('c00c00010001','hex')]);assert.throws(()=>parseResponse(loop,q),/loop/);
 assert.deepEqual(shuffle([1,2,3,4],seededRng(7)),shuffle([1,2,3,4],seededRng(7)));
 assert.throws(()=>makeQuery('bad..com'),/Invalid/);
-console.log('PASS: wire query fixture, A answer/TTL, transaction/name/QR, truncation, RCODE, compression loop, RNG and invalid qname checks');
+const rrA = Buffer.from('000100010000012c00045db8d822','hex');
+const alias = makeQuery('alias.example').subarray(12,-4);
+const wrongOwner = Buffer.concat([a.subarray(0,q.length),alias,rrA]);
+assert.equal(parseResponse(wrongOwner,q).valid,false);
+const cname = (owner,target) => {
+  const header = Buffer.from('000500010000012c0000','hex');
+  header.writeUInt16BE(target.length,8);
+  return Buffer.concat([owner,header,target]);
+};
+const twoAnswers = Buffer.from(a.subarray(0,q.length));
+twoAnswers.writeUInt16BE(2,6);
+const queryPointer = Buffer.from('c00c','hex');
+const linked = Buffer.concat([twoAnswers,Buffer.concat([alias,rrA]),cname(queryPointer,alias)]);
+assert.deepEqual(parseResponse(linked,q).addresses,['93.184.216.34']);
+assert.equal(parseResponse(linked,q).valid,true);
+const aliasLoop = Buffer.concat([twoAnswers,cname(queryPointer,alias),cname(alias,queryPointer)]);
+assert.throws(()=>parseResponse(aliasLoop,q),/CNAME chain loop/);
+const draw = (s,w) => {
+  const rng = windowRng(s,w,'replication');
+  return Array.from({length:8},rng);
+};
+assert.deepEqual(draw(20261122,2),draw(20261122,2));
+assert.notDeepEqual(draw(20261122,2),draw(20261123,1));
+console.log('PASS: DNS wire checks, linked answer owners, alias loops and separate seeded window streams');
 

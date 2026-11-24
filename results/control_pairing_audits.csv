@@ -1,0 +1,11 @@
+provider,comparison,baseline,metric,blocks,both_attempted,complete_pairs,missing_comparison,missing_baseline,both_failed,comparison_only_success,baseline_only_success,missing_metric
+cloudflare,udp_fresh,udp_bound,elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+cloudflare,udp_fresh,udp_bound,transport_elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+cloudflare,udp_fresh,udp_bound,post_bind_query_ms,1000,1000,1000,0,0,0,0,0,0
+cloudflare,doh_warm,udp_bound,elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+cloudflare,doh_warm,udp_fresh,elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+google,udp_fresh,udp_bound,elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+google,udp_fresh,udp_bound,transport_elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+google,udp_fresh,udp_bound,post_bind_query_ms,1000,1000,1000,0,0,0,0,0,0
+google,doh_warm,udp_bound,elapsed_ms,1000,1000,1000,0,0,0,0,0,0
+google,doh_warm,udp_fresh,elapsed_ms,1000,1000,1000,0,0,0,0,0,0

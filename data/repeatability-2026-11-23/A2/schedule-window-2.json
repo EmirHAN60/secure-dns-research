@@ -1,0 +1,2402 @@
+[
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 9,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "apple.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "google.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "cloudflare.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 1,
+    "flow_condition": "repeat_flow",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 2,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "wikipedia.org",
+    "cycle": 0,
+    "rep": 5,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "mozilla.org",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 11,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "google",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 7,
+    "flow_condition": "distinct_flows",
+    "sequence": "UUDD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 10,
+    "flow_condition": "distinct_flows",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 8,
+    "flow_condition": "distinct_flows",
+    "sequence": "UDUD",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "microsoft.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "github.com",
+    "cycle": 0,
+    "rep": 3,
+    "flow_condition": "repeat_flow",
+    "sequence": "UDDU",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "google",
+    "domain": "amazon.com",
+    "cycle": 0,
+    "rep": 12,
+    "flow_condition": "distinct_flows",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 0
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "example.com",
+    "cycle": 0,
+    "rep": 6,
+    "flow_condition": "repeat_flow",
+    "sequence": "DDUU",
+    "first_udp_flow": 1,
+    "first_doh_flow": 1
+  },
+  {
+    "provider": "cloudflare",
+    "domain": "bbc.com",
+    "cycle": 0,
+    "rep": 4,
+    "flow_condition": "repeat_flow",
+    "sequence": "DUUD",
+    "first_udp_flow": 0,
+    "first_doh_flow": 1
+  }
+]

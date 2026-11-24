@@ -1,0 +1,17 @@
+{
+  "address": "127.0.0.1",
+  "name": "latency.example",
+  "answer": "192.0.2.42",
+  "repetitions": 400,
+  "warmups": 20,
+  "seed": 20261122,
+  "started_utc": "2026-11-22T20:04:22.002Z",
+  "node": "v24.22.3",
+  "os": "10.0.26300",
+  "architecture": "x64",
+  "script_sha256": "3d18a1b418ced582b4775ff725f76dc40f9f4ad157f7a174affe18fb58976c4b",
+  "client_sha256": "0fbd5dba7b044d50af89c3bb5ca4a684198e180d77a88b3e2338bcbbf59b21a1",
+  "status": "complete",
+  "finished_utc": "2026-11-22T20:04:22.281Z",
+  "failed": 0
+}

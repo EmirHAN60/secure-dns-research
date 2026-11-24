@@ -1,0 +1,3 @@
+layout,complete_pairs,median_paired_delta_ms,ci95_low_ms,ci95_high_ms,idealized_delay_only_increment_ms
+parallel,20,26.199999999720603,21.40000000037253,30.399999999906868,25
+sequential,20,210.8999999994412,206.99999999953434,216.64999999990687,175

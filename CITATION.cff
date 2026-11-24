@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Cite the released artifact version alongside the research paper."
+title: "DNS over HTTPS versus UDP: Lookup Latency and Controlled Browser Loads"
+type: software
+authors:
+  - given-names: Emirhan
+    family-names: Tekbaş
+    affiliation: "Vistula University, Computer Engineering"
+repository-code: "https://github.com/EmirHAN60/secure-dns-research"
+version: 1.2.0
+keywords:
+  - DNS over HTTPS
+  - UDP
+  - repeatability
+  - network measurement
+  - browser performance

@@ -1,0 +1,9 @@
+provider,comparison,baseline,metric,held_date,training_pairs,held_pairs,training_pooled_median_ms,held_date_pooled_median_ms,date_sign_agrees,held_window_sign_agrees,held_window_count,absolute_prediction_error_ms
+cloudflare,doh_fresh,udp,elapsed_ms,2026-11-15,300,300,50.0871000000393,48.36349999997765,True,3,3,1.7236000000616514
+cloudflare,doh_fresh,udp,elapsed_ms,2026-11-19,300,300,48.36349999997765,50.0871000000393,True,3,3,1.7236000000616514
+cloudflare,doh_warm,udp,elapsed_ms,2026-11-15,300,300,-1.3497999999963213,-1.7734000000782544,True,3,3,0.4236000000819331
+cloudflare,doh_warm,udp,elapsed_ms,2026-11-19,300,300,-1.7734000000782544,-1.3497999999963213,True,3,3,0.4236000000819331
+google,doh_fresh,udp,elapsed_ms,2026-11-15,300,300,91.15149999997811,84.64004999998724,True,3,3,6.511449999990873
+google,doh_fresh,udp,elapsed_ms,2026-11-19,300,300,84.64004999998724,91.15149999997811,True,3,3,6.511449999990873
+google,doh_warm,udp,elapsed_ms,2026-11-15,300,300,5.330900000000838,7.121399999956338,True,2,3,1.7904999999555002
+google,doh_warm,udp,elapsed_ms,2026-11-19,300,300,7.121399999956338,5.330900000000838,True,2,3,1.7904999999555002

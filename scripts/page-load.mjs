@@ -25,10 +25,9 @@ fs.mkdirSync(output, { recursive:true });
 const windowId = args.window || 'w1';
 if(fs.existsSync(path.join(output,'pages.jsonl')) && fs.readFileSync(path.join(output,'pages.jsonl'),'utf8').split('\n').filter(Boolean).some(line=>JSON.parse(line).window===windowId)) throw new Error('This output already contains the requested window; use a new directory or window identifier.');
 const reps = Number(args.reps || 10);
-const seed = Number(args.seed || 20261115) + Number(windowId.replace(/\D/g,''));
-let state=seed>>>0;
-function rng(){state=(Math.imul(1664525,state)+1013904223)>>>0;return state/4294967296;}
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const seed = Number(args.seed || 20261115);
+const rng = dns.windowRng(seed, windowId, 'live-dns-browser');
+const shuffle = values => dns.shuffle(values, rng);
 const append = (file, row) => fs.appendFileSync(path.join(output, file), JSON.stringify(row)+'\n');
 let evidenceCaptured = false;
 

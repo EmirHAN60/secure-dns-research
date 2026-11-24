@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-24T10:36:13.930820+00:00",
+  "source": "User's account of the three network connections",
+  "supersedes_earlier_uncertain_interpretation": true,
+  "reported_contexts": {
+    "A1": "Home Wi-Fi",
+    "B1": "Phone hotspot",
+    "A2": "Return to original home Wi-Fi"
+  },
+  "personal_network_names_recorded": false,
+  "isp_or_carrier_identified": false,
+  "cellular_upstream_independently_verified": false,
+  "physical_route_independence_claimed": false,
+  "local_observation_comparisons": {
+    "B1_before_after_configuration_matches": true,
+    "A2_before_matches_A1_before": true,
+    "A2_before_differs_from_B1_before": true,
+    "A1_contemporaneous_after_observation_available": false,
+    "A2_after_matches_A2_before": true,
+    "A2_after_matches_A1_before": true,
+    "A2_after_differs_from_B1_before": true
+  },
+  "scope": "Context types are user reports. Matching/different opaque local configuration tags support local observation consistency only, not ISP identification, public egress, an independent route or a causal network effect. The fixed network order, dates and elapsed time remain confounded.",
+  "preservation": "Frozen plan, locked sources, raw measurements and exact per-run capture ledgers are unchanged by this separately recorded clarification.",
+  "updated_utc": "2026-11-24T10:40:16.906433+00:00",
+  "observation_times_utc": {
+    "A1_before": "2026-11-23T21:49:41.2992585Z",
+    "A1_after": null,
+    "B1_before": "2026-11-24T10:20:40.9930742Z",
+    "B1_after": "2026-11-24T10:26:24.7029916Z",
+    "A2_before": "2026-11-24T10:34:30.9578896Z",
+    "A2_after": "2026-11-24T10:40:16.7568250Z"
+  }
+}

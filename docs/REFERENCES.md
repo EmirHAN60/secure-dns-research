@@ -1,6 +1,8 @@
 # References
 
-APA author–date bibliography for the research paper and supporting review. Source locations, evidence boundaries and metadata discrepancies are documented in the [source audit](SOURCE_AUDIT.md). The verification record was expanded on 19 November 2026 from the original primary-source checks on 15 November.
+APA author–date bibliography for the research paper and supporting review. Source locations, evidence boundaries and metadata discrepancies are documented in the [source audit](SOURCE_AUDIT.md) and [revision literature comparison](REVISION_LITERATURE.md). The original source record was expanded on 19 November 2026; ZDNS was verified on 20 November and Paris traceroute on 23 November. A supplemental-only source appears in [the closest-benchmark comparison](RELATED_BENCHMARKS.md).
+
+Augustin, B., Cuvellier, X., Orgogozo, B., Viger, F., Friedman, T., Latapy, M., Magnien, C., & Teixeira, R. (2006). Avoiding traceroute anomalies with Paris traceroute. In *Proceedings of the 6th ACM SIGCOMM Conference on Internet Measurement* (pp. 153–158). Association for Computing Machinery. [https://doi.org/10.1145/1177080.1177100](https://doi.org/10.1145/1177080.1177100)
 
 Bajpai, V., Brunstrom, A., Feldmann, A., Kellerer, W., Pras, A., Schulzrinne, H., Smaragdakis, G., Wählisch, M., & Wehrle, K. (2019). The Dagstuhl beginners guide to reproducibility for experimental networking research. *ACM SIGCOMM Computer Communication Review, 49*(1), 24–30. [https://doi.org/10.1145/3314212.3314217](https://doi.org/10.1145/3314212.3314217)
 
@@ -23,6 +25,8 @@ Hounsel, A., Borgolte, K., Schmitt, P., Holland, J., & Feamster, N. (2020). Comp
 Hounsel, A., Schmitt, P., Borgolte, K., & Feamster, N. (2021). Can encrypted DNS be fast? In O. Hohlfeld, A. Lutu, & D. Levin (Eds.), *Passive and active measurement* (pp. 444–459). Springer. [https://doi.org/10.1007/978-3-030-72582-2_26](https://doi.org/10.1007/978-3-030-72582-2_26)
 
 Huitema, C., Dickinson, S., & Mankin, A. (2022). *DNS over dedicated QUIC connections* (RFC 9250). RFC Editor. [https://doi.org/10.17487/RFC9250](https://doi.org/10.17487/RFC9250)
+
+Izhikevich, L., Akiwate, G., Berger, B., Drakontaidis, S., Ascheman, A., Pearce, P., Adrian, D., & Durumeric, Z. (2022). ZDNS: A fast DNS toolkit for internet measurement. In *Proceedings of the 22nd ACM Internet Measurement Conference* (pp. 33–43). Association for Computing Machinery. [https://doi.org/10.1145/3517745.3561434](https://doi.org/10.1145/3517745.3561434)
 
 Kosek, M., Schumann, L., Marx, R., Doan, T. V., & Bajpai, V. (2022). DNS privacy with speed? Evaluating DNS over QUIC and its impact on web performance. In *Proceedings of the 22nd ACM Internet Measurement Conference* (pp. 44–50). Association for Computing Machinery. [https://doi.org/10.1145/3517745.3561445](https://doi.org/10.1145/3517745.3561445)
 

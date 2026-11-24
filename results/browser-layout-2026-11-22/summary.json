@@ -1,0 +1,184 @@
+{
+  "study_type": "Real Chrome observations of synthetic delay-injection treatments; no live DNS or public content transfer",
+  "design": {
+    "recorded_utc": "2026-11-22T20:11:18.080Z",
+    "study": "Controlled browser delay injection",
+    "live_dns": false,
+    "native_browser_dns": false,
+    "public_content_transfer": false,
+    "seed": 20261122,
+    "repetitions": 20,
+    "conditions": [
+      {
+        "layout": "parallel",
+        "extra": 0,
+        "requested_gate_ms": 25
+      },
+      {
+        "layout": "parallel",
+        "extra": 25,
+        "requested_gate_ms": 50
+      },
+      {
+        "layout": "sequential",
+        "extra": 0,
+        "requested_gate_ms": 25
+      },
+      {
+        "layout": "sequential",
+        "extra": 25,
+        "requested_gate_ms": 50
+      }
+    ],
+    "resource_count": 7,
+    "distinct_resource_hostnames": 7,
+    "primary_metric": "fixture.elapsed_ms from script start to seven verified image completions",
+    "secondary_metric": "fixture.completed_ms relative to navigation time origin",
+    "diagnostic_metric": "Navigation Timing loadEventEnd; may precede fixture completion",
+    "html_sha256": "37d778d71ffd1a60807ddb272e6d8a75ba1398d2f314a4f34f61fd0cf0b8154b",
+    "image_sha256": "27b66aa081e6bb31f7ec0584e71a447c5db422a93b48c4d14b35e135e308a548",
+    "html_bytes": 1732,
+    "image_bytes": 32931,
+    "collector_sha256": "b34fdbd88b76625ea97144326c335492d922b447a90b021dd47f8bf4798487e0",
+    "analyzer_sha256": "4dee04c5639221514668755d71feb2ede00823c18db007e57941b1ea0b6d06bd",
+    "delay_policy": "Each resource route waits requested_gate_ms with setTimeout before fulfilling identical SVG bytes. Actual gate intervals are logged. Main document has no artificial delay.",
+    "randomization": "Seeded shuffle of repetition blocks and four conditions within each block",
+    "inference": "Paired layout-specific treatment-minus-baseline differences; synthetic timing treatments on one controlled fixture, not true DNS observations",
+    "timeout_ms": 5000
+  },
+  "environment": {
+    "started_utc": "2026-11-22T20:11:18.310Z",
+    "node": "v24.22.3",
+    "platform": "win32",
+    "release": "10.0.26300",
+    "arch": "x64",
+    "cpu": "AMD Ryzen 7 7700 8-Core Processor              ",
+    "logical_processors": 16,
+    "browser": "157.0.8103.79",
+    "playwright": "1.62.1",
+    "headless": true,
+    "host_resolver_rules": "MAP * ~NOTFOUND",
+    "all_context_requests_intercepted": true,
+    "network_policy": "Only fixture.test and h1..h7.fixture.test routes are fulfilled. Other context requests are aborted. No public DNS or content target is queried."
+  },
+  "completion": {
+    "finished_utc": "2026-11-22T20:11:47.564Z",
+    "attempted": 80,
+    "planned": 80,
+    "failed": 0,
+    "status": "complete"
+  },
+  "counts": {
+    "attempted": 80,
+    "valid": 80,
+    "invalid": 0
+  },
+  "marginal_summary": [
+    {
+      "layout": "parallel",
+      "extra_ms": 0,
+      "requested_gate_ms": 25,
+      "attempted": 20,
+      "succeeded": 20,
+      "failed": 0,
+      "n": 20,
+      "median_ms": 46.64999999990687,
+      "q1_ms": 43.85000000032596,
+      "q3_ms": 48.97500000032596,
+      "min_ms": 40.5,
+      "max_ms": 53.59999999962747,
+      "median_navigation_completion_ms": 54.4499999997206,
+      "median_load_event_end_ms": 54.5500000002794,
+      "min_concurrent_gates": 7,
+      "max_concurrent_gates": 7
+    },
+    {
+      "layout": "parallel",
+      "extra_ms": 25,
+      "requested_gate_ms": 50,
+      "attempted": 20,
+      "succeeded": 20,
+      "failed": 0,
+      "n": 20,
+      "median_ms": 73.10000000009313,
+      "q1_ms": 68.60000000032596,
+      "q3_ms": 76.35000000009313,
+      "min_ms": 64.40000000037253,
+      "max_ms": 78.79999999981374,
+      "median_navigation_completion_ms": 81.5,
+      "median_load_event_end_ms": 81.54999999981374,
+      "min_concurrent_gates": 7,
+      "max_concurrent_gates": 7
+    },
+    {
+      "layout": "sequential",
+      "extra_ms": 0,
+      "requested_gate_ms": 25,
+      "attempted": 20,
+      "succeeded": 20,
+      "failed": 0,
+      "n": 20,
+      "median_ms": 225.84999999962747,
+      "q1_ms": 223.22500000032596,
+      "q3_ms": 230.67500000051223,
+      "min_ms": 215.70000000018626,
+      "max_ms": 235.79999999981374,
+      "median_navigation_completion_ms": 233.5,
+      "median_load_event_end_ms": 233.65000000037253,
+      "min_concurrent_gates": 1,
+      "max_concurrent_gates": 1
+    },
+    {
+      "layout": "sequential",
+      "extra_ms": 25,
+      "requested_gate_ms": 50,
+      "attempted": 20,
+      "succeeded": 20,
+      "failed": 0,
+      "n": 20,
+      "median_ms": 439.25,
+      "q1_ms": 435.99999999976717,
+      "q3_ms": 442.2249999998603,
+      "min_ms": 424,
+      "max_ms": 445.5,
+      "median_navigation_completion_ms": 446.75,
+      "median_load_event_end_ms": 446.9499999997206,
+      "min_concurrent_gates": 1,
+      "max_concurrent_gates": 1
+    }
+  ],
+  "paired_effects": [
+    {
+      "layout": "parallel",
+      "complete_pairs": 20,
+      "median_paired_delta_ms": 26.199999999720603,
+      "ci95_low_ms": 21.40000000037253,
+      "ci95_high_ms": 30.399999999906868,
+      "idealized_delay_only_increment_ms": 25
+    },
+    {
+      "layout": "sequential",
+      "complete_pairs": 20,
+      "median_paired_delta_ms": 210.8999999994412,
+      "ci95_low_ms": 206.99999999953434,
+      "ci95_high_ms": 216.64999999990687,
+      "idealized_delay_only_increment_ms": 175
+    }
+  ],
+  "interaction": {
+    "definition": "Per-repetition (sequential treatment-minus-baseline) minus (parallel treatment-minus-baseline), aggregated by median",
+    "complete_blocks": 20,
+    "median_ms": 186.9499999997206,
+    "ci95_low_ms": 176.8000000002794,
+    "ci95_high_ms": 194.09999999962747
+  },
+  "validation": {
+    "errors": [],
+    "checks": "Independent gate interval/concurrency recomputation, browser request sequencing, seven image completions, payload hashes, no unexpected context requests, full scheduled collection"
+  },
+  "inference": {
+    "primary_metric": "Browser script start to verified completion of all seven fixed images",
+    "bootstrap": "4000 percentile resamples of paired repetition blocks, fixed seed 20261122, conditional on this local run; no population or native-browser-DNS coverage claim",
+    "timing": "Actual requested/released gate times are retained. Nominal injected durations are treatments, not assumed perfectly exact elapsed waits. Navigation loadEventEnd is diagnostic and can differ from application completion."
+  }
+}

@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Controlled browser layout fixture</title><link rel="icon" href="data:,"><style>body{font-family:serif;margin:32px}img{width:120px;height:80px;margin:8px}</style></head><body><h1>Controlled browser layout fixture</h1><p>Seven fixed images with experimental delivery gates.</p><img id="slot1" alt="Fixture 1"><img id="slot2" alt="Fixture 2"><img id="slot3" alt="Fixture 3"><img id="slot4" alt="Fixture 4"><img id="slot5" alt="Fixture 5"><img id="slot6" alt="Fixture 6"><img id="slot7" alt="Fixture 7"><script>
+window.__fixture={layout:new URL(location.href).searchParams.get('layout'),requests:[],done:false,error:null};
+async function runFixture(){
+  const f=window.__fixture;
+  f.start_ms=performance.now();
+  const loadOne=i=>new Promise((resolve,reject)=>{
+    const image=document.getElementById('slot'+i);
+    const request={index:i,requested_ms:performance.now(),completed_ms:null};
+    f.requests.push(request);
+    image.onload=()=>{request.completed_ms=performance.now();request.loaded=image.complete&&image.naturalWidth>0;resolve();};
+    image.onerror=()=>reject(new Error('Image '+i+' failed'));
+    image.src='http://h'+i+'.fixture.test/resource-'+i+'.svg';
+  });
+  if(f.layout==='sequential') for(let i=1;i<=7;i++) await loadOne(i);
+  else if(f.layout==='parallel') await Promise.all(Array.from({length:7},(_,i)=>loadOne(i+1)));
+  else throw new Error('Invalid layout');
+  f.completed_ms=performance.now();
+  f.elapsed_ms=f.completed_ms-f.start_ms;
+  f.loaded_images=[...document.images].filter(x=>x.complete&&x.naturalWidth>0).length;
+  f.done=true;
+}
+runFixture().catch(e=>{window.__fixture.error=String(e);window.__fixture.done=true;});
+</script></body></html>
